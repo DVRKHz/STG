@@ -8,7 +8,7 @@
   "redirects": [
     {
       "source": "/",
-      "destination": "/QuienesSomos.tsx",
+      "destination": "/quienessomos",
       "permanent": false
     }
   ]
