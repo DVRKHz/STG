@@ -9,11 +9,11 @@ export const NavbarLogo = () => {
           >
             <img
               src="/src/assets/logo.png"
-              alt="Logo de Sureste Sostenible"
+              alt="Logo de CEDES"
               sizes="(max-width: 100px) 100vw, 100px"
               className="h-10 w-auto object-contain"
             />
-            <div className="flex flex col leading-none">
+            <div className="flex flex-col leading-none">
               <span className="text-lg font-bold text-gray-800">
                 Sustentabilidad, Territorio y Gobernanza
               </span>
