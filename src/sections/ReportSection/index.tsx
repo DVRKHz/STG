@@ -1,85 +1,19 @@
 export const ReportSection = () => {
   return (
     <div className="relative bg-blue-900 box-border caret-transparent gap-x-5 flex flex-col flex-wrap max-w-full gap-y-5 w-full mx-auto p-[5%] md:flex-nowrap md:p-[45px]">
-      <div className="relative box-border caret-transparent flex flex-col w-full px-2.5">
-        <div className="items-center box-border caret-transparent gap-x-5 flex grow flex-wrap h-full justify-center max-w-[min(100%,767px)] gap-y-5 w-full mx-auto py-2.5 md:flex-nowrap md:max-w-[min(100%,1140px)]">
-          <div className="relative box-border caret-transparent gap-x-5 max-w-full gap-y-5 text-center md:text-start">
-            <div className="box-border caret-transparent h-full text-center md:text-start">
-              <h2 className="text-white text-[32px] font-semibold box-border caret-transparent leading-8 text-center font-plus_jakarta_sans md:text-start">
-                ¿Tienes algo que reportar?
-              </h2>
-            </div>
-          </div>
-          <div className="relative text-white box-border caret-transparent gap-x-5 max-w-full gap-y-5 text-center font-plus_jakarta_sans md:text-left">
-            <div className="box-border caret-transparent h-full text-center md:text-left">
-              Si has sido testigo de alguna irregularidad o actividad que afecta
-              la sostenibilidad de nuestra comunidad, no dudes en hacernos
-              llegar tu denuncia de manera confidencial. Escríbenos a:{" "}
-              <a
-                href="mailto://denuncia@surestesostenible.org"
-                className="text-cyan-500 box-border caret-transparent text-center md:text-left"
-              >
-                denuncia@surestesostenible.org
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="relative box-border caret-transparent gap-x-5 max-w-full order-[-99999] gap-y-5 text-center">
-        <div className="box-border caret-transparent h-full overflow-hidden">
-          <ul className="box-border caret-transparent flex flex-wrap justify-center list-none ml-[-23.5px] mr-[-23.5px] pl-0">
-            <li className="relative items-center box-border caret-transparent flex justify-center mx-[23.5px]">
-              <span className="relative box-border caret-transparent flex pr-[5px] top-0">
-                <img
-                  src="https://c.animaapp.com/mlh7yfd1ocFTbj/assets/icon-15.svg"
-                  alt="Icon"
-                  className="box-border caret-transparent h-[18px] w-[18px] mr-[4.5px] md:h-3.5 md:w-3.5 md:mr-[3.5px]"
-                />
-              </span>
-              <span className="text-white text-lg self-center box-border caret-transparent block leading-[27px] pl-[5px] font-plus_jakarta_sans md:text-base md:leading-6">
-                Donaciones Seguras
-              </span>
-            </li>
-            <li className="relative items-center box-border caret-transparent flex justify-center mx-[23.5px]">
-              <span className="relative box-border caret-transparent flex pr-[5px] top-0">
-                <img
-                  src="https://c.animaapp.com/mlh7yfd1ocFTbj/assets/icon-16.svg"
-                  alt="Icon"
-                  className="box-border caret-transparent h-[18px] w-[18px] mr-[4.5px] md:h-3.5 md:w-3.5 md:mr-[3.5px]"
-                />
-              </span>
-              <span className="text-white text-lg self-center box-border caret-transparent block leading-[27px] pl-[5px] font-plus_jakarta_sans md:text-base md:leading-6">
-                Compromiso Ambiental
-              </span>
-              </li>
-            <li className="relative items-center box-border caret-transparent flex justify-center mx-[23.5px]">
-              <span className="relative box-border caret-transparent flex pr-[5px] top-0">
-                <img
-                  src="https://c.animaapp.com/mlh7yfd1ocFTbj/assets/icon-17.svg"
-                  alt="Icon"
-                  className="box-border caret-transparent h-[18px] w-[18px] mr-[4.5px] md:h-3.5 md:w-3.5 md:mr-[3.5px]"
-                />
-              </span>
-              <span className="text-white text-lg self-center box-border caret-transparent block leading-[27px] pl-[5px] font-plus_jakarta_sans md:text-base md:leading-6">
-                Transparencia Total
-              </span>
-            </li>
-          </ul>
-        </div>
-      </div>
       <div className="relative content-start box-border caret-transparent gap-x-0 flex flex-wrap gap-y-0 w-full p-0 md:p-2.5">
         <div className="relative box-border caret-transparent gap-x-5 flex flex-col flex-wrap gap-y-5 w-full p-2.5 md:flex-nowrap md:w-1/5">
-          <div className="relative box-border caret-transparent gap-x-5 max-w-full gap-y-5 text-center">
+          <div className="relative box-border caret-transparent gap-x-5 max-w-full gap-y-5 text-left">
             <div className="box-border caret-transparent h-full">
               <a
-                href="https://surestesostenible.org/"
+                href="https://cedes.unach.mx/"
                 className="text-pink-600 box-border caret-transparent inline-block hover:text-slate-700 hover:border-slate-700"
               >
                 <img
-                  src="https://c.animaapp.com/mlh7yfd1ocFTbj/assets/Group.png"
+                  src="src/assets/logo-white.png"
                   alt=""
-                  sizes="(max-width: 345px) 100vw, 345px"
-                  className="aspect-[auto_345_/_141] box-border caret-transparent inline-block grayscale-[1] brightness-[100] max-w-full w-[345px]"
+                  sizes="(max-width: 345px) 100vw, 120px"
+                  className="aspect-[auto_345_/_141] box-border caret-transparent inline-block grayscale-[1] brightness-[100] max-w-full w-[120px]"
                 />
               </a>
             </div>
@@ -138,7 +72,7 @@ export const ReportSection = () => {
               </div>
             </div>
           </div>
-          </div>
+         </div>
         <div className="relative box-border caret-transparent gap-x-5 flex flex-col flex-wrap gap-y-5 w-6/12 p-2.5 md:flex-nowrap md:w-1/5 md:p-5">
           <div className="relative box-border caret-transparent gap-x-5 max-w-full gap-y-5">
             <div className="box-border caret-transparent h-full">
@@ -300,14 +234,7 @@ export const ReportSection = () => {
       <div className="relative text-white box-border caret-transparent gap-x-5 max-w-full gap-y-5 text-center font-plus_jakarta_sans">
         <div className="box-border caret-transparent h-full">
           <p className="box-border caret-transparent mb-[14.4px]">
-            © 2024 Sureste Sostenible. Todos los derechos reservados. Diseñado
-            por{" "}
-            <a
-              href="https://newemage.com.mx/"
-              className="text-yellow-400 box-border caret-transparent"
-            >
-              Newemage
-            </a>
+            © 2026 Universidad Autónoma de Chiapas. Todos los derechos reservados.
           </p>
         </div>
       </div>

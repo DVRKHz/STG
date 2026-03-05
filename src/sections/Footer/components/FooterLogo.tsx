@@ -8,7 +8,7 @@ export const FooterLogo = () => {
             className="text-pink-600 box-border caret-transparent inline-block hover:text-slate-700 hover:border-slate-700"
           >
             <img
-              src="/src/assets/logo-white.png"
+              src="src/assets/logo-white.png"
               alt=""
               sizes="(max-width: 100px) 100vw, 100px"
               className="aspect-[auto_100_/_141] box-border caret-transparent inline-block grayscale-[1] brightness-[100] max-w-full w-[50px]"
