@@ -10,8 +10,8 @@ export const ReportSection = () => {
                 className="text-pink-600 box-border caret-transparent inline-block hover:text-slate-700 hover:border-slate-700"
               >
                 <img
-                  src="src/assets/logo-cedes-bn.png"
-                  alt="icon"
+                  src="/logo-cedes-bn.png"
+                  alt="Logo"
                   sizes="(max-width: 345px) 100vw, 120px"
                   className="aspect-[auto_345_/_141] box-border caret-transparent inline-block grayscale-[1] brightness-[100] max-w-full w-[120px]"
                 />
