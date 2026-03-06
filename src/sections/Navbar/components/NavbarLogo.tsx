@@ -8,8 +8,8 @@ export const NavbarLogo = () => {
             className="text-black box-border caret-transparent inline-block md:text-pink-600 hover:text-slate-700 hover:border-slate-700"
           >
             <img
-              src="logo.png"
-              alt="Logo de CEDES"
+              src="/logo.png"
+              alt="Logo"
               sizes="(max-width: 100px) 100vw, 100px"
               className="h-10 w-auto object-contain"
             />
