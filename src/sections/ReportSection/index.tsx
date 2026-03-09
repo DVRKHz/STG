@@ -29,13 +29,13 @@ export const ReportSection = () => {
                   className="box-border caret-transparent inline-block text-center md:text-left"
                 >
                   <a
-                    href="https://www.instagram.com/surestesostenible/"
+                    href="https://www.facebook.com/profile.php?id=61587006117007"
                     className="text-gray-500 text-xl items-center bg-transparent box-border caret-transparent inline-flex h-10 justify-center leading-5 text-center w-10 rounded-[50%] hover:text-white hover:border-white"
                   >
                     <img
-                      src="https://c.animaapp.com/mlh7yfd1ocFTbj/assets/icon-18.svg"
+                      src="/facebook.svg"
                       alt="Icon"
-                      className="relative box-border caret-transparent h-5 w-5"
+                      className="relative box-border caret-transparent h-5 w-5 invert brightness-200"
                     />
                   </a>
                 </span>
@@ -44,13 +44,13 @@ export const ReportSection = () => {
                   className="box-border caret-transparent inline-block text-center md:text-left"
                 >
                   <a
-                    href="https://mx.linkedin.com/company/sureste-sostenible-a-c"
+                    href="#"
                     className="text-gray-500 text-xl items-center bg-transparent box-border caret-transparent inline-flex h-10 justify-center leading-5 text-center w-10 rounded-[50%] hover:text-white hover:border-white"
                   >
                     <img
-                      src="https://c.animaapp.com/mlh7yfd1ocFTbj/assets/icon-19.svg"
+                      src="/x.svg"
                       alt="Icon"
-                      className="relative box-border caret-transparent h-5 w-5"
+                      className="relative box-border caret-transparent h-5 w-5 invert brightness-200"
                     />
                   </a>
                 </span>
@@ -59,13 +59,13 @@ export const ReportSection = () => {
                   className="box-border caret-transparent inline-block text-center md:text-left"
                 >
                   <a
-                    href="https://www.youtube.com/@SuresteSostenible"
+                    href="#"
                     className="text-gray-500 text-xl items-center bg-transparent box-border caret-transparent inline-flex h-10 justify-center leading-5 text-center w-10 rounded-[50%] hover:text-white hover:border-white"
                   >
                     <img
-                      src="https://c.animaapp.com/mlh7yfd1ocFTbj/assets/icon-20.svg"
+                      src="/instagram.svg"
                       alt="Icon"
-                      className="relative box-border caret-transparent h-5 w-5"
+                      className="relative box-border caret-transparent h-5 w-5 invert brightness-200"
                     />
                   </a>
                 </span>
@@ -86,7 +86,7 @@ export const ReportSection = () => {
               <ul className="box-border caret-transparent list-none pl-0">
                 <li className="relative items-center box-border caret-transparent flex pb-[5px]">
                   <a
-                    href="https://surestesostenible.org/nosotros/"
+                    href="/quienessomos"
                     className="text-pink-600 text-[15px] font-extralight items-center box-border caret-transparent flex leading-[22.5px] w-full font-plus_jakarta_sans hover:text-slate-700 hover:border-slate-700"
                   >
                     <span className="text-white box-border caret-transparent block">
@@ -96,7 +96,7 @@ export const ReportSection = () => {
                 </li>
                 <li className="relative items-center box-border caret-transparent flex mt-[5px] pb-[5px]">
                   <a
-                    href="https://surestesostenible.org/nosotros/#equipo"
+                    href="/quienessomos#nuestro-equipo"
                     className="text-pink-600 text-[15px] font-extralight items-center box-border caret-transparent flex leading-[22.5px] w-full font-plus_jakarta_sans hover:text-slate-700 hover:border-slate-700"
                   >
                     <span className="text-white box-border caret-transparent block">
@@ -106,7 +106,7 @@ export const ReportSection = () => {
                 </li>
                 <li className="relative items-center box-border caret-transparent flex mt-[5px]">
                   <a
-                    href="https://surestesostenible.org/convocatorias/"
+                    href="https://www.cedes.unach.mx/index.php/convocatoria"
                     className="text-pink-600 text-[15px] font-extralight items-center box-border caret-transparent flex leading-[22.5px] w-full font-plus_jakarta_sans hover:text-slate-700 hover:border-slate-700"
                   >
                     <span className="text-white box-border caret-transparent block">
@@ -176,11 +176,11 @@ export const ReportSection = () => {
               <ul className="box-border caret-transparent list-none pl-0">
                 <li className="relative items-center box-border caret-transparent flex">
                   <a
-                    href="https://drive.google.com/file/d/1bk5w4sgg3OQL2782O9KmPWX7xNzIpivF/view"
+                    href="https://transparencia.unach.mx/"
                     className="text-pink-600 text-[15px] font-extralight items-center box-border caret-transparent flex leading-[22.5px] w-full font-plus_jakarta_sans hover:text-slate-700 hover:border-slate-700"
                   >
                     <span className="text-white box-border caret-transparent block">
-                      Manual de Operaciones
+                      Unidad de Tranparencia
                     </span>
                   </a>
                 </li>
@@ -201,7 +201,7 @@ export const ReportSection = () => {
               <ul className="box-border caret-transparent list-none pl-0">
                 <li className="relative items-center box-border caret-transparent flex pb-[5px]">
                   <a
-                    href="https://surestesostenible.org/contacto/"
+                    href="/contacto"
                     className="text-pink-600 text-[15px] font-extralight items-center box-border caret-transparent flex leading-[22.5px] w-full font-plus_jakarta_sans hover:text-slate-700 hover:border-slate-700"
                   >
                     <span className="text-white box-border caret-transparent block">
@@ -211,11 +211,11 @@ export const ReportSection = () => {
                 </li>
                 <li className="relative items-center box-border caret-transparent flex mt-[5px]">
                   <a
-                    href="https://surestesostenible.org/aviso-de-privacidad/"
+                    href="https://www.unach.mx/avisos-de-privacidad"
                     className="text-pink-600 text-[15px] font-extralight items-center box-border caret-transparent flex leading-[22.5px] w-full font-plus_jakarta_sans hover:text-slate-700 hover:border-slate-700"
                   >
                     <span className="text-white box-border caret-transparent block">
-                      Política de Privacidad
+                      Avisos de Privacidad
                     </span>
                   </a>
                 </li>

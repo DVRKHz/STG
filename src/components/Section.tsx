@@ -6,7 +6,7 @@ export const Section = () => {
           <div className="box-border caret-transparent h-full">
             <h2 className="text-black text-[25px] font-semibold box-border caret-transparent leading-[37.5px] font-plus_jakarta_sans md:text-[54px] md:leading-[81px]">
               <span className="text-cyan-500 text-[25px] box-border caret-transparent leading-[37.5px] md:text-[54px] md:leading-[81px]">
-                Sureste Sostenible
+                Sustentabilidad, Territorio y Gobernanza
               </span>
               promueve{" "}
               <span className="text-lime-600 text-[25px] box-border caret-transparent leading-[37.5px] md:text-[54px] md:leading-[81px]">

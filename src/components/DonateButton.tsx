@@ -5,13 +5,13 @@ export const DonateButton = () => {
         <div className="box-border caret-transparent h-full">
           <div className="box-border caret-transparent">
             <a
-              href="https://surestesostenible.org/dona-ahora/"
+              href="https://stg-cedes.vercel.app/donate"
               className="text-white text-[15px] font-medium bg-pink-600 box-border caret-transparent inline-block fill-white leading-[15px] text-center capitalize px-[35px] py-[15px] font-plus_jakarta_sans"
             >
               <span className="box-border caret-transparent gap-x-2.5 flex fill-white flex-row-reverse justify-center gap-y-2.5">
                 <span className="items-center box-border caret-transparent flex fill-white min-h-0 min-w-0 md:min-h-[auto] md:min-w-[auto]">
                   <img
-                    src="https://c.animaapp.com/mlh7yfd1ocFTbj/assets/icon-5.svg"
+                    src="/paypal.svg"
                     alt="Icon"
                     className="box-border caret-transparent w-[15px]"
                   />

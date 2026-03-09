@@ -1,25 +1,64 @@
+import { useState } from 'react';
+// Importa tus componentes de contenido aquí
+import { ProjectCarousel } from '@/sections/ProjectsSection/components/ProjectCarousel';
+// import { ProyectosContent } from './ProyectosContent';
+
 export const ProjectTabs = () => {
+  // Estado para saber qué pestaña está activa (por defecto 'acciones')
+  const [activeTab, setActiveTab] = useState('acciones');
+
   return (
-    <div
-      role="tablist"
-      className="box-border caret-transparent gap-x-[45px] contents shrink-0 flex-nowrap justify-start min-h-0 min-w-0 overflow-x-scroll overflow-y-auto gap-y-[45px] md:flex md:flex-wrap md:justify-start md:min-h-[auto] md:min-w-[auto] md:overflow-x-visible md:overflow-y-visible"
-    >
-      <button
-        role="tab"
-        className="relative text-white font-medium items-center bg-cyan-500 caret-transparent gap-x-[5px] flex basis-[content] shrink-0 justify-center order-1 gap-y-[5px] text-center text-nowrap border border-cyan-500 mb-[30px] px-[35px] py-[15px] border-solid font-plus_jakarta_sans md:shrink md:order-none md:text-wrap md:mb-0"
+    <div className="w-full">
+      {/* Contenedor de Botones (Tu código original con lógica añadida) */}
+      <div
+        role="tablist"
+        className="flex gap-x-4 mb-8 overflow-x-auto pb-2 md:overflow-visible"
       >
-        <span className="items-center box-border caret-transparent flex text-nowrap md:text-wrap">
-          Acciones{" "}
-        </span>
-      </button>
-      <button
-        role="tab"
-        className="relative text-black font-medium items-center bg-white caret-transparent gap-x-[5px] flex basis-[content] shrink-0 justify-center order-2 gap-y-[5px] text-center text-nowrap border border-stone-300 mt-[45px] px-[35px] py-[15px] border-solid font-plus_jakarta_sans md:shrink md:order-none md:text-wrap md:mt-0 hover:text-white hover:bg-cyan-500 hover:border-cyan-500"
-      >
-        <span className="items-center box-border caret-transparent flex text-nowrap md:text-wrap">
-          Proyectos{" "}
-        </span>
-      </button>
+        {/* Botón Acciones */}
+        <button
+          onClick={() => setActiveTab('acciones')}
+          role="tab"
+          aria-selected={activeTab === 'acciones'}
+          className={`relative font-medium px-8 py-3 rounded-md transition-all font-plus_jakarta_sans border border-solid
+            ${activeTab === 'acciones' 
+              ? "bg-cyan-500 text-white border-cyan-500" 
+              : "bg-white text-black border-stone-300 hover:bg-cyan-50"
+            }`}
+        >
+          Acciones
+        </button>
+
+        {/* Botón Proyectos */}
+        <button
+          onClick={() => setActiveTab('proyectos')}
+          role="tab"
+          aria-selected={activeTab === 'proyectos'}
+          className={`relative font-medium px-8 py-3 rounded-md transition-all font-plus_jakarta_sans border border-solid
+            ${activeTab === 'proyectos' 
+              ? "bg-cyan-500 text-white border-cyan-500" 
+              : "bg-white text-black border-stone-300 hover:bg-cyan-50"
+            }`}
+        >
+          Proyectos
+        </button>
+      </div>
+
+      {/* SECCIÓN DE CONTENIDO DINÁMICO */}
+      <div className="mt-6 transition-opacity duration-300">
+        {activeTab === 'acciones' ? (
+          <div id="seccion-acciones">
+            {/* Aquí va el contenido o componente de Acciones */}
+            <h2 className="text-2xl font-bold">Nuestras Acciones</h2>
+            <p>Contenido relacionado con las acciones sociales...</p>
+          </div>
+        ) : (
+          <div id="seccion-proyectos">
+            {/* Aquí va el contenido o componente de Proyectos */}
+            <h2 className="text-2xl font-bold">Proyectos Recientes</h2>
+            <p>Lista de proyectos en el sureste...</p>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

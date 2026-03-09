@@ -9,15 +9,15 @@ export const Footer = () => {
         title="Nosotros"
         links={[
           {
-            href: "https://surestesostenible.org/nosotros/",
+            href: "/quienessomos",
             text: "Acerca de Nosotros",
           },
           {
-            href: "https://surestesostenible.org/nosotros/#equipo",
+            href: "/quienessomos#equipo",
             text: "Equipo",
           },
           {
-            href: "https://surestesostenible.org/convocatorias/",
+            href: "https://www.cedes.unach.mx/index.php/convocatoria",
             text: "Convocatorias",
           },
         ]}
@@ -40,18 +40,18 @@ export const Footer = () => {
         title="Transparencia"
         links={[
           {
-            href: "https://drive.google.com/file/d/1bk5w4sgg3OQL2782O9KmPWX7xNzIpivF/view",
-            text: "Manual de Operaciones",
+            href: "https://transparencia.unach.mx/",
+            text: "Unidad de Tranparencia",
           },
         ]}
       />
       <FooterColumn
         title="Ayuda"
         links={[
-          { href: "https://surestesostenible.org/contacto/", text: "Contacto" },
+          { href: "/contacto", text: "Contacto" },
           {
-            href: "https://surestesostenible.org/aviso-de-privacidad/",
-            text: "Política de Privacidad",
+            href: "https://www.unach.mx/avisos-de-privacidad",
+            text: "Avisos de Privacidad",
           },
         ]}
       />
