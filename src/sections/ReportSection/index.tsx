@@ -1,242 +1,96 @@
 export const ReportSection = () => {
   return (
-    <div className="relative bg-blue-900 box-border caret-transparent gap-x-5 flex flex-col flex-wrap max-w-full gap-y-5 w-full mx-auto p-[5%] md:flex-nowrap md:p-[45px]">
-      <div className="relative content-start box-border caret-transparent gap-x-0 flex flex-wrap gap-y-0 w-full p-0 md:p-2.5">
-        <div className="relative box-border caret-transparent gap-x-5 flex flex-col flex-wrap gap-y-5 w-full p-2.5 md:flex-nowrap md:w-1/5">
-          <div className="relative box-border caret-transparent gap-x-5 max-w-full gap-y-5 text-left">
-            <div className="box-border caret-transparent h-full">
-              <a
-                href="https://cedes.unach.mx/"
-                className="text-pink-600 box-border caret-transparent inline-block hover:text-slate-700 hover:border-slate-700"
-              >
-                <img
-                  src="/logo-cedes-bn.png"
-                  alt="Logo"
-                  sizes="(max-width: 345px) 100vw, 120px"
-                  className="aspect-[auto_345_/_141] box-border caret-transparent inline-block grayscale-[1] brightness-[100] max-w-full w-[120px]"
-                />
-              </a>
-            </div>
+    <div className="relative bg-blue-900 box-border caret-transparent flex flex-col w-full mx-auto p-[5%] md:p-[45px]">
+      <div className="relative flex flex-wrap w-full gap-y-10 md:flex-nowrap md:justify-between md:items-start">
+        
+        {/* 1. EXTREMO IZQUIERDO: CEDES */}
+        <div className="flex flex-col gap-y-5 w-full md:w-auto">
+          <div className="text-left">
+            <a href="https://cedes.unach.mx/" className="inline-block">
+              <img
+                src="/logo-cedes-bn.png"
+                alt="Logo CEDES"
+                className="grayscale-[1] brightness-[100] w-[120px] object-contain"
+              />
+            </a>
           </div>
-          <div className="relative box-border caret-transparent gap-x-5 max-w-full gap-y-5">
-            <div className="text-[0px] box-border caret-transparent h-full leading-[0px] text-center md:text-left">
-              <div
-                role="list"
-                className="box-border caret-transparent gap-x-3.5 inline-block justify-center justify-items-center gap-y-0 text-center w-full md:text-left"
-              >
-                <span
-                  role="listitem"
-                  className="box-border caret-transparent inline-block text-center md:text-left"
-                >
-                  <a
-                    href="https://www.facebook.com/profile.php?id=61587006117007"
-                    className="text-gray-500 text-xl items-center bg-transparent box-border caret-transparent inline-flex h-10 justify-center leading-5 text-center w-10 rounded-[50%] hover:text-white hover:border-white"
-                  >
-                    <img
-                      src="/facebook.svg"
-                      alt="Icon"
-                      className="relative box-border caret-transparent h-5 w-5 invert brightness-200"
-                    />
-                  </a>
-                </span>
-                <span
-                  role="listitem"
-                  className="box-border caret-transparent inline-block text-center md:text-left"
-                >
-                  <a
-                    href="#"
-                    className="text-gray-500 text-xl items-center bg-transparent box-border caret-transparent inline-flex h-10 justify-center leading-5 text-center w-10 rounded-[50%] hover:text-white hover:border-white"
-                  >
-                    <img
-                      src="/x.svg"
-                      alt="Icon"
-                      className="relative box-border caret-transparent h-5 w-5 invert brightness-200"
-                    />
-                  </a>
-                </span>
-                <span
-                  role="listitem"
-                  className="box-border caret-transparent inline-block text-center md:text-left"
-                >
-                  <a
-                    href="#"
-                    className="text-gray-500 text-xl items-center bg-transparent box-border caret-transparent inline-flex h-10 justify-center leading-5 text-center w-10 rounded-[50%] hover:text-white hover:border-white"
-                  >
-                    <img
-                      src="/instagram.svg"
-                      alt="Icon"
-                      className="relative box-border caret-transparent h-5 w-5 invert brightness-200"
-                    />
-                  </a>
-                </span>
-              </div>
-            </div>
-          </div>
-         </div>
-        <div className="relative box-border caret-transparent gap-x-5 flex flex-col flex-wrap gap-y-5 w-6/12 p-2.5 md:flex-nowrap md:w-1/5 md:p-5">
-          <div className="relative box-border caret-transparent gap-x-5 max-w-full gap-y-5">
-            <div className="box-border caret-transparent h-full">
-              <p className="text-white font-medium box-border caret-transparent leading-4 font-plus_jakarta_sans">
-                Nosotros
-              </p>
-            </div>
-          </div>
-          <div className="relative box-border caret-transparent gap-x-5 max-w-full gap-y-5">
-            <div className="box-border caret-transparent h-full">
-              <ul className="box-border caret-transparent list-none pl-0">
-                <li className="relative items-center box-border caret-transparent flex pb-[5px]">
-                  <a
-                    href="/quienessomos"
-                    className="text-pink-600 text-[15px] font-extralight items-center box-border caret-transparent flex leading-[22.5px] w-full font-plus_jakarta_sans hover:text-slate-700 hover:border-slate-700"
-                  >
-                    <span className="text-white box-border caret-transparent block">
-                      Acerca de Nosotros
-                    </span>
-                  </a>
-                </li>
-                <li className="relative items-center box-border caret-transparent flex mt-[5px] pb-[5px]">
-                  <a
-                    href="/quienessomos#nuestro-equipo"
-                    className="text-pink-600 text-[15px] font-extralight items-center box-border caret-transparent flex leading-[22.5px] w-full font-plus_jakarta_sans hover:text-slate-700 hover:border-slate-700"
-                  >
-                    <span className="text-white box-border caret-transparent block">
-                      Equipo
-                    </span>
-                  </a>
-                </li>
-                <li className="relative items-center box-border caret-transparent flex mt-[5px]">
-                  <a
-                    href="https://www.cedes.unach.mx/index.php/convocatoria"
-                    className="text-pink-600 text-[15px] font-extralight items-center box-border caret-transparent flex leading-[22.5px] w-full font-plus_jakarta_sans hover:text-slate-700 hover:border-slate-700"
-                  >
-                    <span className="text-white box-border caret-transparent block">
-                      Convocatorias
-                    </span>
-                  </a>
-                </li>
-              </ul>
-            </div>
+          <div className="flex justify-center md:justify-start gap-x-3">
+            <a href="https://www.facebook.com/unachcedes" className="text-gray-500 hover:text-white border border-transparent hover:border-white rounded-full p-2 flex items-center justify-center w-10 h-10">
+              <img src="/facebook.svg" alt="FB" className="h-5 w-5 invert brightness-200" />
+            </a>
+            <a href="https://twitter.com/cedesunach" className="text-gray-500 hover:text-white border border-transparent hover:border-white rounded-full p-2 flex items-center justify-center w-10 h-10">
+              <img src="/x.svg" alt="X" className="h-5 w-5 invert brightness-200" />
+            </a>
+            <a href="https://www.instagram.com/unach.cedes/" className="text-gray-500 hover:text-white border border-transparent hover:border-white rounded-full p-2 flex items-center justify-center w-10 h-10">
+              <img src="/instagram.svg" alt="IG" className="h-5 w-5 invert brightness-200" />
+            </a>
           </div>
         </div>
-        <div className="relative box-border caret-transparent gap-x-5 flex flex-col flex-wrap gap-y-5 w-6/12 p-2.5 md:flex-nowrap md:w-1/5 md:p-5">
-          <div className="relative box-border caret-transparent gap-x-5 max-w-full gap-y-5">
-            <div className="box-border caret-transparent h-full">
-              <p className="text-white font-medium box-border caret-transparent leading-4 font-plus_jakarta_sans">
-                Nuestro trabajo
-              </p>
-            </div>
-          </div>
-          <div className="relative box-border caret-transparent gap-x-5 max-w-full gap-y-5">
-            <div className="box-border caret-transparent h-full">
-              <ul className="box-border caret-transparent list-none pl-0">
-                <li className="relative items-center box-border caret-transparent flex pb-[5px]">
-                  <a
-                    href="https://surestesostenible.org/nuestro-trabajo/#pro"
-                    className="text-pink-600 text-[15px] font-extralight items-center box-border caret-transparent flex leading-[22.5px] w-full font-plus_jakarta_sans hover:text-slate-700 hover:border-slate-700"
-                  >
-                    <span className="text-white box-border caret-transparent block">
-                      Proyectos y Programas
-                    </span>
-                  </a>
-                </li>
-                <li className="relative items-center box-border caret-transparent flex mt-[5px] pb-[5px]">
-                  <a
-                    href="https://surestesostenible.org/#impactos"
-                    className="text-pink-600 text-[15px] font-extralight items-center box-border caret-transparent flex leading-[22.5px] w-full font-plus_jakarta_sans hover:text-slate-700 hover:border-slate-700"
-                  >
-                    <span className="text-white box-border caret-transparent block">
-                      Impactos
-                    </span>
-                  </a>
-                </li>
-                <li className="relative items-center box-border caret-transparent flex mt-[5px]">
-                  <a
-                    href="https://surestesostenible.org/creditos/"
-                    className="text-pink-600 text-[15px] font-extralight items-center box-border caret-transparent flex leading-[22.5px] w-full font-plus_jakarta_sans hover:text-slate-700 hover:border-slate-700"
-                  >
-                    <span className="text-white box-border caret-transparent block">
-                      Créditos de fotografías
-                    </span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
+
+        {/* 2. NOSOTROS */}
+        <div className="w-1/2 md:w-auto px-2">
+          <p className="text-white font-medium mb-4 font-plus_jakarta_sans">Nosotros</p>
+          <ul className="list-none pl-0 space-y-2">
+            <li><a href="/quienessomos" className="text-white text-[14px] font-extralight hover:underline">Acerca de Nosotros</a></li>
+            <li><a href="/quienessomos#nuestro-equipo" className="text-white text-[14px] font-extralight hover:underline">Equipo</a></li>
+            <li><a href="#" className="text-white text-[14px] font-extralight hover:underline">Convocatorias</a></li>
+          </ul>
         </div>
-        <div className="relative box-border caret-transparent gap-x-5 flex flex-col flex-wrap gap-y-5 w-6/12 p-2.5 md:flex-nowrap md:w-1/5 md:p-5">
-          <div className="relative box-border caret-transparent gap-x-5 max-w-full gap-y-5">
-            <div className="box-border caret-transparent h-full">
-              <p className="text-white font-medium box-border caret-transparent leading-4 font-plus_jakarta_sans">
-                Transparencia
-              </p>
-            </div>
-          </div>
-          <div className="relative box-border caret-transparent gap-x-5 max-w-full gap-y-5">
-            <div className="box-border caret-transparent h-full">
-              <ul className="box-border caret-transparent list-none pl-0">
-                <li className="relative items-center box-border caret-transparent flex">
-                  <a
-                    href="https://transparencia.unach.mx/"
-                    className="text-pink-600 text-[15px] font-extralight items-center box-border caret-transparent flex leading-[22.5px] w-full font-plus_jakarta_sans hover:text-slate-700 hover:border-slate-700"
-                  >
-                    <span className="text-white box-border caret-transparent block">
-                      Unidad de Tranparencia
-                    </span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
+
+        {/* 3. NUESTRO TRABAJO */}
+        <div className="w-1/2 md:w-auto px-2">
+          <p className="text-white font-medium mb-4 font-plus_jakarta_sans">Nuestro trabajo</p>
+          <ul className="list-none pl-0 space-y-2">
+            <li><a href="/acciones" className="text-white text-[14px] font-extralight hover:underline">Líneas de acción</a></li>
+            <li><a href="/acciones" className="text-white text-[14px] font-extralight hover:underline">Proyectos</a></li>
+          </ul>
         </div>
-        <div className="relative box-border caret-transparent gap-x-5 flex flex-col flex-wrap gap-y-5 w-6/12 p-2.5 md:flex-nowrap md:w-1/5 md:p-5">
-          <div className="relative box-border caret-transparent gap-x-5 max-w-full gap-y-5">
-            <div className="box-border caret-transparent h-full">
-              <p className="text-white font-medium box-border caret-transparent leading-4 font-plus_jakarta_sans">
-                Ayuda
-              </p>
-            </div>
+
+        {/* 4. TRANSPARENCIA */}
+        <div className="w-1/2 md:w-auto px-2">
+          <p className="text-white font-medium mb-4 font-plus_jakarta_sans">Transparencia</p>
+          <ul className="list-none pl-0 space-y-2">
+            <li><a href="https://transparencia.unach.mx/" className="text-white text-[14px] font-extralight hover:underline">Unidad de Transparencia</a></li>
+          </ul>
+        </div>
+
+        {/* 5. AYUDA (NUEVA UBICACIÓN) */}
+        <div className="w-1/2 md:w-auto px-2">
+          <p className="text-white font-medium mb-4 font-plus_jakarta_sans">Ayuda</p>
+          <ul className="list-none pl-0 space-y-2">
+            <li><a href="/contacto" className="text-white text-[14px] font-extralight hover:underline">Contacto</a></li>
+            <li><a href="https://www.unach.mx/avisos-de-privacidad" className="text-white text-[14px] font-extralight hover:underline">Avisos de Privacidad</a></li>
+          </ul>
+        </div>
+
+        {/* 6. EXTREMO DERECHO: UNACH */}
+        <div className="flex flex-col gap-y-5 w-full md:w-auto md:items-end">
+          <div className="text-center md:text-right">
+            <a href="https://unach.mx/" className="inline-block">
+              <img
+                src="/unach-logo.png"
+                alt="Logo UNACH"
+                className="grayscale-[1] brightness-[100] w-[120px] object-contain"
+              />
+            </a>
           </div>
-          <div className="relative box-border caret-transparent gap-x-5 max-w-full gap-y-5">
-            <div className="box-border caret-transparent h-full">
-              <ul className="box-border caret-transparent list-none pl-0">
-                <li className="relative items-center box-border caret-transparent flex pb-[5px]">
-                  <a
-                    href="/contacto"
-                    className="text-pink-600 text-[15px] font-extralight items-center box-border caret-transparent flex leading-[22.5px] w-full font-plus_jakarta_sans hover:text-slate-700 hover:border-slate-700"
-                  >
-                    <span className="text-white box-border caret-transparent block">
-                      Contacto
-                    </span>
-                  </a>
-                </li>
-                <li className="relative items-center box-border caret-transparent flex mt-[5px]">
-                  <a
-                    href="https://www.unach.mx/avisos-de-privacidad"
-                    className="text-pink-600 text-[15px] font-extralight items-center box-border caret-transparent flex leading-[22.5px] w-full font-plus_jakarta_sans hover:text-slate-700 hover:border-slate-700"
-                  >
-                    <span className="text-white box-border caret-transparent block">
-                      Avisos de Privacidad
-                    </span>
-                  </a>
-                </li>
-              </ul>
-            </div>
+          <div className="flex justify-center md:justify-end gap-x-3">
+            <a href="https://www.facebook.com/comunicaunach" className="text-gray-500 hover:text-white border border-transparent hover:border-white rounded-full p-2 flex items-center justify-center w-10 h-10">
+              <img src="/facebook.svg" alt="FB" className="h-5 w-5 invert brightness-200" />
+            </a>
+            <a href="https://www.instagram.com/unach_oficial" className="text-gray-500 hover:text-white border border-transparent hover:border-white rounded-full p-2 flex items-center justify-center w-10 h-10">
+              <img src="/instagram.svg" alt="X" className="h-5 w-5 invert brightness-200" />
+            </a>
           </div>
         </div>
       </div>
-      <div className="relative box-border caret-transparent gap-x-5 max-w-full gap-y-5 w-full">
-        <div className="box-border caret-transparent h-full">
-          <div className="box-border caret-transparent flex text-center py-2">
-            <span className="border-b-zinc-800 border-l-zinc-800 border-r-zinc-800 border-t-cyan-500 box-border caret-transparent flex w-4/5 mx-auto border-t"></span>
-          </div>
-        </div>
-      </div>
-      <div className="relative text-white box-border caret-transparent gap-x-5 max-w-full gap-y-5 text-center font-plus_jakarta_sans">
-        <div className="box-border caret-transparent h-full">
-          <p className="box-border caret-transparent mb-[14.4px]">
-            © 2026 Universidad Autónoma de Chiapas. Todos los derechos reservados.
-          </p>
-        </div>
+
+      {/* SEPARADOR Y COPYRIGHT */}
+      <div className="w-full mt-10">
+        <div className="border-t border-t-cyan-500 opacity-30 w-full mb-6"></div>
+        <p className="text-white text-center text-sm font-plus_jakarta_sans">
+          © 2026 Universidad Autónoma de Chiapas. Todos los derechos reservados.
+        </p>
       </div>
     </div>
   );

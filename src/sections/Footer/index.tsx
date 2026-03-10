@@ -23,20 +23,6 @@ export const Footer = () => {
         ]}
       />
       <FooterColumn
-        title="Nuestro trabajo"
-        links={[
-          {
-            href: "https://surestesostenible.org/nuestro-trabajo/#pro",
-            text: "Proyectos y Programas",
-          },
-          { href: "https://surestesostenible.org/#impactos", text: "Impactos" },
-          {
-            href: "https://surestesostenible.org/creditos/",
-            text: "Créditos de fotografías",
-          },
-        ]}
-      />
-      <FooterColumn
         title="Transparencia"
         links={[
           {
