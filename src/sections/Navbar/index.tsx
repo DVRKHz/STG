@@ -12,7 +12,6 @@ export const Navbar = () => {
 
         <div className="flex items-center">
           <DesktopMenu />
-          <MobileMenuToggle />
         </div>
 
         {/* El menú móvil suele ir fuera del flujo principal o absoluto */}
