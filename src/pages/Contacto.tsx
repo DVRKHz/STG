@@ -1,7 +1,76 @@
+import { useState } from "react";
 import { Navbar } from "@/sections/Navbar";
 import { ReportSection } from "@/sections/ReportSection";
 
 export const Contacto = () => {
+  // --- LÓGICA DEL FORMULARIO ---
+  const [formData, setFormData] = useState({
+    nombre: "",
+    email: "",
+    asunto: "",
+    mensaje: "",
+  });
+
+  // Estado para el archivo adjunto
+  const [file, setFile] = useState(null);
+
+  const [status, setStatus] = useState({
+    loading: false,
+    success: false,
+    error: null
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  // Manejador para el archivo
+  const handleFileChange = (e) => {
+    if (e.target.files.length > 0) {
+      setFile(e.target.files[0]);
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus({ loading: true, success: false, error: null });
+
+    // IMPORTANTE: Para archivos usamos FormData
+    const dataToSend = new FormData();
+    dataToSend.append("nombre", formData.nombre);
+    dataToSend.append("email", formData.email);
+    dataToSend.append("asunto", formData.asunto);
+    dataToSend.append("mensaje", formData.mensaje);
+    if (file) {
+      dataToSend.append("adjunto", file); // Nombre del campo en Formspree
+    }
+
+    try {
+      const response = await fetch("https://formspree.io/f/xqeypdbr", {
+        method: "POST",
+        body: dataToSend, // Se envía el FormData directamente
+        headers: {
+          "Accept": "application/json"
+          // NO incluir Content-Type aquí, el navegador lo genera solo
+        }
+      });
+
+      if (response.ok) {
+        setStatus({ loading: false, success: true, error: null});
+        setFormData({ nombre: "", email: "", asunto: "", mensaje: ""});
+        setFile(null);
+        alert("¡Mensaje enviado con éxito! Nos pondremos en contacto pronto.");
+      } else {
+        const data = await response.json();
+        throw new Error(data.error || "Hubo un error al enviar el mensaje");
+      }
+    } catch (error) {
+      setStatus({ loading: false, success: false, error: error.message });
+      alert("Error: " + error.message);
+    }
+  };
+
   return (
     <body className="text-zinc-800 text-base not-italic normal-nums font-normal accent-auto bg-white box-border caret-transparent block tracking-[normal] leading-6 list-outside list-disc pointer-events-auto text-start indent-[0px] normal-case visible border-separate font-apple_system">
       <Navbar />
@@ -31,22 +100,26 @@ export const Contacto = () => {
         <div className="box-border caret-transparent gap-x-[30px] flex flex-col grow flex-wrap h-full max-w-[min(100%,767px)] gap-y-[30px] w-full mx-auto py-[8%] md:flex-nowrap md:max-w-[min(100%,1140px)] md:py-[6%]">
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-            {/* Contact Form */}
+            
+            {/* Contact Form MODIFICADO */}
             <div className="relative box-border caret-transparent gap-x-[30px] max-w-full gap-y-[30px]">
               <div className="box-border caret-transparent h-full">
                 <h2 className="text-cyan-500 text-[20px] font-semibold box-border caret-transparent tracking-[2px] leading-5 mb-8 font-plus_jakarta_sans">
                   ENVÍANOS UN MENSAJE
                 </h2>
                 
-                <form className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
                     <label className="text-black text-[15px] font-medium box-border caret-transparent block mb-3 font-plus_jakarta_sans">
                       Nombre *
                     </label>
                     <input
                       type="text"
+                      name="nombre"
+                      value={formData.nombre}
+                      onChange={handleChange}
                       required
-                      className="text-black text-[15px] box-border caret-transparent block w-full leading-[21px] min-h-12 border p-[14px] border-solid border-black/20 font-plus_jakarta_sans focus:border-cyan-500 focus:outline-none transition-colors"
+                      className="text-black text-[15px] box-border block w-full leading-[21px] min-h-12 border p-[14px] border-solid border-black/20 font-plus_jakarta_sans focus:border-cyan-500 focus:outline-none transition-colors"
                       placeholder="Tu nombre completo"
                     />
                   </div>
@@ -57,9 +130,24 @@ export const Contacto = () => {
                     </label>
                     <input
                       type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
                       required
-                      className="text-black text-[15px] box-border caret-transparent block w-full leading-[21px] min-h-12 border p-[14px] border-solid border-black/20 font-plus_jakarta_sans focus:border-cyan-500 focus:outline-none transition-colors"
+                      className="text-black text-[15px] box-border block w-full leading-[21px] min-h-12 border p-[14px] border-solid border-black/20 font-plus_jakarta_sans focus:border-cyan-500 focus:outline-none transition-colors"
                       placeholder="tu@email.com"
+                    />
+                  </div>
+
+                  {/* NUEVO CAMPO DE ARCHIVO */}
+                  <div>
+                    <label className="text-black text-[15px] font-medium box-border caret-transparent block mb-3 font-plus_jakarta_sans">
+                      Adjuntar Archivo (Opcional)
+                    </label>
+                    <input
+                      type="file"
+                      onChange={handleFileChange}
+                      className="text-black text-[15px] box-border block w-full leading-[21px] border p-[12px] border-solid border-black/20 font-plus_jakarta_sans focus:border-cyan-500 file:mr-4 file:py-2 file:px-4 file:border-0 file:text-sm file:font-semibold file:bg-cyan-50 file:text-cyan-700 hover:file:bg-cyan-100 transition-colors"
                     />
                   </div>
 
@@ -69,8 +157,11 @@ export const Contacto = () => {
                     </label>
                     <input
                       type="text"
+                      name="asunto"
+                      value={formData.asunto}
+                      onChange={handleChange}
                       required
-                      className="text-black text-[15px] box-border caret-transparent block w-full leading-[21px] min-h-12 border p-[14px] border-solid border-black/20 font-plus_jakarta_sans focus:border-cyan-500 focus:outline-none transition-colors"
+                      className="text-black text-[15px] box-border block w-full leading-[21px] min-h-12 border p-[14px] border-solid border-black/20 font-plus_jakarta_sans focus:border-cyan-500 focus:outline-none transition-colors"
                       placeholder="¿Sobre qué quieres hablar?"
                     />
                   </div>
@@ -80,33 +171,39 @@ export const Contacto = () => {
                       Mensaje *
                     </label>
                     <textarea
+                      name="mensaje"
+                      value={formData.mensaje}
+                      onChange={handleChange}
                       required
                       rows={6}
-                      className="text-black text-[15px] box-border caret-transparent block w-full leading-[24px] border p-[14px] border-solid border-black/20 font-plus_jakarta_sans resize-vertical focus:border-cyan-500 focus:outline-none transition-colors"
+                      className="text-black text-[15px] box-border block w-full leading-[24px] border p-[14px] border-solid border-black/20 font-plus_jakarta_sans resize-vertical focus:border-cyan-500 focus:outline-none transition-colors"
                       placeholder="Escribe tu mensaje aquí..."
                     ></textarea>
                   </div>
 
                   <button
                     type="submit"
-                    className="text-white text-[15px] font-medium bg-cyan-500 box-border caret-transparent inline-block fill-white leading-[15px] text-center capitalize px-[40px] py-[18px] font-plus_jakarta_sans hover:bg-cyan-600 transition-colors shadow-md hover:shadow-lg"
+                    disabled={status.loading}
+                    className="text-white text-[15px] font-medium bg-cyan-500 box-border caret-transparent inline-block fill-white leading-[15px] text-center capitalize px-[40px] py-[18px] font-plus_jakarta_sans hover:bg-cyan-600 transition-colors shadow-md hover:shadow-lg disabled:bg-gray-400"
                   >
                     <span className="box-border caret-transparent gap-x-[10px] flex fill-white justify-center items-center gap-y-[10px]">
                       <span className="box-border caret-transparent block fill-white normal-case">
-                        Enviar Mensaje
+                        {status.loading ? "Enviando..." : "Enviar Mensaje"}
                       </span>
-                      <span className="items-center box-border caret-transparent flex fill-white">
-                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                          <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"></path>
-                        </svg>
-                      </span>
+                      {!status.loading && (
+                        <span className="items-center box-border caret-transparent flex fill-white">
+                          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"></path>
+                          </svg>
+                        </span>
+                      )}
                     </span>
                   </button>
                 </form>
               </div>
             </div>
 
-            {/* Contact Info */}
+            {/* Contact Info (MANTENIDO SIN CAMBIOS) */}
             <div className="relative box-border caret-transparent gap-x-[30px] max-w-full gap-y-[30px]">
               <div className="box-border caret-transparent h-full space-y-10">
                 <div>
@@ -154,7 +251,7 @@ export const Contacto = () => {
                         </p>
                       </div>
                     </div>
-
+                    
                     <div className="flex items-start gap-6 p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
                       <div className="text-blue-900 text-3xl flex-shrink-0">
                         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -167,14 +264,17 @@ export const Contacto = () => {
                         </h3>
                         <div className="flex gap-4">
                           <a 
-                             href="https://www.facebook.com/profile.php?id=61587006117007"
-                             target="_blank"
-                             rel="noopener noreferrer"
-                             className="text-gray-500 hover:text-blue-600 transition-colors"
+                            href="https://www.facebook.com/profile.php?id=61587006117007"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-3 text-gray-600 hover:text-blue-600 transition-colors group"
                           >
-                            <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
                               <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 14.991 22 12z" />
                             </svg>
+                            <span className="text-[16px] font-medium font-plus_jakarta_sans group-hover:underline">
+                              Síguenos en Facebook
+                            </span>
                           </a>
                         </div>
                       </div>
