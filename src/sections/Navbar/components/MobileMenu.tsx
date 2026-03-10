@@ -1,8 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronRight } from "lucide-react";
 
-// Usamos la misma constante de links (asegúrate de que esté accesible)
 const MENU_LINKS = [
   { name: 'Quiénes somos', href: '/quienessomos' },
   { name: 'Información Relevante', href: '/informacion-relevante' },
@@ -12,104 +11,64 @@ const MENU_LINKS = [
 
 export const MobileMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
   const location = useLocation();
 
-  // Cerrar el menú automáticamente al cambiar de ruta
-  useEffect(() => {
-    setIsOpen(false);
-    setOpenSubmenu(null);
-  }, [location]);
+  useEffect(() => setIsOpen(false), [location]);
 
-  // Evitar scroll cuando el menú está abierto
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
+    document.body.style.overflow = isOpen ? 'hidden' : 'unset';
   }, [isOpen]);
-
-  const toggleSubmenu = (name: string) => {
-    setOpenSubmenu(openSubmenu === name ? null : name);
-  };
 
   return (
     <div className="md:hidden">
       {/* Botón Hamburguesa */}
       <button 
         onClick={() => setIsOpen(true)}
-        className="p-2 text-neutral-700"
-        aria-label="Abrir menú"
+        className="p-2 text-neutral-800"
       >
-        <Menu size={28} />
+        <Menu size={30} />
       </button>
 
-      {/* Overlay y Menú Lateral */}
-      <div className={`fixed inset-0 z-50 transition-visibility duration-300 ${isOpen ? 'visible' : 'invisible'}`}>
+      {/* CONTENEDOR PRINCIPAL DEL MENÚ 
+        Aquí está la magia: bg-white, h-screen y w-full garantizan 
+        que cubra absolutamente todo como una pared sólida.
+      */}
+      <div 
+        className={`fixed top-0 left-0 w-full h-screen z-[9999] bg-white flex flex-col transition-transform duration-300 transform ${
+          isOpen ? 'translate-x-0' : 'translate-x-full'
+        }`}
+      >
         
-        {/* Fondo oscuro traslúcido */}
-        <div 
-          className={`absolute inset-0 bg-black/50 transition-opacity duration-300 ${isOpen ? 'opacity-100' : 'opacity-0'}`}
-          onClick={() => setIsOpen(false)}
-        />
+        {/* Encabezado del menú */}
+        <div className="flex items-center justify-between p-5 border-b border-neutral-200 bg-white">
+          <span className="font-bold text-xl text-neutral-900">MENÚ</span>
+          <button 
+            onClick={() => setIsOpen(false)}
+            className="p-2 bg-neutral-100 hover:bg-neutral-200 rounded-full text-neutral-900 transition-colors"
+          >
+            <X size={24} />
+          </button>
+        </div>
 
-        {/* Panel del Menú */}
-        <nav className={`absolute right-0 top-0 h-full w-[280px] bg-white shadow-xl transition-transform duration-300 transform ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
-          <div className="flex items-center justify-between p-5 border-b">
-            <span className="font-bold text-lg text-cyan-600">Menú</span>
-            <button onClick={() => setIsOpen(false)} className="p-1">
-              <X size={24} className="text-neutral-500" />
-            </button>
-          </div>
-
-          <ul className="flex flex-col p-4 gap-2">
+        {/* Lista de enlaces */}
+        <nav className="flex-1 overflow-y-auto bg-white">
+          <ul className="flex flex-col bg-white">
             {MENU_LINKS.map((link) => {
-              const hasSubmenu = !!link.submenu;
               const isActive = location.pathname === link.href;
-
               return (
-                <li key={link.name} className="flex flex-col">
-                  <div className="flex items-center justify-between">
-                    <Link
-                      to={link.href}
-                      className={`flex-grow py-3 px-4 text-base font-semibold rounded-lg transition-colors ${
-                        isActive ? 'bg-cyan-50 text-cyan-600' : 'text-neutral-700'
-                      }`}
-                    >
-                      {link.name}
-                    </Link>
-                    
-                    {hasSubmenu && (
-                      <button 
-                        onClick={() => toggleSubmenu(link.name)}
-                        className="p-3 text-neutral-500"
-                      >
-                        <ChevronDown 
-                          size={20} 
-                          className={`transition-transform ${openSubmenu === link.name ? 'rotate-180' : ''}`} 
-                        />
-                      </button>
-                    )}
-                  </div>
-
-                  {/* Submenú Mobile */}
-                  {hasSubmenu && openSubmenu === link.name && (
-                    <ul className="ml-4 border-l-2 border-cyan-100 mt-1 flex flex-col gap-1">
-                      {link.submenu?.map((sub) => (
-                        <li key={sub.href}>
-                          <Link
-                            to={sub.href}
-                            className={`block py-2 px-6 text-sm ${
-                              location.pathname === sub.href ? 'text-cyan-600 font-medium' : 'text-neutral-500'
-                            }`}
-                          >
-                            {sub.name}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
+                <li key={link.href} className="border-b border-neutral-100 bg-white">
+                  <Link
+                    to={link.href}
+                    className={`flex items-center justify-between px-6 py-5 text-lg font-semibold transition-colors
+                      ${isActive ? 'text-cyan-600 bg-cyan-50' : 'text-neutral-800 bg-white active:bg-neutral-50'}
+                    `}
+                  >
+                    {link.name}
+                    <ChevronRight 
+                      size={18} 
+                      className={isActive ? 'text-cyan-600' : 'text-neutral-300'} 
+                    />
+                  </Link>
                 </li>
               );
             })}
