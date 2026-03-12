@@ -1,63 +1,55 @@
 import { useState } from 'react';
-// Importa tus componentes de contenido aquí
 import { ProjectCarousel } from '@/sections/ProjectsSection/components/ProjectCarousel';
-// import { ProyectosContent } from './ProyectosContent';
+import { ACCIONES_DATA, PROYECTOS_DATA } from '@/sections/ProjectsSection/components/data';
 
 export const ProjectTabs = () => {
-  // Estado para saber qué pestaña está activa (por defecto 'acciones')
-  const [activeTab, setActiveTab] = useState('acciones');
+  const [activeTab, setActiveTab] = useState<'acciones' | 'proyectos'>('acciones');
 
   return (
-    <div className="w-full">
-      {/* Contenedor de Botones (Tu código original con lógica añadida) */}
+    <div className="w-full py-10">
+      {/* Contenedor de Botones */}
       <div
         role="tablist"
-        className="flex gap-x-4 mb-8 overflow-x-auto pb-2 md:overflow-visible"
+        className="flex gap-x-4 mb-8 overflow-x-auto px-4 md:px-12 pb-2 md:overflow-visible no-scrollbar"
       >
-        {/* Botón Acciones */}
         <button
           onClick={() => setActiveTab('acciones')}
-          role="tab"
-          aria-selected={activeTab === 'acciones'}
-          className={`relative font-medium px-8 py-3 rounded-md transition-all font-plus_jakarta_sans border border-solid
+          className={`px-8 py-3 rounded-md font-bold transition-all border
             ${activeTab === 'acciones' 
-              ? "bg-cyan-500 text-white border-cyan-500" 
-              : "bg-white text-black border-stone-300 hover:bg-cyan-50"
-            }`}
+              ? "bg-cyan-500 text-white border-cyan-500 shadow-lg shadow-cyan-200" 
+              : "bg-white text-gray-600 border-gray-300 hover:bg-cyan-50"}`}
         >
           Acciones
         </button>
 
-        {/* Botón Proyectos */}
         <button
           onClick={() => setActiveTab('proyectos')}
-          role="tab"
-          aria-selected={activeTab === 'proyectos'}
-          className={`relative font-medium px-8 py-3 rounded-md transition-all font-plus_jakarta_sans border border-solid
+          className={`px-8 py-3 rounded-md font-bold transition-all border
             ${activeTab === 'proyectos' 
-              ? "bg-cyan-500 text-white border-cyan-500" 
-              : "bg-white text-black border-stone-300 hover:bg-cyan-50"
-            }`}
+              ? "bg-cyan-500 text-white border-cyan-500 shadow-lg shadow-cyan-200" 
+              : "bg-white text-gray-600 border-gray-300 hover:bg-cyan-50"}`}
         >
           Proyectos
         </button>
       </div>
 
-      {/* SECCIÓN DE CONTENIDO DINÁMICO */}
-      <div className="mt-6 transition-opacity duration-300">
-        {activeTab === 'acciones' ? (
-          <div id="seccion-acciones">
-            {/* Aquí va el contenido o componente de Acciones */}
-            <h2 className="text-2xl font-bold">Nuestras Acciones</h2>
-            <p>Contenido relacionado con las acciones sociales...</p>
-          </div>
-        ) : (
-          <div id="seccion-proyectos">
-            {/* Aquí va el contenido o componente de Proyectos */}
-            <h2 className="text-2xl font-bold">Proyectos Recientes</h2>
-            <p>Lista de proyectos en el sureste...</p>
-          </div>
-        )}
+      {/* Contenido Dinámico con Animación simple */}
+      <div key={activeTab} className="animate-in fade-in slide-in-from-bottom-2 duration-500">
+        <div className="px-4 md:px-12 mb-6">
+          <h2 className="text-3xl font-bold text-gray-800">
+            {activeTab === 'acciones' ? 'Nuestras Acciones' : 'Proyectos Recientes'}
+          </h2>
+          <p className="text-gray-500 mt-2">
+            {activeTab === 'acciones' 
+              ? 'Iniciativas vecinales y compromiso ambiental.' 
+              : 'Desarrollo y planeación en la región sureste.'}
+          </p>
+        </div>
+
+        {/* El "puente": Inyectamos los datos según el estado */}
+        <ProjectCarousel 
+          items={activeTab === 'acciones' ? ACCIONES_DATA : PROYECTOS_DATA} 
+        />
       </div>
     </div>
   );

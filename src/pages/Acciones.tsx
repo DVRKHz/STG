@@ -4,32 +4,35 @@ import { ReportSection } from "@/sections/ReportSection";
 
 export const Acciones = () => {
   return (
-    <body className="text-zinc-800 text-base not-italic normal-nums font-normal accent-auto bg-white box-border caret-transparent block tracking-[normal] leading-6 list-outside list-disc pointer-events-auto text-start indent-[0px] normal-case visible border-separate font-apple_system">
+    <div className="min-h-screen bg-white text-zinc-800 font-plus_jakarta_sans">
       <Navbar />
       
       {/* Hero Section */}
-      <div className="relative bg-gray-700 bg-[url('public/acciones-hero.jpg')] bg-no-repeat bg-cover box-border caret-transparent flex flex-col mt-0 max-w-full min-h-[400px] w-full bg-center mb-[0%] mx-[0%] px-[10%] pt-[150px] md:min-h-[600px] md:mx-auto md:my-0 md:pt-[250px] before:accent-auto before:bg-black before:box-border before:caret-transparent before:text-zinc-800 before:block before:text-base before:not-italic before:normal-nums before:font-normal before:h-[max(100%_+_0px,100%)] before:tracking-[normal] before:leading-6 before:list-outside before:list-disc before:opacity-50 before:pointer-events-auto before:absolute before:text-start before:indent-[0px] before:normal-case before:visible before:w-[max(100%_+_0px,100%)] before:border-separate before:left-0 before:top-0 before:font-apple_system">
-        <div className="items-center box-border caret-transparent gap-x-10 flex flex-col grow flex-wrap h-full justify-center max-w-[min(100%,767px)] gap-y-10 w-full mx-auto py-[0%] md:flex-nowrap md:max-w-[min(100%,1140px)]">
-          <div className="relative box-border caret-transparent gap-x-10 max-w-full gap-y-10 text-center z-10">
-            <div className="box-border caret-transparent h-full">
-              <h1 className="text-white text-[40px] font-semibold box-border caret-transparent leading-[48px] font-plus_jakarta_sans md:text-[72px] md:leading-[86px]">
-                Acciones
-              </h1>
-            </div>
-          </div>
-          <div className="relative box-border caret-transparent gap-x-10 max-w-full gap-y-10 text-center z-10">
-            <div className="box-border caret-transparent h-full">
-            </div>
-          </div>
+      <section className="relative h-[45vh] md:h-[65vh] min-h-[380px] flex items-center justify-center overflow-hidden">
+        {/* Optimizamos la ruta de la imagen eliminando 'public/' y usamos un placeholder de color para el CLS */}
+        <div 
+          className="absolute inset-0 bg-gray-900 bg-[url('/acciones-hero.jpg')] bg-no-repeat bg-cover bg-center transition-transform duration-1000 hover:scale-105"
+          aria-hidden="true"
+        />
+        {/* Overlay simplificado con Tailwind nativo */}
+        <div className="absolute inset-0 bg-black/40 md:bg-black/50" aria-hidden="true" />
+        
+        <div className="relative z-10 container mx-auto px-6 text-center">
+          <h1 className="text-white text-5xl md:text-8xl font-bold tracking-tight drop-shadow-lg">
+            Acciones
+          </h1>
+          {/* Añadimos un pequeño divisor visual para jerarquía */}
+          <div className="w-16 h-1 bg-cyan-500 mx-auto mt-6 rounded-full md:w-24"></div>
         </div>
-      </div>
+      </section>
 
       {/* Projects Section */}
-      <div id="pro">
+      {/* Usamos scroll-mt para que al navegar al ID el Navbar no tape el título */}
+      <main id="pro" className="scroll-mt-20">
         <ProjectsSection />
-      </div>
+      </main>
 
       <ReportSection />
-    </body>
+    </div>
   );
 };
