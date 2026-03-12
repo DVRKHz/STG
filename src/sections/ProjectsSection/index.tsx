@@ -15,11 +15,10 @@ export const ProjectsSection = () => {
         <div className="relative text-black box-border caret-transparent gap-x-[30px] max-w-full gap-y-[30px] font-plus_jakarta_sans">
           <div className="box-border caret-transparent h-full p-[0%] md:pr-[26%]">
             <p className="box-border caret-transparent mb-[14.4px]">
-              En Sureste Sostenible A.C., creemos en la importancia vital de la
-              conservación y el desarrollo sostenible. Gracias a la colaboración
-              de nuestros socios y al compromiso de nuestras comunidades,
-              trabajamos para lograr un equilibrio entre el desarrollo humano y
-              la preservación de nuestros valiosos ecosistemas.
+              En esta sección podrás conocer las líneas de acción y proyectos que en Sustentabilidad, Territorio y Gobernanza 
+              ha llevado a cabo a lo largo de su historia. Nuestro compromiso con la sustentabilidad se refleja en cada iniciativa que emprendemos, 
+              buscando siempre generar un impacto positivo en la sociedad y el medio ambiente. 
+              A través de estas líneas de acción y proyectos, trabajamos para promover prácticas sostenibles, fomentar la conciencia ambiental y contribuir al desarrollo sostenible de nuestras comunidades.
             </p>
           </div>
         </div>
