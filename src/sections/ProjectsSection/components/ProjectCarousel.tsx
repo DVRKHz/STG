@@ -36,7 +36,7 @@ export const ProjectCarousel = () => {
       id: 5, 
       color: "bg-lime-700", 
       text: "14-Nov-2025: Foro Vecinal en la Telesecundaria 121 de Tuxtla Gutiérrez", 
-      img: "https://scontent.ftgz3-1.fna.fbcdn.net/v/t39.30808-6/622458706_122099432307233537_3020210483536083718_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=13d280&_nc_eui2=AeHbyrbK0wXRvCOd9dIFLOsSFvEo0ucxAYQW8SjS5zEBhOwXLEvwjHKvjVd5TCUxia9Qyfw6Ozn9bAM82mWTElTZ&_nc_ohc=v-UYUr4n-xcQ7kNvwFJDbZ8&_nc_oc=AdkDqTOmxd0P8wZ6Np5SLcA-EvJTtXxEHB1fTQhkkRSkHswsLXBT2qUcjBS4EHDb5e2gvXhvNpXNmd1kV9iPj8Ym&_nc_zt=23&_nc_ht=scontent.ftgz3-1.fna&_nc_gid=VQEiBwB2CdNfMXF-1SI_RQ&_nc_ss=8&oh=00_AfzFOI3EuDZ5z7eTocjaU35vvLtOn0cgR0NECODmezcDEQ&oe=69AF9AF4", 
+      img: "https://scontent.ftgz3-1.fna.fbcdn.net/v/t39.30808-6/622458706_122099432307233537_3020210483536083718_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=13d280&_nc_eui2=AeHbyrbK0wXRvCOd9dIFLOsSFvEo0ucxAYQW8SjS5zEBhOwXLEvwjHKvjVd5TCUxia9Qyfw6Ozn9bAM82mWTElTZ&_nc_ohc=CkOadaqnp5QQ7kNvwH_N1aA&_nc_oc=AdlLjPsP06yVHUuLOWpdn2lM9XX5oVyGLlnEK3aYKW1xUtckV1G8vFi_VS1JnuocSH160POOyrN_rtskeegz_aU_&_nc_zt=23&_nc_ht=scontent.ftgz3-1.fna&_nc_gid=bfA7Djc9PPSamJ97vpt7Vw&_nc_ss=8&oh=00_AfzUMK9bJJWpY6rNkirHyBVnFPRCYpKuD3CpKKZ5kwakrQ&oe=69B8D574", 
       link: "https://www.facebook.com/share/p/1KBfsvdWug/" 
     },
     {

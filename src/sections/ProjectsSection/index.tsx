@@ -1,6 +1,5 @@
 import { ProjectTabs } from "@/sections/ProjectsSection/components/ProjectTabs";
 import { ProjectCarousel } from "@/sections/ProjectsSection/components/ProjectCarousel";
-import { ProjectGrid } from "@/sections/ProjectsSection/components/ProjectGrid";
 
 export const ProjectsSection = () => {
   return (
@@ -42,7 +41,6 @@ export const ProjectsSection = () => {
                     </div>
                   </div>
                 </div>
-                <ProjectGrid />
               </div>
             </div>
           </div>
