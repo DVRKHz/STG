@@ -51,7 +51,7 @@ export const ACCIONES_DATA: ProjectItem[] = [
       id: 5, 
       color: "bg-blue-900", 
       text: "28-Nov-2025: Realización del Foro Vecinal en COBACH 236 de Tuxtla Gutiérrez", 
-      img: "https://scontent.ftgz3-1.fna.fbcdn.net/v/t39.30808-6/622801318_122099438763233537_8672220193020891562_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=13d280&_nc_eui2=AeHUxZHoZwDNUhY09VYHUyvl6jRM4zerBonqNEzjN6sGiQutHCVEFNTFLJLhAJAlkUvUzNlFpqgpFxw_9QXNTjH5&_nc_ohc=vGLhconMWJ4Q7kNvwHwtjLw&_nc_oc=AdmSKDHkZXa6vLQnXBcbL8VVdigIKL5pMxqgF31tptYxAdLY5-FfQ2dlyssmqGSnr8spBKs0FKZn_yJdlZ52qNpy&_nc_zt=23&_nc_ht=scontent.ftgz3-1.fna&_nc_gid=5HULMOKDMIDfd-WSAweMNA&_nc_ss=8&oh=00_AfwQWeI0p2ZvAMdsXXclxiJt43c89gpSEnRa0QiKkGVAFQ&oe=69AF7A90", 
+      img: "https://scontent.ftgz1-2.fna.fbcdn.net/v/t39.30808-6/622801318_122099438763233537_8672220193020891562_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=13d280&_nc_eui2=AeHUxZHoZwDNUhY09VYHUyvl6jRM4zerBonqNEzjN6sGiQutHCVEFNTFLJLhAJAlkUvUzNlFpqgpFxw_9QXNTjH5&_nc_ohc=JoTuXbjFrdkQ7kNvwHMhXsk&_nc_oc=Admbf_UzXQC-oX0-sUUrPxusRcjlG6TggLyKdW_MtTI3frRe6gXqmSDPiiNkTwNwURquvSZVaOXuczAlHfK_1eho&_nc_zt=23&_nc_ht=scontent.ftgz1-2.fna&_nc_gid=qvriS25-YAXSyY6GygscDw&_nc_ss=8&oh=00_AfzpsFImGNgh7Ms4NsrrBzoauKOfd3D4HVF0xSyn_Tm7lg&oe=69BA3ED0", 
       link: "https://www.facebook.com/share/p/1CDq12MDBP/" 
     },
     { 
