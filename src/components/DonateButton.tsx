@@ -1,3 +1,4 @@
+// Este código no tiene función explícita, así que sólo es placebo por ahora
 export const DonateButton = () => {
   return (
     <div className="relative box-border caret-transparent gap-x-5 hidden flex-col flex-wrap justify-center min-h-0 gap-y-5 w-full p-2.5 md:flex md:flex-nowrap md:min-h-[auto] md:w-[15%]">

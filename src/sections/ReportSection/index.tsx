@@ -1,14 +1,23 @@
 export const ReportSection = () => {
   return (
+    // FOOTER: Fondo azul oscuro, padding responsivo y centrado automático
     <footer className="relative bg-blue-900 box-border flex flex-col w-full mx-auto p-8 md:p-[45px]">
+      
+      {/* GRID DE CONTENIDO: 
+          - 2 columnas en móvil (grid-cols-2).
+          - Flex horizontal en escritorio (md:flex) con espacio entre elementos.
+      */}
       <div className="grid grid-cols-2 md:flex md:flex-nowrap md:justify-between gap-10 md:gap-x-8 items-start">
         
-        {/* 1. EXTREMO IZQUIERDO: CEDES - Ocupa 2 columnas en móvil para centrarse */}
+        {/* 1. SECCIÓN IZQUIERDA: LOGO CEDES
+            - col-span-2: En móvil ocupa todo el ancho para centrar el logo.
+        */}
         <div className="col-span-2 md:col-span-1 flex flex-col items-center md:items-start gap-y-5 w-full md:w-auto">
           <a href="https://cedes.unach.mx/" className="inline-block">
             <img
               src="/logo-cedes-bn.png"
               alt="Logo CEDES"
+              // Filtros para hacer el logo blanco puro sobre el fondo azul
               className="grayscale-[1] brightness-[100] w-[140px] md:w-[120px] object-contain"
             />
           </a>
@@ -19,7 +28,7 @@ export const ReportSection = () => {
           </div>
         </div>
 
-        {/* SECCIONES DE ENLACES */}
+        {/* COLUMNAS DE ENLACES: Mantienen una jerarquía clara con títulos en mayúsculas */}
         <div className="flex flex-col">
           <h3 className="text-white font-bold mb-4 font-plus_jakarta_sans text-sm tracking-wide uppercase">Nosotros</h3>
           <ul className="space-y-3">
@@ -46,7 +55,9 @@ export const ReportSection = () => {
           </ul>
         </div>
 
-        {/* 6. EXTREMO DERECHO: UNACH - También centrado en móvil */}
+        {/* 6. SECCIÓN DERECHA: LOGO UNACH
+            - Sigue el mismo patrón que el logo de la izquierda para balance visual.
+        */}
         <div className="col-span-2 md:col-span-1 flex flex-col items-center md:items-end gap-y-5 w-full md:w-auto">
           <a href="https://unach.mx/" className="inline-block">
             <img
@@ -62,7 +73,7 @@ export const ReportSection = () => {
         </div>
       </div>
 
-      {/* SEPARADOR Y COPYRIGHT */}
+      {/* PIE DE PÁGINA: Separador tenue y copyright */}
       <div className="w-full mt-12">
         <div className="border-t border-white/10 w-full mb-6"></div>
         <p className="text-gray-400 text-center text-xs md:text-sm font-plus_jakarta_sans leading-relaxed">
@@ -73,7 +84,10 @@ export const ReportSection = () => {
   );
 };
 
-// Componente auxiliar para evitar repetición de código en iconos
+/**
+ * SocialIcon: Componente pequeño para los botones de redes sociales.
+ * Incluye efectos de hover en el borde y opacidad para mejorar la interacción.
+ */
 const SocialIcon = ({ href, src, alt }) => (
   <a href={href} className="group border border-white/20 hover:border-white rounded-full p-2 flex items-center justify-center w-10 h-10 transition-all">
     <img src={src} alt={alt} className="h-5 w-5 invert brightness-200 opacity-70 group-hover:opacity-100 transition-opacity" />

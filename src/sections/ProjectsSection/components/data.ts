@@ -1,4 +1,10 @@
 // data.ts
+
+/**
+ * INTERFAZ ProjectItem
+ * Define la estructura obligatoria que debe tener cada objeto de datos.
+ * Esto ayuda a prevenir errores (como olvidar el link o escribir mal el nombre de una propiedad).
+ */
 export interface ProjectItem {
   id: number;
   color: string;
@@ -7,6 +13,11 @@ export interface ProjectItem {
   link: string;
 }
 
+/**
+ * CONSTANTE ACCIONES_DATA
+ * Almacena el historial de actividades recientes, reuniones y foros.
+ * Se utiliza principalmente para mostrar el compromiso social y vecinal.
+ */
 export const ACCIONES_DATA: ProjectItem[] = [
    {
       id: 1,
@@ -88,6 +99,11 @@ export const ACCIONES_DATA: ProjectItem[] = [
   // Agregar aquí mas acciones...
 ];
 
+/**
+ * CONSTANTE PROYECTOS_DATA
+ * Destinada a almacenar iniciativas de largo plazo o proyectos de investigación
+ * específicos del CEDES-UNACH.
+ */
 export const PROYECTOS_DATA: ProjectItem[] = [
   {
     id: 1,

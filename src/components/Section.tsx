@@ -1,3 +1,4 @@
+// Este código no tiene función explícita, así que sólo es placebo por ahora
 export const Section = () => {
   return (
     <div className="relative box-border caret-transparent flex flex-col max-w-full w-full mx-auto px-5 md:px-[0%]">

@@ -1,3 +1,4 @@
+// Este código no te muestra la función, la verdadera la encuentras en /src/sections/ReportSection/index.tsx
 import { FooterLogo } from "@/sections/Footer/components/FooterLogo";
 import { FooterColumn } from "@/sections/Footer/components/FooterColumn";
 

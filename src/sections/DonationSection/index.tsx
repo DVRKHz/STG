@@ -1,3 +1,4 @@
+// Este código no tiene función explícita, así que sólo es placebo por ahora
 export const DonationSection = () => {
   return (
     <div className="relative bg-scroll bg-[url('/tuxtla-hero.jpg')] bg-cover box-border caret-transparent flex flex-col max-w-full min-h-[800px] w-full overflow-hidden bg-center mx-auto px-0 md:bg-fixed md:px-[25px] before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-transparent before:from-64% before:to-white before:to-100% before:pointer-events-none">
