@@ -11,7 +11,7 @@ export const Acciones = () => {
       <Navbar />
       
       {/* 2. Hero Section: La sección de impacto visual al inicio */}
-      <section className="relative h-[45vh] md:h-[65vh] min-h-[380px] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[40vh] md:h-[60vh] min-h-[350px] flex items-center justify-center overflow-hidden">
         
         {/* Capa de imagen de fondo con efecto hover (zoom suave) */}
         <div 
@@ -24,11 +24,12 @@ export const Acciones = () => {
         
         {/* Contenido del Hero (Título y adorno) */}
         <div className="relative z-10 container mx-auto px-6 text-center">
-          <h1 className="text-white text-5xl md:text-8xl font-bold tracking-tight drop-shadow-lg">
+          <h1 className="text-white text-4xl md:text-7xl font-bold mb-4">
             Acciones
           </h1>
-          {/* Línea decorativa color cian debajo del título */}
-          <div className="w-16 h-1 bg-cyan-500 mx-auto mt-6 rounded-full md:w-24"></div>
+          <p className="text-white/90 text-lg md:text-2xl max-w-2xl mx-auto leading-relaxed">
+            Observa los cambios que hemos hecho
+          </p>
         </div>
       </section>
 

@@ -18,6 +18,7 @@ export const InformacionRelevante = () => {
       title: "La riqueza de los millonarios crece tres veces más rápido en 2025 y alcanza un máximo histórico, con peligrosas consecuencias para la desigualdad política, según Oxfam",
       date: "19 de Enero de 2026",
       desc: "Los milmillonarios tienen 4.000 veces más probabilidades de ocupar un cargo político que la gente corriente.",
+      location: "Internacional",
       tag: "Declaración",
       url: "https://www.oxfam.org/es/letters-and-statements/la-riqueza-de-los-milmillonarios-crece-tres-veces-mas-rapido-en-2025-y",
       imageUrl: "https://ceiba.org.mx/storage/app/uploads/public/696/fb1/161/thumb_44_540_0_0_0_auto.png"
@@ -42,7 +43,10 @@ export const InformacionRelevante = () => {
         <div className="absolute inset-0 bg-gray-800 bg-[url('/informacionrelevante-hero.jpg')] bg-cover bg-center" aria-hidden="true" />
         <div className="absolute inset-0 bg-black/50" aria-hidden="true" />
         <div className="relative z-10 container mx-auto px-6 text-center">
-          <h1 className="text-white text-4xl md:text-7xl font-bold tracking-tight">Información Relevante</h1>
+          <h1 className="text-white text-4xl md:text-7xl font-bold mb-4">Información Relevante</h1>
+          <p className="text-white/90 text-lg md:text-2xl max-w-2xl mx-auto leading-relaxed">
+            Entérate de la información más precisa
+          </p>
         </div>
       </section>
 
@@ -109,6 +113,42 @@ export const InformacionRelevante = () => {
               tag="Noticia"
               url="https://www.inegi.org.mx/app/saladeprensa/noticia/10432"
               imageUrl="https://ceiba.org.mx/storage/app/uploads/public/692/dd9/07f/thumb_41_540_0_0_0_auto.png"
+            />
+          </div>
+          <div className="grid grid-cols-1 gap-6">
+            <PostCard
+              borderColor="border-zinc-300"
+              title="Urge Bárcena a transitar a economía del reciclaje"
+              date="27 de Noviembre de 2025"
+              desc='México genera 120 mil toneladas diarias de desperdicios;"no podemos seguir así, debemos lograr que esa basura se convierta en un recurso", planteó Alicia Bárcena Ibarra.'
+              location="México"
+              tag="Noticia"
+              url="https://www.jornada.com.mx/noticia/2025/11/27/politica/urge-barcena-a-transitar-a-economia-del-reciclaje"
+              imageUrl="https://www.jornada.com.mx/ndjsimg/images/jornada/jornadaimg/urge-barcena-a-transitar-a-economia-del-reciclaje/urge-barcena-a-transitar-a-economia-del-reciclaje_768c6c00-6e1b-42bd-8422-89abbc9fa30a_medialjnimgndimage=fullsize"
+            />
+          </div>
+          <div className="grid grid-cols-1 gap-6">
+            <PostCard
+              borderColor="border-zinc-300"
+              title="México acelera la economía circular: inversión verde supera los 400,00 mdp"
+              date="20 de Noviembre de 2025"
+              desc="La economía circular comienza a ocupar un espacio más relevante en la agenda económica del país, en un contexto donde México recicla o reutiliza apenas 0.4% de los materiales que emplea, muy por debajo del promedio global de 7.2%, según datos de la Secretaría de Medio Ambiente y Recursos Naturales (SEMARNAT). En este escenario, la economía, los materiales y el reciclaje adquieren un peso estratégico."
+              location="México"
+              tag="Noticia"
+              url="https://mexicoindustry.com/noticia/mexico-acelera-la-economia-circular-inversion-verde-supera-los-400-000-mdp"
+              imageUrl="https://mexicoindustry.com/admin/images/notas/2025/11/mexico-acelera-la-economia-circular-inversion-verde-supera-los-400-000-mdp-32367.jpg"
+            />
+          </div>
+          <div className="grid grid-cols-1 gap-6">
+            <PostCard
+              borderColor="border-zinc-300"
+              title="Gobierno desvió recursos para mitigar cambio climático hacia megaproyectos y Sedena: CEMDA"
+              date="19 de Noviembre de 2025"
+              desc="El Director Ejecutivo del Centro Mexicano de Derecho Ambiental enumeró una serie de decisiones gubernamentales que contravienen la lucha contra el calentamiento global"
+              location="México"
+              tag="Entrevista"
+              url="https://aristeguinoticias.com/1911/entrevistas-completas/gobierno-desvio-recursos-para-mitigar-cambio-climatico-hacia-megaproyectos-y-sedena-cemda/"
+              imageUrl="https://editorial.aristeguinoticias.com/wp-content/uploads/2025/11/gobierno-desvio-recursos-cambio-climatico-para-el-tren-maya-sedena.jpg"
             />
           </div>
         </section>

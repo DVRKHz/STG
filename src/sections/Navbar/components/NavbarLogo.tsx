@@ -1,43 +1,43 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-export const NavbarLogo = () => {
-  return (
-    // 'flex-shrink-0' es vital para que el logo no se comprima si hay muchos enlaces en el menú
-    <div className="flex items-center flex-shrink-0">
-      <Link
-        to="/"
-        // 'group' permite que los cambios de estilo (como el color del texto) se activen 
-        // al pasar el mouse por cualquier parte del logo o del texto simultáneamente
-        className="flex items-center gap-3 group transition-opacity hover:opacity-90"
-      >
-        {/* Imagen del Logo:
-            - h-10 md:h-12: Ajusta el tamaño según el dispositivo.
-            - object-contain: Asegura que la imagen no se deforme.
-        */}
-        <img
-          src="/logo-cedes.png"
-          alt="CEDES Logo"
-          className="h-10 w-auto object-contain md:h-12"
-        />
+export const NavbarLogo = ({ isScrolled }: { isScrolled: boolean }) => {
+  const PARTNER_LOGOS = [
+    { src: "/logo-cedes.png", alt: "CEDES 1" },
+    { src: "/logo-cedes.png", alt: "CEDES 2" },
+    { src: "/logo-cedes.png", alt: "CEDES 3" },
+    { src: "/logo-cedes.png", alt: "CEDES 4" },
+    { src: "/logo-cedes.png", alt: "CEDES 5" },
+    { src: "/logo-cedes.png", alt: "CEDES 6" },
+  ];
 
-        {/* Contenedor de Texto:
-            - flex-col: Alinea el título y el subtítulo verticalmente.
-            - leading-tight: Reduce el espacio entre líneas para que se vea como un bloque sólido.
-        */}
-        <div className="flex flex-col leading-tight max-w-[180px] md:max-w-none">
-          {/* Título del Proyecto:
-              - transition-colors: Hace que el cambio al color cian (por la clase group-hover) sea suave.
-          */}
-          <span className="text-sm font-bold text-gray-800 md:text-base lg:text-lg group-hover:text-cyan-600 transition-colors">
+  return (
+    <div className="flex items-center gap-2 md:gap-4 flex-1">
+      {/* LOGOS EXTRA: Solo visibles en Desktop (lg) */}
+      <div className={`
+        hidden lg:flex items-center gap-4 border-r pr-4 border-neutral-100 transition-all duration-500 overflow-hidden
+        ${isScrolled ? 'max-w-0 opacity-0 invisible' : 'max-w-[300px] opacity-100'}
+      `}>
+        {PARTNER_LOGOS.map((logo, i) => (
+          <img key={i} src={logo.src} className="h-8 w-auto grayscale opacity-70" alt={logo.alt} />
+        ))}
+      </div>
+
+      {/* LOGO PRINCIPAL: Ajustado para no cortarse en móvil */}
+      <Link to="/" className="flex items-center gap-2 md:gap-3 min-w-0">
+        <img 
+          src="/unach-logo2.png" 
+          className={`shrink-0 transition-all duration-500 ${isScrolled ? 'h-8' : 'h-10 md:h-14'}`} 
+          alt="UNACH"
+        />
+        <div className="flex flex-col leading-tight overflow-hidden">
+          <span className={`font-bold text-neutral-800 transition-all truncate md:whitespace-normal ${
+            isScrolled ? 'text-[11px] md:text-sm' : 'text-xs md:text-base lg:text-lg'
+          }`}>
             Sustentabilidad, Territorio y Gobernanza
           </span>
-          
-          {/* Subtítulo Institucional:
-              - text-[10px]: Tamaño pequeño para no competir visualmente con el título principal.
-              - tracking-widest: Aumenta el espacio entre letras, una técnica común en diseño para textos en mayúsculas.
-          */}
-          <span className="text-[10px] uppercase tracking-widest text-gray-400 font-medium">
-            CEDES - UNACH
+          <span className="text-[8px] md:text-[10px] text-neutral-400 font-bold uppercase tracking-widest">
+            UNACH
           </span>
         </div>
       </Link>

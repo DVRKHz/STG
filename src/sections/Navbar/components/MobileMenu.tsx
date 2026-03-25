@@ -1,8 +1,7 @@
-import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { Menu, X, ChevronRight } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
+import { Menu, X, ExternalLink } from "lucide-react";
 
-// Configuración de los enlaces (se mantiene igual que en DesktopMenu para consistencia)
 const MENU_LINKS = [
   { name: 'Quiénes somos', href: '/quienessomos' },
   { name: 'Información Relevante', href: '/informacion-relevante' },
@@ -10,88 +9,97 @@ const MENU_LINKS = [
   { name: 'Contacto', href: '/contacto' },
 ];
 
+const PARTNER_LOGOS = [
+  { src: "/logo-cedes.png", alt: "CEDES 1" },
+  { src: "/logo-cedes.png", alt: "CEDES 2" },
+  { src: "/logo-cedes.png", alt: "CEDES 3" },
+  { src: "/logo-cedes.png", alt: "CEDES 4" },
+  { src: "/logo-cedes.png", alt: "CEDES 5" },
+  { src: "/logo-cedes.png", alt: "CEDES 6" },
+];
+
 export const MobileMenu = () => {
-  // Estado para abrir y cerrar el menú lateral
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 
-  /**
-   * Efecto 1: Cierre automático al navegar.
-   * Cada vez que la URL (location) cambia, forzamos el cierre del menú.
-   */
-  useEffect(() => setIsOpen(false), [location]);
-
-  /**
-   * Efecto 2: Bloqueo de scroll.
-   * Si el menú está abierto, deshabilitamos el scroll del cuerpo de la página (body)
-   * para evitar que el usuario se desplace por el contenido de fondo mientras navega.
-   */
+  // --- BLOQUEO DE SCROLL ---
   useEffect(() => {
-    document.body.style.overflow = isOpen ? 'hidden' : 'unset';
+    if (isOpen) {
+      // Bloquea el scroll del body y evita saltos de layout
+      document.body.style.overflow = "hidden";
+    } else {
+      // Restaura el scroll
+      document.body.style.overflow = "unset";
+    }
+    // Limpieza al desmontar el componente
+    return () => { document.body.style.overflow = "unset"; };
   }, [isOpen]);
 
   return (
-    // 'md:hidden' asegura que este botón y menú solo existan en pantallas pequeñas
     <div className="md:hidden">
-      
-      {/* Botón Hamburguesa: Gatillo para abrir el menú */}
-      <button 
-        onClick={() => setIsOpen(true)}
-        className="p-2 text-neutral-800"
-      >
-        <Menu size={30} />
+      <button onClick={() => setIsOpen(true)} className="p-2">
+        <Menu size={28} className="text-neutral-700" />
       </button>
 
-      {/* CONTENEDOR DEL MENÚ (Overlay): 
-          - fixed: se mantiene pegado a la pantalla.
-          - z-[9999]: se asegura de estar por encima de cualquier otro elemento.
-          - translate-x-full / translate-x-0: mueve el menú fuera o dentro de la pantalla lateralmente.
-      */}
-      <div 
-        className={`fixed top-0 left-0 w-full h-screen z-[9999] bg-white flex flex-col transition-transform duration-300 transform ${
-          isOpen ? 'translate-x-0' : 'translate-x-full'
-        }`}
-      >
+      {/* Contenedor Principal con Z-Index muy alto */}
+      <div className={`fixed inset-0 z-[9999] transition-all duration-300 ${
+        isOpen ? "visible" : "invisible pointer-events-none"
+      }`}>
         
-        {/* Encabezado del menú: Contiene el título y el botón de cierre (X) */}
-        <div className="flex items-center justify-between p-5 border-b border-neutral-200 bg-white">
-          <span className="font-bold text-xl text-neutral-900">MENÚ</span>
-          <button 
-            onClick={() => setIsOpen(false)}
-            className="p-2 bg-neutral-100 hover:bg-neutral-200 rounded-full text-neutral-900 transition-colors"
-          >
-            <X size={24} />
-          </button>
-        </div>
+        {/* Overlay (Fondo oscuro) */}
+        <div 
+          className={`absolute inset-0 bg-neutral-900/60 backdrop-blur-sm transition-opacity duration-300 ${
+            isOpen ? "opacity-100" : "opacity-0"
+          }`} 
+          onClick={() => setIsOpen(false)} 
+        />
 
-        {/* Navegación: flex-1 y overflow-y-auto permiten que la lista sea scrolleable si hay muchos links */}
-        <nav className="flex-1 overflow-y-auto bg-white">
-          <ul className="flex flex-col bg-white">
-            {MENU_LINKS.map((link) => {
-              // Verificamos si la ruta actual coincide con el enlace para aplicar estilos de "activo"
-              const isActive = location.pathname === link.href;
-              
-              return (
-                <li key={link.href} className="border-b border-neutral-100 bg-white">
+        {/* Panel del Menú - h-[100dvh] usa la altura real del dispositivo */}
+        <div className={`absolute right-0 top-0 h-[100dvh] w-[85%] max-w-[320px] bg-white shadow-2xl transition-transform duration-300 ease-in-out flex flex-col ${
+          isOpen ? "translate-x-0" : "translate-x-full"
+        }`}>
+          
+          {/* Header del Menú fijo arriba */}
+          <div className="p-4 flex justify-end border-b border-neutral-100">
+            <button onClick={() => setIsOpen(false)} className="p-2 hover:bg-neutral-50 rounded-full">
+              <X size={24} className="text-neutral-500" />
+            </button>
+          </div>
+
+          {/* Enlaces con scroll interno si la pantalla es muy pequeña */}
+          <nav className="flex-1 overflow-y-auto p-6">
+            <p className="text-[10px] font-black uppercase tracking-widest text-cyan-600 mb-6">Navegación</p>
+            <ul className="space-y-2">
+              {MENU_LINKS.map((link) => (
+                <li key={link.name}>
                   <Link
                     to={link.href}
-                    // 'active:bg-neutral-50' proporciona feedback visual táctil al presionar
-                    className={`flex items-center justify-between px-6 py-5 text-lg font-semibold transition-colors
-                      ${isActive ? 'text-cyan-600 bg-cyan-50' : 'text-neutral-800 bg-white active:bg-neutral-50'}
-                    `}
+                    onClick={() => setIsOpen(false)}
+                    className={`block p-4 rounded-xl font-bold transition-all ${
+                      location.pathname === link.href 
+                        ? "bg-cyan-50 text-cyan-600" 
+                        : "text-neutral-700 active:bg-neutral-50"
+                    }`}
                   >
                     {link.name}
-                    {/* Icono de flecha a la derecha para dar una pista visual de navegación */}
-                    <ChevronRight 
-                      size={18} 
-                      className={isActive ? 'text-cyan-600' : 'text-neutral-300'} 
-                    />
                   </Link>
                 </li>
-              );
-            })}
-          </ul>
-        </nav>
+              ))}
+            </ul>
+          </nav>
+
+          {/* Sección de logos siempre al fondo */}
+          <div className="p-6 bg-neutral-50 border-t border-neutral-100">
+            <p className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest mb-4">Instituciones</p>
+            <div className="grid grid-cols-3 gap-2">
+              {PARTNER_LOGOS.map((logo, i) => (
+                <div key={i} className="aspect-square bg-white border border-neutral-200 rounded-lg flex items-center justify-center p-1.5 shadow-sm">
+                  <img src={logo.src} alt={logo.alt} className="max-h-full max-w-full object-contain grayscale opacity-60" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
