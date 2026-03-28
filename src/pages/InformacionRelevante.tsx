@@ -64,7 +64,7 @@ export const InformacionRelevante = () => {
       location: "Europa",
       tag: "Opinión",
       url: "https://www.expansion.com/opinion/2025/12/15/69401a07468aeb88068b456e.html",
-      imageUrl: "https://e01-phantom-expansion.uecdn.es/d7365aac371fa92cc9bed4060de69cae/crop/0x0/2048x1365/resize/828/f/webp/assets/multimedia/imagenes/2022/10/17/16659599710526.jpg"
+      imageUrl: "https://ceiba.org.mx/storage/app/uploads/public/694/08f/770/69408f770453e314462884.jpg"
     },
     {
       title: "En 2024, el Producto Interno Neto Ecológico fue de 25.7 billones de pesos: representó 76.6% del PIB a precios de mercado",
