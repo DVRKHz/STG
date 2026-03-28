@@ -23,14 +23,14 @@ export interface ProjectItem {
  */
 export const ACCIONES_DATA: ProjectItem[] = [
    {
-    id: 1,
-    title: "Recorrido Territorial",
-    location: "Col. Flor de Mayo, Tuxtla Gtz",
-    tagColor: "bg-blue-500",
-    category: "22/03/26",
-    text: "Recorrido con el Comité de Vecinos de la colonia Flor de Mayo de la zona norte de Tuxtla Gutiérrez",
-    img: "/22-Mar-26.jpg",
-    link: "https://www.facebook.com/share/p/17RYXFhYC1/"
+      id: 1,
+      title: "Recorrido Territorial",
+      location: "Col. Flor de Mayo, Tuxtla Gtz",
+      tagColor: "bg-blue-500",
+      category: "22/03/26",
+      text: "Recorrido con el Comité de Vecinos de la colonia Flor de Mayo de la zona norte de Tuxtla Gutiérrez",
+      img: "/22-Mar-26.jpg",
+      link: "https://www.facebook.com/share/p/17RYXFhYC1/"
    },
    {
       id: 2,

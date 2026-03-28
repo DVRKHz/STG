@@ -8,8 +8,8 @@ export interface ProjectItem {
   location: string;   // Ubicación (ej: Tuxtla Gutiérrez)
   category: string;   // Fecha o Categoría (para el Tag)
   text: string;       // Descripción larga (se oculta/revela)
-  img: string;
-  link: string;
+  img: string;        // Ruta de la imagen
+  link: string;       // Enlace de la tarjeta (Facebook)
   tagColor?: string;  // Color personalizado para el tag (opcional)
 }
 
@@ -23,7 +23,6 @@ export const ProjectCarousel = ({ items = [] }: Props) => {
   const scroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
       const { clientWidth } = scrollRef.current;
-      // Desplazamiento fluido de 2/3 del contenedor
       const moveDistance = direction === 'left' ? -clientWidth / 1.5 : clientWidth / 1.5;
       scrollRef.current.scrollBy({ left: moveDistance, behavior: 'smooth' });
     }
@@ -36,7 +35,7 @@ export const ProjectCarousel = ({ items = [] }: Props) => {
   return (
     <div className="relative group w-full max-w-[1400px] mx-auto px-4 md:px-12 py-12">
       
-      {/* CABECERA: Título y Controles Estilo Equipo */}
+      {/* CABECERA */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
         <div className="space-y-3 border-l-4 border-cyan-500 pl-6">
           <h2 className="text-cyan-500 text-sm md:text-base font-bold tracking-[4px] uppercase">
@@ -47,22 +46,9 @@ export const ProjectCarousel = ({ items = [] }: Props) => {
           </p>
         </div>
         
-        {/* Controles Desktop */}
         <div className="flex gap-3 self-end md:self-auto">
-          <button 
-            onClick={() => scroll('left')}
-            className="p-3 rounded-full border border-zinc-200 bg-white hover:bg-zinc-50 hover:scale-110 transition-all shadow-sm active:scale-95"
-            aria-label="Anterior"
-          >
-            <ChevronLeft className="w-5 h-5 text-zinc-600" />
-          </button>
-          <button 
-            onClick={() => scroll('right')}
-            className="p-3 rounded-full border border-zinc-200 bg-white hover:bg-zinc-50 hover:scale-110 transition-all shadow-sm active:scale-95"
-            aria-label="Siguiente"
-          >
-            <ChevronRight className="w-5 h-5 text-zinc-600" />
-          </button>
+          <button onClick={() => scroll('left')} className="p-3 rounded-full border border-zinc-200 bg-white hover:bg-zinc-50 shadow-sm transition-all"><ChevronLeft className="w-5 h-5 text-zinc-600" /></button>
+          <button onClick={() => scroll('right')} className="p-3 rounded-full border border-zinc-200 bg-white hover:bg-zinc-50 shadow-sm transition-all"><ChevronRight className="w-5 h-5 text-zinc-600" /></button>
         </div>
       </div>
 
@@ -73,66 +59,67 @@ export const ProjectCarousel = ({ items = [] }: Props) => {
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
         {items.map((item) => (
-          <div 
-            key={item.id} 
-            className="shrink-0 w-[88vw] sm:w-[45vw] md:w-[31.5%] snap-center group/card"
-          >
+          <div key={item.id} className="shrink-0 w-[88vw] sm:w-[45vw] md:w-[31.5%] snap-center group/card">
             <a 
               href={item.link} 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="block relative aspect-[4/5] overflow-hidden rounded-[2rem] bg-zinc-100 shadow-md transition-all duration-500 hover:shadow-2xl hover:shadow-cyan-900/10"
+              className="block relative aspect-[4/5] overflow-hidden rounded-[2.5rem] bg-zinc-100 shadow-md transition-all duration-500 md:hover:shadow-2xl md:hover:shadow-cyan-900/20"
             >
-              {/* TAG DE FECHA (Superior Izquierda) */}
+              {/* TAG */}
               <div className="absolute top-6 left-6 z-20">
-                <span className={`${item.tagColor || 'bg-cyan-600/90'} backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-widest px-4 py-2 rounded-full shadow-lg border border-white/20`}>
+                <span className={`${item.tagColor || 'bg-cyan-600/90'} backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-widest px-4 py-2 rounded-full border border-white/20 shadow-sm`}>
                   {item.category}
                 </span>
               </div>
 
-              {/* IMAGEN: Zoom y Desenfoque al Hover */}
+              {/* IMAGEN: En móvil quitamos el desenfoque para que siempre se vea nítida */}
               <img
                 src={item.img}
                 alt={item.title}
                 loading="lazy"
-                className="absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-out group-hover/card:scale-110 group-hover/card:blur-[4px]"
+                className="absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-out md:group-hover/card:scale-110 md:group-hover/card:blur-[4px]"
               />
               
-              {/* CAPA DE DEGRADADO (Overlay) */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-80 group-hover/card:opacity-90 transition-opacity duration-500" />
+              {/* CAPA DE DEGRADADO: Más oscura en móvil por defecto para asegurar legibilidad */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent md:via-black/20 md:opacity-80 md:group-hover/card:opacity-95 transition-opacity duration-500" />
 
               {/* CONTENIDO PRINCIPAL */}
-              <div className="absolute inset-0 p-8 flex flex-col justify-end text-white">
+              <div className="absolute inset-0 p-7 md:p-8 flex flex-col justify-end text-white">
                 
-                {/* 1. SECCIÓN SIEMPRE VISIBLE (Nombre y Ubicación) */}
-                <div className="transition-transform duration-500 ease-out group-hover/card:-translate-y-4">
-                  {/* Ubicación */}
-                  <div className="flex items-center gap-2 mb-3 text-cyan-400 group-hover/card:text-cyan-300 transition-colors">
-                    <MapPin className="w-4 h-4" />
-                    <span className="text-[11px] font-bold uppercase tracking-[2px]">
+                {/* SECCIÓN TÍTULO: En móvil no se desplaza */}
+                <div className="transition-transform duration-500 ease-out md:group-hover/card:-translate-y-4">
+                  <div className="flex items-center gap-2 mb-2 text-cyan-400">
+                    <MapPin className="w-3.5 h-3.5" />
+                    <span className="text-[10px] md:text-[11px] font-bold uppercase tracking-[2px]">
                       {item.location}
                     </span>
                   </div>
-
-                  {/* Nombre del Proyecto */}
-                  <h3 className="text-2xl md:text-3xl font-bold leading-tight tracking-tight">
+                  <h3 className="text-xl md:text-2xl font-bold leading-tight tracking-tight">
                     {item.title}
                   </h3>
                 </div>
 
-                {/* 2. SECCIÓN REVELABLE (Descripción y Enlace) */}
-                <div className="max-h-0 group-hover/card:max-h-[220px] overflow-hidden transition-all duration-700 ease-in-out opacity-0 group-hover/card:opacity-100 mt-0 group-hover/card:mt-6 border-t border-white/10 pt-0 group-hover/card:pt-6">
+                {/* SECCIÓN REVELABLE: Adaptada para móvil */}
+                <div className={`
+                  /* Móvil: Visible pero con límite de líneas */
+                  opacity-100 mt-4 max-h-[120px] 
+                  /* Desktop: Se oculta y revela con hover */
+                  md:max-h-0 md:group-hover/card:max-h-[220px] md:opacity-0 md:group-hover/card:opacity-100 md:mt-0 md:group-hover/card:mt-6 
+                  transition-all duration-700 ease-in-out border-t border-white/10 pt-4 md:pt-0 md:group-hover/card:pt-6
+                `}>
                   
-                  <p className="text-zinc-300 text-sm leading-relaxed line-clamp-4 mb-6 font-medium">
+                  {/* Texto con límite de líneas para no romper la estética en móvil */}
+                  <p className="text-zinc-300 text-xs md:text-sm leading-relaxed line-clamp-2 md:line-line-clamp-4 mb-4 md:mb-6 font-medium">
                     {item.text}
                   </p>
                   
-                  <div className="flex items-center justify-between group/link border-t border-white/5 pt-4 mt-auto">
-                    <span className="text-[10px] font-black uppercase tracking-[3px] text-white/90">
+                  <div className="flex items-center justify-between group/link">
+                    <span className="text-[9px] md:text-[10px] font-black uppercase tracking-[2px] text-white/80">
                       Ver en Facebook
                     </span>
-                    <div className="bg-cyan-500 p-2 rounded-full transform transition-transform duration-300 group-hover/link:translate-x-2 shadow-lg">
-                      <ChevronRight className="w-4 h-4 text-white" />
+                    <div className="bg-cyan-500 p-1.5 md:p-2 rounded-full transform transition-transform duration-300 md:group-hover/link:translate-x-2">
+                      <ChevronRight className="w-3.5 h-3.5 md:w-4 h-4 text-white" />
                     </div>
                   </div>
                 </div>

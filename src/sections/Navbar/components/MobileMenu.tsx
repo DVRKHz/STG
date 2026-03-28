@@ -10,12 +10,11 @@ const MENU_LINKS = [
 ];
 
 const PARTNER_LOGOS = [
-  { src: "/logo-cedes.png", alt: "CEDES 1" },
-  { src: "/logo-cedes.png", alt: "CEDES 2" },
-  { src: "/logo-cedes.png", alt: "CEDES 3" },
-  { src: "/logo-cedes.png", alt: "CEDES 4" },
-  { src: "/logo-cedes.png", alt: "CEDES 5" },
-  { src: "/logo-cedes.png", alt: "CEDES 6" },
+    { src: "/fing.png", alt: "Ingenieria" },
+    { src: "/farq.png", alt: "Arquitectura" },
+    { src: "/ceco.jpg", alt: "CECOSICE" },
+    { src: "/ligalab.png", alt: "LigaLab" },
+    { src: "/fhum.jpg", alt: "Humanidades" },
 ];
 
 export const MobileMenu = () => {
