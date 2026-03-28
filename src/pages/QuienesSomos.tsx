@@ -22,20 +22,41 @@ export const QuienesSomos = () => {
     <div className="min-h-screen bg-white text-zinc-800 font-plus_jakarta_sans selection:bg-cyan-100">
       <Navbar />
 
-      {/* SECCIÓN HERO */}
-      <section className="relative h-[40vh] md:h-[60vh] min-h-[350px] flex items-center justify-center overflow-hidden">
+      {/* SECCIÓN HERO: Quiénes Somos */}
+      <section className="relative h-[50vh] md:h-[70vh] flex items-center justify-center overflow-hidden group">
+  
+        {/* Imagen de fondo con escala cinematográfica (duración 2000ms para suavidad) */}
         <div 
-          className="absolute inset-0 bg-gray-800 bg-[url('/quienessomos-hero.jpg')] bg-cover bg-center transition-transform duration-700 hover:scale-105"
+          className="absolute inset-0 bg-gray-800 transition-transform duration-[2000ms] ease-out group-hover:scale-110"
+          style={{
+            backgroundImage: "url('/quienessomos-hero.jpg')",
+            backgroundPosition: 'center',
+            backgroundSize: 'cover'
+          }}
           aria-hidden="true"
         />
-        <div className="absolute inset-0 bg-black/50" aria-hidden="true" />
+  
+        {/* Overlay dinámico: Gradiente para profundidad visual */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60" aria-hidden="true" />
+
+        {/* Contenido con jerarquía y acento de diseño */}
         <div className="relative z-10 container mx-auto px-6 text-center">
-          <h1 className="text-white text-4xl md:text-7xl font-bold mb-4">
+    
+          {/* Adorno visual: Línea con pulso */}
+          <div className="w-16 h-1 bg-blue-500 mx-auto mb-6 rounded-full animate-pulse" />
+
+          <h1 className="text-white text-5xl md:text-8xl font-extrabold mb-6 tracking-tight drop-shadow-2xl">
             Quiénes Somos
           </h1>
-          <p className="text-white/90 text-lg md:text-2xl max-w-2xl mx-auto leading-relaxed">
-            Conoce más sobre nosotros
+    
+          <p className="text-white/80 text-lg md:text-2xl max-w-2xl mx-auto leading-relaxed font-light italic">
+            "Conoce más sobre nosotros"
           </p>
+
+          {/* Indicador de scroll (visible al hacer hover en la sección) */}
+          <div className="absolute bottom-[-40px] left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              <div className="w-1 h-12 bg-gradient-to-b from-blue-500 to-transparent rounded-full" />
+          </div>
         </div>
       </section>
 

@@ -10,26 +10,40 @@ export const Acciones = () => {
       {/* 1. Navegación superior */}
       <Navbar />
       
-      {/* 2. Hero Section: La sección de impacto visual al inicio */}
-      <section className="relative h-[40vh] md:h-[60vh] min-h-[350px] flex items-center justify-center overflow-hidden">
-        
-        {/* Capa de imagen de fondo con efecto hover (zoom suave) */}
+      <section className="relative h-[50vh] md:h-[70vh] flex items-center justify-center overflow-hidden group">
+  
+        {/* Imagen de fondo con escala persistente al hacer hover en la sección */}
         <div 
-          className="absolute inset-0 bg-gray-900 bg-[url('/acciones-hero.jpg')] bg-no-repeat bg-cover bg-center transition-transform duration-1000 hover:scale-105"
+          className="absolute inset-0 bg-gray-900 transition-transform duration-[2000ms] ease-out group-hover:scale-110"
+          style={{
+            backgroundImage: "url('/acciones-hero.jpg')",
+            backgroundPosition: 'center',
+            backgroundSize: 'cover'
+          }}
           aria-hidden="true"
         />
-        
-        {/* Overlay: Una capa oscura semitransparente para que el texto blanco resalte sobre la imagen */}
-        <div className="absolute inset-0 bg-black/40 md:bg-black/50" aria-hidden="true" />
-        
-        {/* Contenido del Hero (Título y adorno) */}
+  
+        {/* Overlay dinámico: Más oscuro abajo para fundirse con la siguiente sección */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60" aria-hidden="true" />
+
+        {/* Contenido con animaciones de entrada */}
         <div className="relative z-10 container mx-auto px-6 text-center">
-          <h1 className="text-white text-4xl md:text-7xl font-bold mb-4">
+    
+          {/* Adorno visual: Una línea sutil que refuerza la marca */}
+          <div className="w-16 h-1 bg-blue-500 mx-auto mb-6 rounded-full animate-pulse" />
+
+          <h1 className="text-white text-5xl md:text-8xl font-extrabold mb-6 tracking-tight drop-shadow-2xl">
             Acciones
           </h1>
-          <p className="text-white/90 text-lg md:text-2xl max-w-2xl mx-auto leading-relaxed">
-            Observa los cambios que hemos hecho
+    
+          <p className="text-white/80 text-lg md:text-2xl max-w-2xl mx-auto leading-relaxed font-light italic">
+            "Observa los cambios que hemos hecho"
           </p>
+
+          {/* Scroll Indicator (Opcional, para guiar al usuario) */}
+          <div className="absolute bottom-[-40px] left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              <div className="w-1 h-12 bg-gradient-to-b from-blue-500 to-transparent rounded-full" />
+          </div>
         </div>
       </section>
 
