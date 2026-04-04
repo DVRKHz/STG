@@ -11,6 +11,15 @@ export const InformacionRelevante = () => {
 
   const publicacionesRecientes = [
     {
+      title: "Paradojas",
+      date: "29 de Marzo de 2026",
+      desc: "La circularidad de los bucles virtuosos contraviene las leyes físicas de la termodinámica y las económicas de los rendimientos decrecientes, porque ningún material se puede reciclar infinitamente sin perder calidad o energía. La economía tendría que renunciar al crecimiento constante porque no hay recursos infinitos en este planeta finito.",
+      location: "México",
+      tag: "Opinión",
+      url: "https://www.jornada.com.mx/2026/03/29/opinion/012o1eco",
+      imageUrl: "https://ceiba.org.mx/storage/app/uploads/public/69c/c0f/2e9/69cc0f2e9509b967601294.png"
+    },
+    {
       title: "¿Por qué nos cuesta tanto elegir productos sostenibles?",
       date: "23 de Marzo de 2026",
       desc: "Estás en el supermercado, vas a buscar tu caja de pasta de siempre, pero al lado ves un producto nuevo. Cuesta 0,80 centavos más, tiene una etiqueta de 'orgánico' y promete un abastecimiento responsable con empaque reciclado. Te importa tomar decisiones más sostenibles, pero... ¿cuál caja eliges?",
@@ -104,7 +113,7 @@ export const InformacionRelevante = () => {
           {/* Acento de marca: Línea con pulso sutil */}
           <div className="w-16 h-1 bg-blue-500 mx-auto mb-6 rounded-full animate-pulse" />
 
-          <h1 className="text-white text-5xl md:text-8xl font-extrabold mb-6 tracking-tight drop-shadow-2xl">
+          <h1 className="text-white text-5xl md:text-6xl font-extrabold mb-6 tracking-tight drop-shadow-2xl">
             Información Relevante
           </h1>
     

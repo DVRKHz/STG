@@ -45,7 +45,7 @@ export const QuienesSomos = () => {
           {/* Adorno visual: Línea con pulso */}
           <div className="w-16 h-1 bg-blue-500 mx-auto mb-6 rounded-full animate-pulse" />
 
-          <h1 className="text-white text-5xl md:text-8xl font-extrabold mb-6 tracking-tight drop-shadow-2xl">
+          <h1 className="text-white text-5xl md:text-6xl font-extrabold mb-6 tracking-tight drop-shadow-2xl">
             Quiénes Somos
           </h1>
     
