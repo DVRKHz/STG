@@ -14,7 +14,7 @@ export interface ProjectItem {
 }
 
 interface Props {
-  items: ProjectItem[];
+  items?: ProjectItem[];
 }
 
 export const ProjectCarousel = ({ items = [] }: Props) => {

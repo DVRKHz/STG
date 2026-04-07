@@ -1,16 +1,15 @@
-import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-export const NavbarLogo = ({ isScrolled }: { isScrolled: boolean }) => {
-  const PARTNER_LOGOS = [
-    { src: "/logo-cedes-stretched.png", alt:"CEDES", size: "h-12"},
-    { src: "/fing.png", alt: "Ingenieria", size: "h-9" },
-    { src: "/farq.png", alt: "Arquitectura", size: "h-7" },
-    { src: "/ceco.jpg", alt: "CECOSICE", size: "h-9" },
-    { src: "/ligalab.png", alt: "LigaLab", size: "h-7" },
-    { src: "/iei.jpg", alt: "Indigenas", size: "h-9" },
-  ];
+const PARTNER_LOGOS = [
+  { src: "/logo-cedes-stretched.png", alt:"CEDES", size: "h-12"},
+  { src: "/fing.png", alt: "Ingenieria", size: "h-9" },
+  { src: "/farq.png", alt: "Arquitectura", size: "h-7" },
+  { src: "/ceco.jpg", alt: "CECOSICE", size: "h-9" },
+  { src: "/ligalab.png", alt: "LigaLab", size: "h-7" },
+  { src: "/iei.jpg", alt: "Indigenas", size: "h-9" },
+];
 
+export const NavbarLogo = ({ isScrolled }: { isScrolled: boolean }) => {
   return (
     <div className="flex items-center gap-2 md:gap-4 flex-1">
       {/* LOGOS EXTRA: Partners */}

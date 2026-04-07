@@ -14,7 +14,7 @@ const PARTNER_LOGOS = [
     { src: "/farq.png", alt: "Arquitectura" },
     { src: "/ceco.jpg", alt: "CECOSICE" },
     { src: "/ligalab.png", alt: "LigaLab" },
-    { src: "/fhum.jpg", alt: "Humanidades" },
+    { src: "/iei.jpg", alt: "Indigenas" },
 ];
 
 export const DesktopMenu = ({ isScrolled }: { isScrolled: boolean }) => {

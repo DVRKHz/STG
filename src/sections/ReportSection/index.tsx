@@ -78,14 +78,24 @@ export const ReportSection = () => {
 
 // --- SUB-COMPONENTES AUXILIARES ---
 
-const FooterColumn = ({ title, children }) => (
+interface FooterColumnProps {
+  title: string;
+  children: React.ReactNode;
+}
+
+const FooterColumn = ({ title, children }: FooterColumnProps) => (
   <div className="col-span-1 flex flex-col">
     <h3 className="text-white font-bold mb-6 text-[11px] uppercase tracking-[0.2em] opacity-80">{title}</h3>
     <ul className="flex flex-col gap-y-3">{children}</ul>
   </div>
 );
 
-const FooterLink = ({ href, children }) => (
+interface LinkProps {
+  href: string;
+  children: React.ReactNode;
+}
+
+const FooterLink = ({ href, children }: LinkProps) => (
   <li>
     <a href={href} className="text-gray-400 text-[13px] font-normal hover:text-blue-400 hover:translate-x-1 flex items-center transition-all duration-300">
       {children}
@@ -93,7 +103,7 @@ const FooterLink = ({ href, children }) => (
   </li>
 );
 
-const SocialIcon = ({ href, src }) => (
+const SocialIcon = ({ href, src }: { href: string; src: string }) => (
   <a href={href} className="group bg-white/5 hover:bg-blue-600/20 border border-white/10 hover:border-blue-500 rounded-lg p-2 transition-all duration-300">
     <img src={src} alt="Social" className="h-4 w-4 invert opacity-60 group-hover:opacity-100 transition-all" />
   </a>
