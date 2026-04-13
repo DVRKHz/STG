@@ -179,7 +179,7 @@ export const PROYECTOS_DATA: ProjectItem[] = [
     tagColor: "bg-blue-500",
     text: "Propuestas e iniciativas para impulsar desde el enfoque 'eco-céntrico', la recuperación y resignificación territorial en microcuencas inundables...",
     img: "/proyecto-microcuencas.jpg",
-    link: "https://www.facebook.com/share/p/1GDZNQ7xGm/"
+    link: "https://www.facebook.com/share/v/17PoPAPbG1/"
   },
   // Agregar aquí mas proyectos...
 ];
