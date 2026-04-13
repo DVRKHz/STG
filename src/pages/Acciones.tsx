@@ -1,6 +1,6 @@
 import { Navbar } from "@/sections/Navbar";
 import { ProjectsSection } from "@/sections/ProjectsSection";
-import { ReportSection } from "@/sections/ReportSection";
+import { FooterSection } from "@/sections/FooterSection";
 
 export const Acciones = () => {
   return (
@@ -53,8 +53,8 @@ export const Acciones = () => {
         <ProjectsSection />
       </main>
 
-      {/* 4. Sección de Reportes o Informes */}
-      <ReportSection />
+      {/* 4. Sección del Footer */}
+      <FooterSection />
       
     </div>
   );

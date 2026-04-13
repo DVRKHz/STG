@@ -1,6 +1,6 @@
 import { useState, ChangeEvent, FormEvent } from "react";
 import { Navbar } from "@/sections/Navbar";
-import { ReportSection } from "@/sections/ReportSection";
+import { FooterSection } from "@/sections/FooterSection";
 
 // --- TIPOS E INTERFACES ---
 interface FormDataState {
@@ -232,7 +232,7 @@ export const Contacto = () => {
         </div>
       </main>
 
-      <ReportSection />
+      <FooterSection />
     </div>
   );
 };

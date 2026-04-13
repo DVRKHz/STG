@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay'; // 1. Importamos el plugin
 import { Navbar } from "@/sections/Navbar";
-import { ReportSection } from "@/sections/ReportSection";
+import { FooterSection } from "@/sections/FooterSection";
 
 export const InformacionRelevante = () => {
   // 2. Configuramos el hook con el plugin de Autoplay
@@ -177,7 +177,7 @@ export const InformacionRelevante = () => {
         </section>
       </main>
 
-      <ReportSection />
+      <FooterSection />
     </div>
   );
 };

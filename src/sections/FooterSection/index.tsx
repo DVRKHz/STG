@@ -1,4 +1,4 @@
-export const ReportSection = () => {
+export const FooterSection = () => {
   return (
     <footer className="relative bg-[#0a192f] overflow-hidden">
       {/* Sutil resplandor de fondo para profundidad */}

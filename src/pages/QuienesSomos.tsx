@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { Navbar } from "@/sections/Navbar";
-import { ReportSection } from "@/sections/ReportSection";
+import { FooterSection } from "@/sections/FooterSection";
 import { ChevronLeft, ChevronRight } from "lucide-react"; // O usa tus propios iconos SVGs
 
 export const QuienesSomos = () => {
@@ -158,7 +158,7 @@ export const QuienesSomos = () => {
         </section>
       </main>
 
-      <ReportSection />
+      <FooterSection />
     </div>
   );
 };
