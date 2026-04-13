@@ -23,14 +23,14 @@ export interface ProjectItem {
  */
 export const ACCIONES_DATA: ProjectItem[] = [
    {
-    id: 1,
-    title: "Recorrido con vecinos de la colonia Yukis ubicada en la Zona Norte de Tuxtla Gutiérrez",
-    location: "Col. Yukis, Tuxtla Gtz",
-    tagColor: "bg-blue-500",
-    category: "11/04/26",
-    text: "Se llevó a cabo un recorrido en la colonia Yukis con vecinos de dicha colonia para reconocer el área en el que se pueden realizar intervenciones comunitarias, en especial siembra de árboles.",
-    img: "/11-Abr-26.jpg",
-    link: "https://www.facebook.com/share/p/1CJGsJt59G/"
+      id: 1,
+      title: "Recorrido con vecinos de la colonia Yukis ubicada en la Zona Norte de Tuxtla Gutiérrez",
+      location: "Col. Yukis, Tuxtla Gtz",
+      tagColor: "bg-blue-500",
+      category: "11/04/26",
+      text: "Se llevó a cabo un recorrido en la colonia Yukis con vecinos de dicha colonia para reconocer el área en el que se pueden realizar intervenciones comunitarias, en especial siembra de árboles.",
+      img: "/11-Abr-26.jpg",
+      link: "https://www.facebook.com/share/p/1CJGsJt59G/"
    },
    {
       id: 2,
