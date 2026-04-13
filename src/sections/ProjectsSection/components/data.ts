@@ -23,7 +23,27 @@ export interface ProjectItem {
  */
 export const ACCIONES_DATA: ProjectItem[] = [
    {
-      id: 1,
+    id: 1,
+    title: "Recorrido con vecinos de la colonia Yukis ubicada en la Zona Norte de Tuxtla Gutiérrez",
+    location: "Col. Yukis, Tuxtla Gtz",
+    tagColor: "bg-blue-500",
+    category: "11/04/26",
+    text: "Se llevó a cabo un recorrido en la colonia Yukis con vecinos de dicha colonia para reconocer el área en el que se pueden realizar intervenciones comunitarias, en especial siembra de árboles.",
+    img: "/11-Abr-26.jpg",
+    link: "https://www.facebook.com/share/p/1CJGsJt59G/"
+   },
+   {
+      id: 2,
+      title: "Visita al ZOOMAT en preparación para el Coloquio Internacional “Restauración Ecológica y Sustentabilidad",
+      location: "ZOOMAT, Tuxtla Gtz",
+      tagColor: "bg-blue-500",
+      category: "10/04/26",
+      text: "Integrantes de la UNACH visitaron el ZOOMAT para coordinar el Coloquio Internacional “Restauración Ecológica y Sustentabilidad",
+      img: "/10-Abr-26.jpg",
+      link: "https://www.facebook.com/share/p/18P1SWxWjL/"
+   },
+   {
+      id: 3,
       title: "Recorrido Territorial",
       location: "Col. Flor de Mayo, Tuxtla Gtz",
       tagColor: "bg-blue-500",
@@ -33,7 +53,7 @@ export const ACCIONES_DATA: ProjectItem[] = [
       link: "https://www.facebook.com/share/p/17RYXFhYC1/"
    },
    {
-      id: 2,
+      id: 4,
       title: "Reunión con Comité Vecinal",
       location: "Col. Flor de Mayo, Tuxtla Gtz",
       tagColor: "bg-blue-500",
@@ -43,7 +63,7 @@ export const ACCIONES_DATA: ProjectItem[] = [
       link: "https://www.facebook.com/share/p/1CGnsrpfiv/"
    },
    {
-      id: 3,
+      id: 5,
       title: "Constitución de Junta Vecinal",
       location: "Col. Potinaspak, Tuxtla Gtz",
       tagColor: "bg-blue-500",
@@ -53,7 +73,7 @@ export const ACCIONES_DATA: ProjectItem[] = [
       link: "https://www.facebook.com/share/p/1DjSkCexsA/"
     },
     { 
-      id: 4, 
+      id: 6, 
       title: "Reunión de Trabajo",
       location: "COBACH 236",
       tagColor: "bg-blue-500",
@@ -63,7 +83,7 @@ export const ACCIONES_DATA: ProjectItem[] = [
       link: "https://www.facebook.com/share/p/1865WbmKEW/" 
     },
     { 
-      id: 5, 
+      id: 7, 
       title: "Foro Vecinal",
       location: "Esc. Prim. César Cruz Soto",
       tagColor: "bg-blue-500",
@@ -73,7 +93,7 @@ export const ACCIONES_DATA: ProjectItem[] = [
       link: "https://www.facebook.com/share/p/1aYhbxAZJ5/" 
     },
     { 
-      id: 6, 
+      id: 8, 
       title: "Foro Vecinal",
       location: "COBACH 236", 
       tagColor: "bg-blue-500",
@@ -83,7 +103,7 @@ export const ACCIONES_DATA: ProjectItem[] = [
       link: "https://www.facebook.com/share/p/1CDq12MDBP/" 
     },
     { 
-      id: 7, 
+      id: 9, 
       title: "Foro Vecinal",
       location: "Telesecundaria 121", 
       tagColor: "bg-blue-500",
@@ -93,7 +113,7 @@ export const ACCIONES_DATA: ProjectItem[] = [
       link: "https://www.facebook.com/share/p/1KBfsvdWug/" 
     },
     {
-      id: 8,
+      id: 10,
       title: "Reunión con docentes",
       location: "COBACH 236",
       tagColor: "bg-blue-500",
@@ -103,7 +123,7 @@ export const ACCIONES_DATA: ProjectItem[] = [
       link: "https://www.facebook.com/share/p/1APZW77FCG/" 
     },
     {
-      id: 9,
+      id: 11,
       title: "Reunión con funcionarios",
       location: "ICIPLAM",
       tagColor: "bg-blue-500",
@@ -113,7 +133,7 @@ export const ACCIONES_DATA: ProjectItem[] = [
       link: "https://www.facebook.com/share/p/14VwtzhuYf1/" 
     },
     {
-      id: 10,
+      id: 12,
       title: "Presentación de Proyecto",
       location: "DGIP de la UNACH",
       tagColor: "bg-blue-500",
@@ -123,7 +143,7 @@ export const ACCIONES_DATA: ProjectItem[] = [
       link: "https://www.facebook.com/share/p/14Von2ncSt6/"
     },
     {
-      id: 11,
+      id: 13,
       title: "Recorrido en la Zona Norte",
       location: "Tuxtla Gtz",
       tagColor: "bg-blue-500",
@@ -133,7 +153,7 @@ export const ACCIONES_DATA: ProjectItem[] = [
       link: "https://www.facebook.com/share/p/183sWL8zxQ/"
     },
     {
-      id: 12,
+      id: 14,
       title: "Entrega de Reconocimientos",
       location: "Facultad de Arquitectura, UNACH",
       tagColor: "bg-blue-500",
