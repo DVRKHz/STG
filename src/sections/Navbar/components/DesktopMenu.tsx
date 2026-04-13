@@ -10,6 +10,7 @@ const MENU_LINKS = [
 ];
 
 const PARTNER_LOGOS = [
+    { src: "/logo-cedes-stretched.png", alt:"CEDES", size: "h-12"},
     { src: "/fing.png", alt: "Ingenieria" },
     { src: "/farq.png", alt: "Arquitectura" },
     { src: "/ceco.jpg", alt: "CECOSICE" },
