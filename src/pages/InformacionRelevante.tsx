@@ -1,10 +1,16 @@
 import React, { useCallback } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
+import Autoplay from 'embla-carousel-autoplay'; // 1. Importamos el plugin
 import { Navbar } from "@/sections/Navbar";
 import { ReportSection } from "@/sections/ReportSection";
 
 export const InformacionRelevante = () => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'start' });
+  // 2. Configuramos el hook con el plugin de Autoplay
+  // delay: 4000 (4 segundos), stopOnInteraction: false permite que siga después de un click manual
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { loop: true, align: 'start' }, 
+    [Autoplay({ delay: 4000, stopOnInteraction: false })]
+  );
 
   const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
@@ -65,6 +71,7 @@ export const InformacionRelevante = () => {
       imageUrl: "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Collections/Embargoed/27-05-2025-Ocean-Story-04.jpg/image1024x768.jpg"
     }
   ];
+
   const historico = [
     {
       title: "Por qué la economía circular depende de todos nosotros",
@@ -104,24 +111,18 @@ export const InformacionRelevante = () => {
           aria-hidden="true"
         />
   
-        {/* Overlay dinámico: Gradiente de tres pasos para legibilidad máxima */}
+        {/* Overlay dinámico */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60" aria-hidden="true" />
 
-        {/* Contenido con jerarquía moderna y acento visual */}
+        {/* Contenido HERO */}
         <div className="relative z-10 container mx-auto px-6 text-center">
-    
-          {/* Acento de marca: Línea con pulso sutil */}
           <div className="w-16 h-1 bg-blue-500 mx-auto mb-6 rounded-full animate-pulse" />
-
           <h1 className="text-white text-5xl md:text-6xl font-extrabold mb-6 tracking-tight drop-shadow-2xl">
             Información Relevante
           </h1>
-    
           <p className="text-white/80 text-lg md:text-2xl max-w-2xl mx-auto leading-relaxed font-light italic">
             "Entérate de la información más precisa"
           </p>
-
-          {/* Guía visual inferior (aparece en hover) */}
           <div className="absolute bottom-[-40px] left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
               <div className="w-1 h-12 bg-gradient-to-b from-blue-500 to-transparent rounded-full" />
           </div>
@@ -159,7 +160,7 @@ export const InformacionRelevante = () => {
           </div>
         </section>
 
-        {/* SECCIÓN: HISTÓRICO (Grid Estilizado) */}
+        {/* SECCIÓN: HISTÓRICO */}
         <section className="bg-zinc-50 py-20 border-y border-zinc-100">
           <div className="container mx-auto px-6">
             <div className="flex items-center gap-4 mb-12">
@@ -181,43 +182,32 @@ export const InformacionRelevante = () => {
   );
 };
 
-/** * TARJETA PARA EL CARRUSEL (Vertical y moderna)
- */
-const WideFeaturedCard = ({ title, date, desc, location, tag, url, imageUrl }) => (
+const WideFeaturedCard = ({ title, date, desc, location, tag, url, imageUrl }: { title: string; date: string; desc: string; location: string; tag: string; url: string; imageUrl: string }) => (
   <a 
     href={url} 
     target="_blank" 
     rel="noopener noreferrer" 
-    // 1. Agregamos transform-gpu e isolate para el fix de esquinas.
-    // 2. Agregamos la sombra interna sutil (shadow-[inset_...]).
-    // 3. Suavizamos la transición a duration-700 con una curva custom (ease-out-quint).
     className="group relative flex flex-col md:flex-row h-full min-h-[400px] lg:min-h-[450px] 
                rounded-3xl overflow-hidden border border-zinc-100/50 
                shadow-lg shadow-[inset_0_10px_30px_rgba(0,0,0,0.05)] 
                hover:shadow-2xl hover:-translate-y-1.5 
                transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] 
                cursor-pointer isolate transform-gpu"
-    // Fix definitivo para el bug de overflow en esquinas de Chromium (con scale/translate)
     style={{ maskImage: "-webkit-radial-gradient(white, black)" }} 
   >
-    {/* 1. IMAGEN DE FONDO COMPLETA */}
     <div className="absolute inset-0 z-0">
       <img 
         src={imageUrl} 
         alt={title} 
-        // Suavizamos también la escala de la imagen
         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)]" 
       />
-      {/* 2. SUPERPOSICIÓN DE DEGRADADO (Mejorado para dar más aire al texto superior) */}
       <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black/20 via-black/70 to-black/95 z-10" />
     </div>
 
-    {/* Etiqueta (Tag) - Flotando sobre la imagen */}
     <div className="absolute top-6 left-6 z-30 bg-cyan-600/90 backdrop-blur-sm text-white px-4 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-widest shadow-lg">
       {tag}
     </div>
 
-    {/* 3. CONTENIDO DEL TEXTO */}
     <div className="relative z-20 p-8 md:p-14 lg:p-16 flex flex-col justify-end h-full w-full md:w-3/5 lg:w-2/3 ml-auto text-white">
       <div className="space-y-4 lg:space-y-6">
         <div className="flex items-center gap-3">
@@ -249,10 +239,7 @@ const WideFeaturedCard = ({ title, date, desc, location, tag, url, imageUrl }) =
   </a>
 );
 
-/**
- * TARJETA PARA EL HISTÓRICO (Horizontal y compacta)
- */
-const HistoryCard = ({ title, date, location, url, imageUrl, tag }) => (
+const HistoryCard = ({ title, date, location, url, imageUrl, tag }: { title: string; date: string; location: string; url: string; imageUrl: string; tag: string }) => (
   <a 
     href={url} 
     target="_blank" 
@@ -263,7 +250,6 @@ const HistoryCard = ({ title, date, location, url, imageUrl, tag }) => (
                overflow-hidden isolate transform-gpu"
     style={{ maskImage: "-webkit-radial-gradient(white, black)" }}
   >
-    {/* Imagen: Ahora con un tamaño mínimo para no deformarse si el texto es muy largo */}
     <div className="relative w-24 h-24 md:w-32 md:h-32 shrink-0 overflow-hidden rounded-xl bg-zinc-100 self-start">
       <img 
         src={imageUrl} 
@@ -277,7 +263,6 @@ const HistoryCard = ({ title, date, location, url, imageUrl, tag }) => (
       )}
     </div>
 
-    {/* Contenido de Texto: Sin line-clamp para títulos largos */}
     <div className="flex flex-col flex-grow min-w-0">
       <div className="flex items-center gap-2 mb-2">
         <span className="text-[10px] font-bold text-cyan-600 bg-cyan-50 px-2 py-0.5 rounded-md uppercase tracking-wider">
@@ -285,12 +270,10 @@ const HistoryCard = ({ title, date, location, url, imageUrl, tag }) => (
         </span>
       </div>
       
-      {/* Título: Quitamos line-clamp-2 para que quepa todo el texto */}
       <h4 className="font-bold text-zinc-800 group-hover:text-cyan-600 transition-colors text-sm md:text-base leading-snug mb-4">
         {title}
       </h4>
 
-      {/* Footer de la tarjeta */}
       <div className="flex items-center justify-between mt-auto pt-2">
         <span className="text-[10px] text-zinc-400 font-medium flex items-center gap-1">
           📍 {location}
@@ -301,7 +284,6 @@ const HistoryCard = ({ title, date, location, url, imageUrl, tag }) => (
       </div>
     </div>
 
-    {/* Detalle estético: línea de acento */}
     <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-cyan-500 group-hover:w-full transition-all duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)]" />
   </a>
 );
