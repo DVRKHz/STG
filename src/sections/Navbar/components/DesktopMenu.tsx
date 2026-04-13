@@ -1,6 +1,4 @@
 import { Link, useLocation } from "react-router-dom";
-import { useState, useRef, useEffect } from "react";
-import { ChevronDown } from "lucide-react";
 
 const MENU_LINKS = [
   { name: 'Quiénes somos', href: '/quienessomos' },
@@ -9,14 +7,6 @@ const MENU_LINKS = [
   { name: 'Contacto', href: '/contacto' },
 ];
 
-const PARTNER_LOGOS = [
-    { src: "/logo-cedes-stretched.png", alt:"CEDES", size: "h-12"},
-    { src: "/fing.png", alt: "Ingenieria" },
-    { src: "/farq.png", alt: "Arquitectura" },
-    { src: "/ceco.jpg", alt: "CECOSICE" },
-    { src: "/ligalab.png", alt: "LigaLab" },
-    { src: "/iei.jpg", alt: "Indigenas" },
-];
 
 export const DesktopMenu = ({ isScrolled }: { isScrolled: boolean }) => {
   const location = useLocation();

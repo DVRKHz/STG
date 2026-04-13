@@ -1,20 +1,20 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { Navbar } from "@/sections/Navbar";
 import { ReportSection } from "@/sections/ReportSection";
 import { ChevronLeft, ChevronRight } from "lucide-react"; // O usa tus propios iconos SVGs
 
 export const QuienesSomos = () => {
-  const scrollRef = useRef(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   // Función para mover el carrusel en escritorio
-  const scroll = (direction) => {
+  const scroll = (direction: string) => {
     if (scrollRef.current) {
       const { scrollLeft, clientWidth } = scrollRef.current;
       const scrollTo = direction === 'left' 
         ? scrollLeft - clientWidth / 2 
         : scrollLeft + clientWidth / 2;
       
-      scrollRef.current.scrollTo({ left: scrollTo, behavior: 'smooth' });
+      (scrollRef.current as HTMLDivElement).scrollTo({ left: scrollTo, behavior: 'smooth' });
     }
   };
 
@@ -165,7 +165,7 @@ export const QuienesSomos = () => {
 
 // --- SUB-COMPONENTES ---
 
-const ValueItem = ({ color, title, desc }) => (
+const ValueItem = ({ color, title, desc }: { color: string; title: string; desc: string }) => (
   <div className="flex gap-4 items-start group">
     <span className={`${color} text-2xl transition-transform group-hover:scale-125`}>●</span>
     <div>
@@ -179,7 +179,7 @@ const ValueItem = ({ color, title, desc }) => (
  * TeamMember con efecto de superposición (overlay) en hover.
  * La síntesis aparece sobre la imagen con un efecto de difuminado.
  */
-const TeamMember = ({ name, role, img, bio }) => (
+const TeamMember = ({ name, role, img, bio }: { name: string; role: string; img: string; bio: string }) => (
   <div className="min-w-[85vw] sm:min-w-[45vw] md:min-w-[30%] snap-center group">
     {/* Contenedor principal de la tarjeta */}
     <div className="relative overflow-hidden rounded-2xl aspect-[4/5] bg-zinc-100 shadow-md transition-all duration-300 group-hover:shadow-xl group-hover:shadow-zinc-200/50">
