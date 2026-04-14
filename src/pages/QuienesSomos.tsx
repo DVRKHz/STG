@@ -1,12 +1,11 @@
 import { useRef } from 'react';
 import { Navbar } from "@/sections/Navbar";
 import { FooterSection } from "@/sections/FooterSection";
-import { ChevronLeft, ChevronRight } from "lucide-react"; // O usa tus propios iconos SVGs
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export const QuienesSomos = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  // Función para mover el carrusel en escritorio
   const scroll = (direction: string) => {
     if (scrollRef.current) {
       const { scrollLeft, clientWidth } = scrollRef.current;
@@ -14,7 +13,7 @@ export const QuienesSomos = () => {
         ? scrollLeft - clientWidth / 2 
         : scrollLeft + clientWidth / 2;
       
-      (scrollRef.current as HTMLDivElement).scrollTo({ left: scrollTo, behavior: 'smooth' });
+      scrollRef.current.scrollTo({ left: scrollTo, behavior: 'smooth' });
     }
   };
 
@@ -22,10 +21,8 @@ export const QuienesSomos = () => {
     <div className="min-h-screen bg-white text-zinc-800 font-plus_jakarta_sans selection:bg-cyan-100">
       <Navbar />
 
-      {/* SECCIÓN HERO: Quiénes Somos */}
+      {/* SECCIÓN HERO */}
       <section className="relative h-[50vh] md:h-[70vh] flex items-center justify-center overflow-hidden group">
-  
-        {/* Imagen de fondo con escala cinematográfica (duración 2000ms para suavidad) */}
         <div 
           className="absolute inset-0 bg-gray-800 transition-transform duration-[2000ms] ease-out group-hover:scale-110"
           style={{
@@ -35,25 +32,16 @@ export const QuienesSomos = () => {
           }}
           aria-hidden="true"
         />
-  
-        {/* Overlay dinámico: Gradiente para profundidad visual */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60" aria-hidden="true" />
 
-        {/* Contenido con jerarquía y acento de diseño */}
         <div className="relative z-10 container mx-auto px-6 text-center">
-    
-          {/* Adorno visual: Línea con pulso */}
           <div className="w-16 h-1 bg-blue-500 mx-auto mb-6 rounded-full animate-pulse" />
-
           <h1 className="text-white text-5xl md:text-6xl font-extrabold mb-6 tracking-tight drop-shadow-2xl">
             Quiénes Somos
           </h1>
-    
           <p className="text-white/80 text-lg md:text-2xl max-w-2xl mx-auto leading-relaxed font-light italic">
             "Conoce más sobre nosotros"
           </p>
-
-          {/* Indicador de scroll (visible al hacer hover en la sección) */}
           <div className="absolute bottom-[-40px] left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
               <div className="w-1 h-12 bg-gradient-to-b from-blue-500 to-transparent rounded-full" />
           </div>
@@ -96,28 +84,27 @@ export const QuienesSomos = () => {
           </div>
         </section>
 
-        {/* SECCIÓN EQUIPO CON CARRUSEL Y EFECTO HOVER */}
+        {/* SECCIÓN EQUIPO */}
         <section id="equipo" className="space-y-10">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div className="space-y-2">
               <h2 className="text-cyan-500 text-sm md:text-base font-bold tracking-[3px] uppercase">
                 Nuestro Equipo
               </h2>
-              <p className="text-zinc-500 text-sm hidden md:block italic">Pasa el cursor sobre la foto para conocer más.</p>
+              <p className="text-zinc-500 text-sm hidden md:block italic">Pasa el cursor o usa el tabulador para conocer más.</p>
             </div>
             
-            {/* Controles de navegación para Desktop */}
             <div className="flex gap-2 self-end">
               <button 
                 onClick={() => scroll('left')}
-                className="p-2 rounded-full border border-zinc-200 hover:bg-zinc-100 transition-colors"
+                className="p-2 rounded-full border border-zinc-200 hover:bg-zinc-100 transition-colors active:scale-90"
                 aria-label="Anterior"
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
               <button 
                 onClick={() => scroll('right')}
-                className="p-2 rounded-full border border-zinc-200 hover:bg-zinc-100 transition-colors"
+                className="p-2 rounded-full border border-zinc-200 hover:bg-zinc-100 transition-colors active:scale-90"
                 aria-label="Siguiente"
               >
                 <ChevronRight className="w-5 h-5" />
@@ -125,7 +112,6 @@ export const QuienesSomos = () => {
             </div>
           </div>
 
-          {/* Contenedor del Carrusel */}
           <div 
             ref={scrollRef}
             className="flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-8 -mx-2 px-2"
@@ -163,8 +149,6 @@ export const QuienesSomos = () => {
   );
 };
 
-// --- SUB-COMPONENTES ---
-
 const ValueItem = ({ color, title, desc }: { color: string; title: string; desc: string }) => (
   <div className="flex gap-4 items-start group">
     <span className={`${color} text-2xl transition-transform group-hover:scale-125`}>●</span>
@@ -175,43 +159,37 @@ const ValueItem = ({ color, title, desc }: { color: string; title: string; desc:
   </div>
 );
 
-/**
- * TeamMember con efecto de superposición (overlay) en hover.
- * La síntesis aparece sobre la imagen con un efecto de difuminado.
- */
 const TeamMember = ({ name, role, img, bio }: { name: string; role: string; img: string; bio: string }) => (
-  <div className="min-w-[85vw] sm:min-w-[45vw] md:min-w-[30%] snap-center group">
-    {/* Contenedor principal de la tarjeta */}
-    <div className="relative overflow-hidden rounded-2xl aspect-[4/5] bg-zinc-100 shadow-md transition-all duration-300 group-hover:shadow-xl group-hover:shadow-zinc-200/50">
+  <div 
+    className="min-w-[85vw] sm:min-w-[45vw] md:min-w-[30%] snap-center group outline-none"
+    tabIndex={0}
+  >
+    <div className="relative overflow-hidden rounded-2xl aspect-[4/5] bg-zinc-100 shadow-md transition-all duration-500 group-hover:shadow-2xl group-focus-within:ring-4 group-focus-within:ring-cyan-500/30">
       
-      {/* Imagen de perfil con efecto de difuminado y escala en hover */}
       <img
         src={img}
         alt={name}
-        className="absolute inset-0 w-full h-full object-cover transition-all duration-500 group-hover:scale-110 group-hover:blur-sm"
+        className="absolute inset-0 w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:blur-[2px] group-focus-within:scale-110 group-focus-within:blur-[2px]"
       />
       
-      {/* Overlay degradado para asegurar legibilidad del texto */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/40 to-black/80 transition-opacity duration-300 opacity-80 group-hover:opacity-100" />
+      {/* Overlay que se oscurece más en hover para leer mejor la bio */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/40 to-zinc-900/90 transition-opacity duration-300 opacity-80 group-hover:opacity-100" />
       
-      {/* Contenedor de texto: Nombre, Rol y Síntesis */}
       <div className="absolute inset-0 p-6 flex flex-col justify-end text-white">
-        
-        {/* Nombre y Rol (siempre visibles) */}
-        <div className="transition-transform duration-300 group-hover:-translate-y-2">
+        {/* Contenedor con ligero movimiento hacia arriba al activar */}
+        <div className="transform transition-transform duration-300 group-hover:-translate-y-2 group-focus-within:-translate-y-2">
           <h3 className="text-xl md:text-2xl font-bold leading-tight">
             {name}
           </h3>
           <p className="text-xs md:text-sm font-semibold uppercase tracking-widest text-cyan-300 mt-1">
             {role}
           </p>
-        </div>
-        
-        {/* Síntesis (oculta por defecto, aparece en hover con animación) */}
-        <div className="max-h-0 group-hover:max-h-40 overflow-hidden transition-all duration-500 ease-in-out opacity-0 group-hover:opacity-100 pt-0 group-hover:pt-4 border-t border-white/20 mt-0 group-hover:mt-4">
-          <p className="text-zinc-100 text-sm leading-relaxed line-clamp-4 md:line-clamp-none">
-            {bio}
-          </p>
+          
+          <div className="max-h-0 group-hover:max-h-40 group-focus-within:max-h-40 overflow-hidden transition-all duration-500 ease-in-out opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 pt-0 group-hover:pt-4 group-focus-within:pt-4 border-t border-white/20 mt-0 group-hover:mt-4 group-focus-within:mt-4">
+            <p className="text-zinc-100 text-sm leading-relaxed line-clamp-4">
+              {bio}
+            </p>
+          </div>
         </div>
       </div>
     </div>
