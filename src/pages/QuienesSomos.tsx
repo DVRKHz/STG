@@ -26,7 +26,7 @@ export const QuienesSomos = () => {
         <div 
           className="absolute inset-0 bg-gray-800 transition-transform duration-[2000ms] ease-out group-hover:scale-110"
           style={{
-            backgroundImage: "url('/quienessomos-hero.jpg')",
+            backgroundImage: "url('/quienessomos-hero.png')",
             backgroundPosition: 'center',
             backgroundSize: 'cover'
           }}
