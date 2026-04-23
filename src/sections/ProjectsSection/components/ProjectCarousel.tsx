@@ -21,10 +21,8 @@ export const ProjectCarousel = ({ items = [] }: Props) => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
-  // Verificamos si hay proyectos para renderizar
   const hasItems = items && items.length > 0;
 
-  // 2. Lógica de Precisión para los Indicadores (Dots)
   useEffect(() => {
     const handleScroll = () => {
       if (scrollRef.current) {
@@ -33,9 +31,7 @@ export const ProjectCarousel = ({ items = [] }: Props) => {
         
         if (maxScrollLeft <= 0) return;
 
-        // Calculamos el progreso real del 0 al 1
         const scrollFraction = scrollLeft / maxScrollLeft;
-        // Mapeamos el progreso al índice de los items
         const index = Math.round(scrollFraction * (items.length - 1));
         
         setActiveIndex(index);
@@ -47,16 +43,15 @@ export const ProjectCarousel = ({ items = [] }: Props) => {
     return () => currentRef?.removeEventListener('scroll', handleScroll);
   }, [items.length]);
 
-  // 3. Función de Scroll para Escritorio
   const scroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
       const { clientWidth } = scrollRef.current;
-      const moveDistance = direction === 'left' ? -clientWidth / 1.5 : clientWidth / 1.5;
+      // Ajustamos la distancia de scroll para que coincida con tarjetas más grandes
+      const moveDistance = direction === 'left' ? -clientWidth / 1.2 : clientWidth / 1.2;
       scrollRef.current.scrollBy({ left: moveDistance, behavior: 'smooth' });
     }
   };
 
-  // 4. Función para saltar a un Dot específico (Opcional pero útil)
   const scrollToItem = (index: number) => {
     if (scrollRef.current) {
       const { scrollWidth, clientWidth } = scrollRef.current;
@@ -66,13 +61,12 @@ export const ProjectCarousel = ({ items = [] }: Props) => {
     }
   };
 
-  // Si no hay items, el componente desaparece por completo
   if (!hasItems) return null;
 
   return (
-    <div className="relative group w-full max-w-[1400px] mx-auto px-4 md:px-12 py-4">
+    <div className="relative group w-full max-w-[1600px] mx-auto px-4 md:px-16 py-8">
       
-      {/* FLECHAS DE NAVEGACIÓN (Solo Desktop + Hover) */}
+      {/* FLECHAS DE NAVEGACIÓN */}
       <button 
         onClick={() => scroll('left')} 
         className="hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 z-30 
@@ -93,19 +87,21 @@ export const ProjectCarousel = ({ items = [] }: Props) => {
         <ChevronRight className="w-6 h-6 text-cyan-600" />
       </button>
 
-      {/* CONTENEDOR DEL CARRUSEL */}
+      {/* CONTENEDOR DEL CARRUSEL - Aumentamos el GAP */}
       <div
         ref={scrollRef}
-        className="flex gap-5 overflow-x-auto snap-x snap-mandatory pb-6 scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0"
+        className="flex gap-8 overflow-x-auto snap-x snap-mandatory pb-10 scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
         {items.map((item) => (
-          <div key={item.id} className="shrink-0 w-[82vw] sm:w-[45vw] md:w-[31.5%] snap-center group/card">
+          /* CAMBIO: md:w-[450px] para dar más ancho y shrink-0 para evitar que colapsen */
+          <div key={item.id} className="shrink-0 w-[85vw] sm:w-[50vw] md:w-[450px] snap-center group/card">
             <a 
               href={item.link} 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="block relative aspect-[4/5] overflow-hidden rounded-[2.5rem] bg-zinc-100 shadow-md transition-all duration-500 md:hover:shadow-2xl md:hover:shadow-cyan-900/20"
+              /* CAMBIO: aspect-[3/4] es más ancho que el 4/5 original */
+              className="block relative aspect-[3/4] overflow-hidden rounded-[2.5rem] bg-zinc-100 shadow-md transition-all duration-500 md:hover:shadow-2xl md:hover:shadow-cyan-900/20"
             >
               {/* TAG / CATEGORÍA */}
               <div className="absolute top-6 left-6 z-20">
@@ -122,34 +118,35 @@ export const ProjectCarousel = ({ items = [] }: Props) => {
                 className="absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-out md:group-hover/card:scale-110 md:group-hover/card:blur-[2px]"
               />
               
-              {/* DEGRADADO PARA LEGIBILIDAD */}
+              {/* DEGRADADO */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent transition-opacity duration-500" />
 
               {/* CONTENIDO DE TEXTO */}
-              <div className="absolute inset-0 p-7 md:p-8 flex flex-col justify-end text-white">
+              <div className="absolute inset-0 p-8 md:p-10 flex flex-col justify-end text-white">
                 <div className="transition-transform duration-500 ease-out md:group-hover/card:-translate-y-4">
-                  <div className="flex items-center gap-2 mb-2 text-cyan-400">
-                    <MapPin className="w-3.5 h-3.5" />
-                    <span className="text-[10px] md:text-[11px] font-bold uppercase tracking-[2px]">
+                  <div className="flex items-center gap-2 mb-3 text-cyan-400">
+                    <MapPin className="w-4 h-4" />
+                    <span className="text-[11px] md:text-[12px] font-bold uppercase tracking-[2px]">
                       {item.location}
                     </span>
                   </div>
-                  <h3 className="text-xl md:text-2xl font-bold leading-tight tracking-tight">
+                  <h3 className="text-2xl md:text-3xl font-bold leading-tight tracking-tight">
                     {item.title}
                   </h3>
                 </div>
 
-                {/* SECCIÓN REVELABLE */}
-                <div className="opacity-100 mt-4 max-h-[120px] md:max-h-0 md:group-hover/card:max-h-[220px] md:opacity-0 md:group-hover/card:opacity-100 md:mt-0 md:group-hover/card:mt-6 transition-all duration-700 ease-in-out border-t border-white/10 pt-4 md:pt-0 md:group-hover/card:pt-6">
-                  <p className="text-zinc-300 text-xs md:text-sm leading-relaxed line-clamp-2 md:line-clamp-4 mb-4 font-medium">
+                {/* SECCIÓN REVELABLE - Ajustada para mayor capacidad de texto */}
+                <div className="opacity-100 mt-4 max-h-[150px] md:max-h-0 md:group-hover/card:max-h-[300px] md:opacity-0 md:group-hover/card:opacity-100 md:mt-0 md:group-hover/card:mt-6 transition-all duration-700 ease-in-out border-t border-white/10 pt-4 md:pt-0 md:group-hover/card:pt-6">
+                  {/* CAMBIO: line-clamp-6 para que quepa más texto largo */}
+                  <p className="text-zinc-300 text-sm md:text-base leading-relaxed line-clamp-5 md:line-clamp-6 mb-6 font-medium">
                     {item.text}
                   </p>
                   <div className="flex items-center justify-between group/link">
-                    <span className="text-[9px] md:text-[10px] font-black uppercase tracking-[2px] text-white/80">
+                    <span className="text-[10px] md:text-[11px] font-black uppercase tracking-[2px] text-white/80">
                       Ver en Facebook
                     </span>
-                    <div className="bg-cyan-500 p-1.5 md:p-2 rounded-full transition-transform md:group-hover/link:translate-x-1">
-                      <ChevronRight className="w-4 h-4 text-white" />
+                    <div className="bg-cyan-500 p-2 md:p-2.5 rounded-full transition-transform md:group-hover/link:translate-x-1">
+                      <ChevronRight className="w-5 h-5 text-white" />
                     </div>
                   </div>
                 </div>
@@ -159,7 +156,7 @@ export const ProjectCarousel = ({ items = [] }: Props) => {
         ))}
       </div>
 
-      {/* INDICADORES (DOTS) - Sincronizados con el scroll móvil */}
+      {/* INDICADORES (DOTS) */}
       <div className="flex justify-center items-center gap-2 mt-4 md:hidden">
         {items.map((_, i) => (
           <button 

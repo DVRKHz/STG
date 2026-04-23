@@ -24,6 +24,26 @@ export interface ProjectItem {
 export const ACCIONES_DATA: ProjectItem[] = [
    {
       id: 1,
+      title: "Instalación  del Grupo de Acción Climática Vecinal del COBACH 236",
+      location: "COBACH 236, Tuxtla Gtz",
+      tagColor: "bg-blue-500",
+      category: "21/04/26",
+      text: "Se llevó a cabo el Foro Vecinal con padres de familia y alumnos del COBACH 236. Después de reflexionar sobre las problemáticas ambiental y del territorio se constituyó el Grupo de Acción Climática Vecinal de ese plantel: integrado por alumnos y padres de familia.",
+      img: "/21-Abr-26.jpg",
+      link: "https://www.facebook.com/share/p/1MFixRMfUj/"
+   },
+   {
+      id: 2,
+      title: "Instalación de la Junta de Acción Climática Vecinal, ubicada en la parte alta de la Microcuenca Pomarrosa",
+      location: "Col. Los Ángeles Centenario, Tuxtla Gtz",
+      tagColor: "bg-blue-500",
+      category: "15/04/26",
+      text: "Se llevó a cabo una reunión con colonos y quedó constituida la Junta de Acción Climática Vecinal la cual llevará a cabo acciones de mejora en dicha colonia como captación de agua de lluvia, siembra de árboles y huertos comunitarios entre otros; con enfoque de infraestructuras verdes.",
+      img: "/15-Abr-26.jpg",
+      link: "https://www.facebook.com/share/p/18SCsHJGJp/"
+   },
+   {
+      id: 3,
       title: "Recorrido con vecinos de la colonia Yukis ubicada en la Zona Norte de Tuxtla Gutiérrez",
       location: "Col. Yukis, Tuxtla Gtz",
       tagColor: "bg-blue-500",
@@ -33,17 +53,17 @@ export const ACCIONES_DATA: ProjectItem[] = [
       link: "https://www.facebook.com/share/p/1CJGsJt59G/"
    },
    {
-      id: 2,
+      id: 4,
       title: "Visita al ZOOMAT en preparación para el Coloquio Internacional “Restauración Ecológica y Sustentabilidad",
       location: "ZOOMAT, Tuxtla Gtz",
       tagColor: "bg-blue-500",
       category: "10/04/26",
-      text: "Integrantes de la UNACH visitaron el ZOOMAT para coordinar el Coloquio Internacional “Restauración Ecológica y Sustentabilidad",
+      text: "La UNACH y el ZOOMAT coordinan el Coloquio Internacional sobre Restauración Ecológica.",
       img: "/10-Abr-26.jpg",
       link: "https://www.facebook.com/share/p/18P1SWxWjL/"
    },
    {
-      id: 3,
+      id: 5,
       title: "Recorrido Territorial",
       location: "Col. Flor de Mayo, Tuxtla Gtz",
       tagColor: "bg-blue-500",
@@ -53,7 +73,7 @@ export const ACCIONES_DATA: ProjectItem[] = [
       link: "https://www.facebook.com/share/p/17RYXFhYC1/"
    },
    {
-      id: 4,
+      id: 6,
       title: "Reunión con Comité Vecinal",
       location: "Col. Flor de Mayo, Tuxtla Gtz",
       tagColor: "bg-blue-500",
@@ -63,7 +83,7 @@ export const ACCIONES_DATA: ProjectItem[] = [
       link: "https://www.facebook.com/share/p/1CGnsrpfiv/"
    },
    {
-      id: 5,
+      id: 7,
       title: "Constitución de Junta Vecinal",
       location: "Col. Potinaspak, Tuxtla Gtz",
       tagColor: "bg-blue-500",
@@ -73,7 +93,7 @@ export const ACCIONES_DATA: ProjectItem[] = [
       link: "https://www.facebook.com/share/p/1DjSkCexsA/"
     },
     { 
-      id: 6, 
+      id: 8, 
       title: "Reunión de Trabajo",
       location: "COBACH 236",
       tagColor: "bg-blue-500",
@@ -83,7 +103,7 @@ export const ACCIONES_DATA: ProjectItem[] = [
       link: "https://www.facebook.com/share/p/1865WbmKEW/" 
     },
     { 
-      id: 7, 
+      id: 9, 
       title: "Foro Vecinal",
       location: "Esc. Prim. César Cruz Soto",
       tagColor: "bg-blue-500",
@@ -93,7 +113,7 @@ export const ACCIONES_DATA: ProjectItem[] = [
       link: "https://www.facebook.com/share/p/1aYhbxAZJ5/" 
     },
     { 
-      id: 8, 
+      id: 10, 
       title: "Foro Vecinal",
       location: "COBACH 236", 
       tagColor: "bg-blue-500",
@@ -103,7 +123,7 @@ export const ACCIONES_DATA: ProjectItem[] = [
       link: "https://www.facebook.com/share/p/1CDq12MDBP/" 
     },
     { 
-      id: 9, 
+      id: 11, 
       title: "Foro Vecinal",
       location: "Telesecundaria 121", 
       tagColor: "bg-blue-500",
@@ -113,7 +133,7 @@ export const ACCIONES_DATA: ProjectItem[] = [
       link: "https://www.facebook.com/share/p/1KBfsvdWug/" 
     },
     {
-      id: 10,
+      id: 12,
       title: "Reunión con docentes",
       location: "COBACH 236",
       tagColor: "bg-blue-500",
@@ -123,7 +143,7 @@ export const ACCIONES_DATA: ProjectItem[] = [
       link: "https://www.facebook.com/share/p/1APZW77FCG/" 
     },
     {
-      id: 11,
+      id: 13,
       title: "Reunión con funcionarios",
       location: "ICIPLAM",
       tagColor: "bg-blue-500",
@@ -133,7 +153,7 @@ export const ACCIONES_DATA: ProjectItem[] = [
       link: "https://www.facebook.com/share/p/14VwtzhuYf1/" 
     },
     {
-      id: 12,
+      id: 14,
       title: "Presentación de Proyecto",
       location: "DGIP de la UNACH",
       tagColor: "bg-blue-500",
@@ -143,17 +163,17 @@ export const ACCIONES_DATA: ProjectItem[] = [
       link: "https://www.facebook.com/share/p/14Von2ncSt6/"
     },
     {
-      id: 13,
+      id: 15,
       title: "Recorrido en la Zona Norte",
       location: "Tuxtla Gtz",
       tagColor: "bg-blue-500",
       category: "25/08/25",
-      text: "En el mes de agosto se hizo un recorrido de escuelas de la zona norte de Tuxtla Gutiérrez con el fin de observar las condiciones del territorio..",
+      text: "En agosto se recorrieron escuelas del norte de Tuxtla para evaluar el territorio y programar actividades comunitarias.",
       img: "/25-Ago-25.jpg",
       link: "https://www.facebook.com/share/p/183sWL8zxQ/"
     },
     {
-      id: 14,
+      id: 16,
       title: "Entrega de Reconocimientos",
       location: "Facultad de Arquitectura, UNACH",
       tagColor: "bg-blue-500",
