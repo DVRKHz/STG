@@ -102,7 +102,7 @@ export const InformacionRelevante = () => {
   
         {/* Imagen de fondo con escala cinematográfica controlada */}
         <div 
-          className="absolute inset-0 bg-gray-800 transition-transform duration-[2000ms] ease-out group-hover:scale-110"
+          className="absolute inset-0 bg-gray-800 transition-transform duration-[2000ms] ease-out group-hover:scale-110 blur-sm"
           style={{
             backgroundImage: "url('/informacionrelevante-hero.png')",
             backgroundPosition: 'center',
@@ -123,9 +123,6 @@ export const InformacionRelevante = () => {
           <p className="text-white/80 text-lg md:text-2xl max-w-2xl mx-auto leading-relaxed font-light italic">
             "Entérate de la información más precisa"
           </p>
-          <div className="absolute bottom-[-40px] left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-              <div className="w-1 h-12 bg-gradient-to-b from-blue-500 to-transparent rounded-full" />
-          </div>
         </div>
       </section>
 

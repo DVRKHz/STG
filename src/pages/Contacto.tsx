@@ -83,7 +83,7 @@ export const Contacto = () => {
       {/* Sección del Hero */}
       <section className="relative h-[50vh] md:h-[70vh] flex items-center justify-center overflow-hidden group">
         <div 
-          className="absolute inset-0 bg-gray-800 transition-transform duration-[2000ms] ease-out group-hover:scale-110"
+          className="absolute inset-0 bg-gray-800 transition-transform duration-[2000ms] ease-out group-hover:scale-110 blur-sm"
           style={{
             backgroundImage: "url('/contacto-hero.png')",
             backgroundPosition: 'center',
