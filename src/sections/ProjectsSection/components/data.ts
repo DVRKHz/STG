@@ -24,6 +24,26 @@ export interface ProjectItem {
 export const ACCIONES_DATA: ProjectItem[] = [
    {
       id: 1,
+      title: "Reunión con Grupo de Acción Vecinal de la colonia El Yukis para abordar puntos a trabajar en la colonia ubicada en la zona norte de Tuxtla Gutiérrez.",
+      location: "Col. yukis, Tuxtla Gtz",
+      tagColor: "bg-blue-500",
+      category: "26/04/26",
+      text: "Mediante un mapeo participativo con vecinos de la colonia Yukis, se trabajarán proyectos de reforestación, reciclaje/composta y captación de agua de lluvia para riego.",
+      img: "26-Abr-26 (1).jpg",
+      link: "https://www.facebook.com/share/p/1DjQFxzP4K/"
+   },
+   {
+      id: 2,
+      title: "Plática informativa con vecinos de la colonia en la zona norte de Tuxtla Gutiérrez ubicada en la parte alta de la microcuenca Pomarrosa",
+      location: "Col. Los Ángeles Centenario, Tuxtla Gtz",
+      tagColor: "bg-blue-500",
+      category: "26/04/26",
+      text: "Se presentaron a los vecinos los proyectos de captación de agua de lluvia y reforestación en la colonia. Tras su buena aceptación, continuarán las labores de recuperación y mejora territorial.",
+      img: "/26-Abr-26.jpg",
+      link: "https://www.facebook.com/share/p/1EKhcG22De/"
+   },
+   {
+      id: 3,
       title: "Instalación  del Grupo de Acción Climática Vecinal del COBACH 236",
       location: "COBACH 236, Tuxtla Gtz",
       tagColor: "bg-blue-500",
@@ -33,7 +53,7 @@ export const ACCIONES_DATA: ProjectItem[] = [
       link: "https://www.facebook.com/share/p/1MFixRMfUj/"
    },
    {
-      id: 2,
+      id: 4,
       title: "Instalación de la Junta de Acción Climática Vecinal, ubicada en la parte alta de la Microcuenca Pomarrosa",
       location: "Col. Los Ángeles Centenario, Tuxtla Gtz",
       tagColor: "bg-blue-500",
@@ -43,7 +63,7 @@ export const ACCIONES_DATA: ProjectItem[] = [
       link: "https://www.facebook.com/share/p/18SCsHJGJp/"
    },
    {
-      id: 3,
+      id: 5,
       title: "Recorrido con vecinos de la colonia Yukis ubicada en la Zona Norte de Tuxtla Gutiérrez",
       location: "Col. Yukis, Tuxtla Gtz",
       tagColor: "bg-blue-500",
@@ -53,7 +73,7 @@ export const ACCIONES_DATA: ProjectItem[] = [
       link: "https://www.facebook.com/share/p/1CJGsJt59G/"
    },
    {
-      id: 4,
+      id: 6,
       title: "Visita al ZOOMAT en preparación para el Coloquio Internacional “Restauración Ecológica y Sustentabilidad",
       location: "ZOOMAT, Tuxtla Gtz",
       tagColor: "bg-blue-500",
@@ -63,7 +83,7 @@ export const ACCIONES_DATA: ProjectItem[] = [
       link: "https://www.facebook.com/share/p/18P1SWxWjL/"
    },
    {
-      id: 5,
+      id: 7,
       title: "Recorrido Territorial",
       location: "Col. Flor de Mayo, Tuxtla Gtz",
       tagColor: "bg-blue-500",
@@ -73,7 +93,7 @@ export const ACCIONES_DATA: ProjectItem[] = [
       link: "https://www.facebook.com/share/p/17RYXFhYC1/"
    },
    {
-      id: 6,
+      id: 8,
       title: "Reunión con Comité Vecinal",
       location: "Col. Flor de Mayo, Tuxtla Gtz",
       tagColor: "bg-blue-500",
@@ -83,7 +103,7 @@ export const ACCIONES_DATA: ProjectItem[] = [
       link: "https://www.facebook.com/share/p/1CGnsrpfiv/"
    },
    {
-      id: 7,
+      id: 9,
       title: "Constitución de Junta Vecinal",
       location: "Col. Potinaspak, Tuxtla Gtz",
       tagColor: "bg-blue-500",
@@ -93,7 +113,7 @@ export const ACCIONES_DATA: ProjectItem[] = [
       link: "https://www.facebook.com/share/p/1DjSkCexsA/"
     },
     { 
-      id: 8, 
+      id: 10, 
       title: "Reunión de Trabajo",
       location: "COBACH 236",
       tagColor: "bg-blue-500",
@@ -103,7 +123,7 @@ export const ACCIONES_DATA: ProjectItem[] = [
       link: "https://www.facebook.com/share/p/1865WbmKEW/" 
     },
     { 
-      id: 9, 
+      id: 11, 
       title: "Foro Vecinal",
       location: "Esc. Prim. César Cruz Soto",
       tagColor: "bg-blue-500",
@@ -113,7 +133,7 @@ export const ACCIONES_DATA: ProjectItem[] = [
       link: "https://www.facebook.com/share/p/1aYhbxAZJ5/" 
     },
     { 
-      id: 10, 
+      id: 12, 
       title: "Foro Vecinal",
       location: "COBACH 236", 
       tagColor: "bg-blue-500",
@@ -123,7 +143,7 @@ export const ACCIONES_DATA: ProjectItem[] = [
       link: "https://www.facebook.com/share/p/1CDq12MDBP/" 
     },
     { 
-      id: 11, 
+      id: 13, 
       title: "Foro Vecinal",
       location: "Telesecundaria 121", 
       tagColor: "bg-blue-500",
@@ -133,7 +153,7 @@ export const ACCIONES_DATA: ProjectItem[] = [
       link: "https://www.facebook.com/share/p/1KBfsvdWug/" 
     },
     {
-      id: 12,
+      id: 14,
       title: "Reunión con docentes",
       location: "COBACH 236",
       tagColor: "bg-blue-500",
@@ -143,7 +163,7 @@ export const ACCIONES_DATA: ProjectItem[] = [
       link: "https://www.facebook.com/share/p/1APZW77FCG/" 
     },
     {
-      id: 13,
+      id: 15,
       title: "Reunión con funcionarios",
       location: "ICIPLAM",
       tagColor: "bg-blue-500",
@@ -153,7 +173,7 @@ export const ACCIONES_DATA: ProjectItem[] = [
       link: "https://www.facebook.com/share/p/14VwtzhuYf1/" 
     },
     {
-      id: 14,
+      id: 16,
       title: "Presentación de Proyecto",
       location: "DGIP de la UNACH",
       tagColor: "bg-blue-500",
@@ -163,7 +183,7 @@ export const ACCIONES_DATA: ProjectItem[] = [
       link: "https://www.facebook.com/share/p/14Von2ncSt6/"
     },
     {
-      id: 15,
+      id: 17,
       title: "Recorrido en la Zona Norte",
       location: "Tuxtla Gtz",
       tagColor: "bg-blue-500",
@@ -173,7 +193,7 @@ export const ACCIONES_DATA: ProjectItem[] = [
       link: "https://www.facebook.com/share/p/183sWL8zxQ/"
     },
     {
-      id: 16,
+      id: 18,
       title: "Entrega de Reconocimientos",
       location: "Facultad de Arquitectura, UNACH",
       tagColor: "bg-blue-500",
