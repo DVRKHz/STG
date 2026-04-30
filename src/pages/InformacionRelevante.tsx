@@ -17,6 +17,15 @@ export const InformacionRelevante = () => {
 
   const publicacionesRecientes = [
     {
+      title: "'Preparense ya': expertos ven corriente atlántica en peligro",
+      date: "23 de Abril de 2026",
+      desc: "Un estudio estima que la corriente oceánica que modera el clima europeo podría ralentizarse un 51 % para 2100, superando todas las proyecciones anteriores. Los modelos más pesimistas resultaron ser los más precisos.",
+      location: "Internacional",
+      tag: "Noticia",
+      url: "https://www.dw.com/es/prep%C3%A1rense-ya-cient%C3%ADficos-aceleran-las-alertas-sobre-el-colapso-de-una-corriente-oce%C3%A1nica-clave/a-76912031",
+      imageUrl: "https://static.dw.com/image/58782183_906.jpg"
+    },
+    {
       title: "Paradojas",
       date: "29 de Marzo de 2026",
       desc: "La circularidad de los bucles virtuosos contraviene las leyes físicas de la termodinámica y las económicas de los rendimientos decrecientes, porque ningún material se puede reciclar infinitamente sin perder calidad o energía. La economía tendría que renunciar al crecimiento constante porque no hay recursos infinitos en este planeta finito.",
