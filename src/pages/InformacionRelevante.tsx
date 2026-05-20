@@ -17,13 +17,22 @@ export const InformacionRelevante = () => {
 
   const publicacionesRecientes = [
     {
-      title: "'Preparense ya': expertos ven corriente atlántica en peligro",
-      date: "23 de Abril de 2026",
-      desc: "Un estudio estima que la corriente oceánica que modera el clima europeo podría ralentizarse un 51 % para 2100, superando todas las proyecciones anteriores. Los modelos más pesimistas resultaron ser los más precisos.",
-      location: "Internacional",
+      title: "Combinar políticas fiscales y de consumo es clave para avanzar hacia una economía circular",
+      date: "13 de Mayo de 2026",
+      desc: "Un nuevo estudio sobre economía circular en Europa concluye que la combinación de políticas orientadas tanto a la producción como al consumo resulta necesaria para reducir de forma significativa el uso de materias primas y avanzar hacia modelos económicos más circulares.",
+      location: "Europa",
       tag: "Noticia",
-      url: "https://www.dw.com/es/prep%C3%A1rense-ya-cient%C3%ADficos-aceleran-las-alertas-sobre-el-colapso-de-una-corriente-oce%C3%A1nica-clave/a-76912031",
-      imageUrl: "https://static.dw.com/image/58782183_906.jpg"
+      url: "https://www.residuosprofesional.com/politicas-fiscales-consumo-clave-economia-circular/",
+      imageUrl: "https://www.residuosprofesional.com/wp-content/uploads/2026/05/pexels-willians-huerta-13526.jpg"
+    },
+    {
+      title: "CeIBA: Un cuarto de siglo",
+      date: "10 de Mayo de 2026",
+      desc: "CeIBA tiene el objetivo de 'elaborar un programa nacional de alternativa sobre la problemática ecológica y la utilización de los recursos naturales'",
+      location: "México",
+      tag: "Opinión",
+      url: "https://www.jornada.com.mx/noticia/2026/05/10/opinion/ceiba-un-cuarto-de-siglo",
+      imageUrl: "https://www.jornada.com.mx/ndjsimg/images/jornada/jornadaimg/ceiba-un-cuarto-de-siglo/ceiba-un-cuarto-de-siglo_a381dd74-e7f5-453d-a06d-ea72ce0e746a_medialjnimgndimage=fullsize"
     },
     {
       title: "Paradojas",
