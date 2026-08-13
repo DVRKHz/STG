@@ -17,6 +17,42 @@ export const InformacionRelevante = () => {
 
   const publicacionesRecientes = [
     {
+      title: "Invertir hoy para obtener beneficios ambientales mañana",
+      date: "30 de Julio de 2026",
+      desc: "La Ley General de Economía Circular (LGEC) busca articular políticas integrales de alcance nacional. El decreto implica retos económicos, tecnológicos y sociales que deberán enfrentarse de manera gradual, consideró Karina Caballero Güendulain, coordinadora de la Especialización en Economía Ambiental y Ecológica de la Facultad de Economía (FE) de la UNAM.",
+      location: "México",
+      tag: "Opinión",
+      url: "https://www.gaceta.unam.mx/invertir-hoy-para-obtener-beneficios-ambientales-manana/",
+      imageUrl: "https://www.gaceta.unam.mx/wp-content/uploads/2026/07/260730-aca4-des-f1-invertir-hoy-para-obtener-beneficios-ambientales-manana.jpg"
+    },
+    {
+      title: "Fondo de Capital Ambiental: clave para la transición ecológica en México",
+      date: "22 de Julio de 2026",
+      desc: "La naturaleza es la infraestructura sobre la que funciona la economía. Como cimiento de todo lo que construimos, es el sistema vivo que nos proporciona agua, equilibra el clima, asegura nuestros alimentos y hace posible la vida humana. El Foro Económico Mundial estima que más de la mitad del PIB mundial depende, de manera directa o indirecta, de los servicios que brindan los ecosistemas. Paradójicamente, hemos convertido esa misma base natural en uno de los activos más deteriorados de nuestro tiempo.",
+      location: "México",
+      tag: "Opinión",
+      url: "https://www.elfinanciero.com.mx/opinion/colaborador-invitado/2026/07/22/fondo-de-capital-ambiental-clave-para-la-transicion-ecologica-en-mexico/",
+      imageUrl: "https://ceiba.org.mx/storage/app/uploads/public/6a6/284/ba0/thumb_55_540_0_0_0_auto.jpg"
+    },
+    {
+      title: "Vienen reglas ambientales más estrictas a favor de Economía Circular",
+      date: "09 de Julio de 2026",
+      desc: "A través de un comunicado de prensa, la Secretaría de Medio Ambiente y Recursos Naturales, planteó que, con esta iniciativa, se trabajará en la creación de mecanismos enfocados en materia de circularidad para incrementar la vida útil de los productos, aprovechar los residuos y determinar atribuciones para la aplicación de modelos de manera responsable.",
+      location: "México",
+      tag: "Comunicado",
+      url: "https://unamglobal.unam.mx/global_tv/vienen-reglas-ambientales-mas-estrictas-a-favor-de-economia-circular/",
+      imageUrl: "https://ceiba.org.mx/storage/app/uploads/public/6a5/16e/ab1/thumb_54_540_0_0_0_auto.jpg"
+    },
+    {
+      title: "Australia inaugura la primera refinería de carbono del mundo que convierte CO₂ en hormigón, pintura y materiales de construcción",
+      date: "21 de Junio de 2026",
+      desc: "Durante décadas, la industria ha tratado el dióxido de carbono como un problema que había que eliminar, almacenar o compensar. La nueva instalación Myrtle, inaugurada en Australia por la empresa MCi Carbon, plantea una visión completamente distinta: convertir ese CO₂ en una materia prima valiosa.",
+      location: "Australia",
+      tag: "Noticia",
+      url: "https://ecoinventos.com/australia-inaugura-la-primera-refineria-de-carbono-del-mundo-que-convierte-co%E2%82%82-en-hormigon-pintura-y-materiales-de-construccion/",
+      imageUrl: "https://ceiba.org.mx/storage/app/uploads/public/6a4/56a/2c8/thumb_53_540_0_0_0_auto.jpg"
+    },
+    {
       title: "Combinar políticas fiscales y de consumo es clave para avanzar hacia una economía circular",
       date: "13 de Mayo de 2026",
       desc: "Un nuevo estudio sobre economía circular en Europa concluye que la combinación de políticas orientadas tanto a la producción como al consumo resulta necesaria para reducir de forma significativa el uso de materias primas y avanzar hacia modelos económicos más circulares.",
