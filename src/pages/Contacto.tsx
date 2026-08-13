@@ -1,4 +1,4 @@
-import { useState, ChangeEvent, FormEvent } from "react";
+import { useState, ChangeEvent, FormEvent, useRef } from "react";
 import { Navbar } from "@/sections/Navbar";
 import { FooterSection } from "@/sections/FooterSection";
 
@@ -31,20 +31,26 @@ export const Contacto = () => {
     error: null 
   });
 
-  // Maneja los cambios en los inputs de texto
+  // Referencia para resetear visualmente el input tipo file
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
+
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Maneja la selección del archivo
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
       setFile(e.target.files[0]);
     }
   };
 
-  // Envío del formulario a Formspree
+  const resetForm = () => {
+    setFormData({ nombre: "", email: "", asunto: "", mensaje: "" });
+    setFile(null);
+    if (fileInputRef.current) fileInputRef.current.value = "";
+  };
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setStatus({ loading: true, success: false, error: null });
@@ -65,14 +71,14 @@ export const Contacto = () => {
 
       if (response.ok) {
         setStatus({ loading: false, success: true, error: null });
-        setFormData({ nombre: "", email: "", asunto: "", mensaje: "" });
-        setFile(null);
+        resetForm();
       } else {
         const data = await response.json();
-        throw new Error(data.error || "Error al enviar el mensaje");
+        throw new Error(data.error || "Error al enviar el mensaje. Inténtalo de nuevo.");
       }
-    } catch (error: any) {
-      setStatus({ loading: false, success: false, error: error.message });
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : "Ocurrió un error inesperado";
+      setStatus({ loading: false, success: false, error: errorMessage });
     }
   };
 
@@ -80,7 +86,7 @@ export const Contacto = () => {
     <div className="min-h-screen bg-white text-zinc-800 font-plus_jakarta_sans">
       <Navbar />
       
-      {/* Sección del Hero */}
+      {/* Hero Section */}
       <section className="relative h-[50vh] md:h-[70vh] flex items-center justify-center overflow-hidden group">
         <div 
           className="absolute inset-0 bg-gray-800 transition-transform duration-[2000ms] ease-out group-hover:scale-110 blur-sm"
@@ -108,7 +114,7 @@ export const Contacto = () => {
       <main className="container mx-auto px-6 py-12 md:py-24 max-w-6xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           
-          {/* Sección del Formulario / Success View */}
+          {/* Formulario / Success View */}
           <section className="order-2 lg:order-1">
             <h2 className="text-cyan-600 text-sm font-bold tracking-[3px] uppercase mb-8">
               Envíanos un mensaje
@@ -127,16 +133,17 @@ export const Contacto = () => {
                   Hemos recibido tu información y nos pondremos en contacto contigo pronto.
                 </p>
                 <button 
-                  onClick={() => setStatus({ ...status, success: false })}
-                  className="text-cyan-600 font-bold hover:text-cyan-700 transition-colors text-sm uppercase tracking-widest"
+                  type="button"
+                  onClick={() => setStatus((prev) => ({ ...prev, success: false }))}
+                  className="text-cyan-600 font-bold hover:text-cyan-700 transition-colors text-sm uppercase tracking-widest focus:outline-none focus:ring-2 focus:ring-cyan-500 rounded"
                 >
                   Enviar otro mensaje
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form onSubmit={handleSubmit} className="space-y-5" noValidate={false}>
                 {status.error && (
-                  <div className="p-4 mb-6 bg-red-50 border-l-4 border-red-500 text-red-700 text-sm flex items-center gap-3 animate-in slide-in-from-top-2">
+                  <div role="alert" className="p-4 mb-6 bg-red-50 border-l-4 border-red-500 text-red-700 text-sm flex items-center gap-3 animate-in slide-in-from-top-2 rounded-r-md">
                     <svg className="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
                     </svg>
@@ -145,24 +152,29 @@ export const Contacto = () => {
                 )}
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                  <InputField label="Nombre *" name="nombre" value={formData.nombre} onChange={handleChange} placeholder="Tu nombre" required />
-                  <InputField label="Email *" name="email" type="email" value={formData.email} onChange={handleChange} placeholder="tu@email.com" required />
+                  <InputField label="Nombre *" id="nombre" name="nombre" value={formData.nombre} onChange={handleChange} placeholder="Tu nombre" required />
+                  <InputField label="Email *" id="email" name="email" type="email" value={formData.email} onChange={handleChange} placeholder="tu@email.com" required />
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm font-semibold text-zinc-700">Adjuntar Archivo (Opcional)</label>
+                  <label htmlFor="adjunto" className="text-sm font-semibold text-zinc-700">
+                    Adjuntar Archivo (Opcional)
+                  </label>
                   <input
+                    id="adjunto"
+                    ref={fileInputRef}
                     type="file"
                     onChange={handleFileChange}
-                    className="block w-full text-sm text-zinc-500 file:mr-4 file:py-2.5 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-cyan-50 file:text-cyan-700 hover:file:bg-cyan-100 transition-all border border-zinc-200 rounded-md p-1"
+                    className="block w-full text-sm text-zinc-500 file:mr-4 file:py-2.5 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-cyan-50 file:text-cyan-700 hover:file:bg-cyan-100 transition-all border border-zinc-200 rounded-md p-1 focus:outline-none focus:ring-2 focus:ring-cyan-500"
                   />
                 </div>
 
-                <InputField label="Asunto *" name="asunto" value={formData.asunto} onChange={handleChange} placeholder="¿En qué podemos ayudarte?" required />
+                <InputField label="Asunto *" id="asunto" name="asunto" value={formData.asunto} onChange={handleChange} placeholder="¿En qué podemos ayudarte?" required />
 
                 <div className="space-y-2">
-                  <label className="text-sm font-semibold text-zinc-700">Mensaje *</label>
+                  <label htmlFor="mensaje" className="text-sm font-semibold text-zinc-700">Mensaje *</label>
                   <textarea
+                    id="mensaje"
                     name="mensaje"
                     value={formData.mensaje}
                     onChange={handleChange}
@@ -176,7 +188,7 @@ export const Contacto = () => {
                 <button
                   type="submit"
                   disabled={status.loading}
-                  className="w-full md:w-auto bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-4 px-10 rounded-lg transition-all shadow-lg active:scale-[0.98] disabled:bg-zinc-400 flex items-center justify-center gap-3"
+                  className="w-full md:w-auto bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-4 px-10 rounded-lg transition-all shadow-lg active:scale-[0.98] disabled:bg-zinc-400 flex items-center justify-center gap-3 cursor-pointer disabled:cursor-not-allowed"
                 >
                   {status.loading ? (
                     <>
@@ -196,7 +208,7 @@ export const Contacto = () => {
             )}
           </section>
 
-          {/* Información lateral */}
+          {/* Información Lateral */}
           <section className="order-1 lg:order-2 space-y-10 lg:sticky lg:top-24">
             <h2 className="text-lime-700 text-sm font-bold tracking-[3px] uppercase">
               Información de contacto
@@ -208,8 +220,8 @@ export const Contacto = () => {
                 title="Email" 
                 content={
                   <div className="flex flex-col gap-1">
-                    <a href="mailto:msilva@unach.com" className="text-cyan-600 hover:underline">msilva@unach.com</a>
-                    <a href="mailto:carolina.farrera@unach.com" className="text-cyan-600 hover:underline">carolina.farrera@unach.com</a>
+                    <a href="mailto:msilva@unach.com" className="text-cyan-600 hover:underline focus:outline-none focus:ring-1 focus:ring-cyan-500 rounded">msilva@unach.com</a>
+                    <a href="mailto:carolina.farrera@unach.com" className="text-cyan-600 hover:underline focus:outline-none focus:ring-1 focus:ring-cyan-500 rounded">carolina.farrera@unach.com</a>
                   </div>
                 } 
               />
@@ -222,7 +234,7 @@ export const Contacto = () => {
                 icon={<FBIcon />} 
                 title="Redes Sociales" 
                 content={
-                  <a href="https://www.facebook.com/profile.php?id=61587006117007" target="_blank" rel="noreferrer" className="flex items-center gap-2 text-zinc-600 hover:text-blue-600 transition-colors">
+                  <a href="https://www.facebook.com/profile.php?id=61587006117007" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-zinc-600 hover:text-blue-600 transition-colors focus:outline-none focus:ring-1 focus:ring-blue-500 rounded">
                     <span>Síguenos en Facebook</span>
                   </a>
                 } 
@@ -237,16 +249,18 @@ export const Contacto = () => {
   );
 };
 
-// --- SUB-COMPONENTES AUXILIARES ---
+// --- SUB-COMPONENTES ---
 
 interface InputFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label: string;
+  id: string;
 }
 
-const InputField = ({ label, ...props }: InputFieldProps) => (
+const InputField = ({ label, id, ...props }: InputFieldProps) => (
   <div className="space-y-2">
-    <label className="text-sm font-semibold text-zinc-700">{label}</label>
+    <label htmlFor={id} className="text-sm font-semibold text-zinc-700">{label}</label>
     <input
+      id={id}
       {...props}
       className="w-full p-4 bg-zinc-50 border border-zinc-200 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent outline-none transition-all"
     />
@@ -261,7 +275,7 @@ interface ContactCardProps {
 
 const ContactInfoCard = ({ icon, title, content }: ContactCardProps) => (
   <div className="flex gap-5 p-6 bg-zinc-50 rounded-xl border border-zinc-100 hover:border-cyan-200 transition-all">
-    <div className="text-cyan-600">{icon}</div>
+    <div className="text-cyan-600 shrink-0">{icon}</div>
     <div>
       <h3 className="font-bold text-zinc-900 mb-1">{title}</h3>
       <div className="text-zinc-600 text-sm leading-relaxed">{content}</div>
