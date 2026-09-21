@@ -1,23 +1,25 @@
-import { useRef, useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, MapPin } from "lucide-react";
+import { useRef, useState, useEffect, MouseEvent } from 'react';
+import { ChevronLeft, ChevronRight, MapPin, User } from "lucide-react";
 
-// 1. Interfaz del Proyecto
 export interface ProjectItem {
   id: number;
   title: string;
+  speaker?: string; // Campo opcional para el expositor
   location: string;
   category: string;
   text: string;
   img: string;
   link: string;
+  pdfUrl?: string;
   tagColor?: string;
 }
 
 interface Props {
   items?: ProjectItem[];
+  onItemClick?: (item: ProjectItem) => void;
 }
 
-export const ProjectCarousel = ({ items = [] }: Props) => {
+export const ProjectCarousel = ({ items = [], onItemClick }: Props) => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -46,7 +48,6 @@ export const ProjectCarousel = ({ items = [] }: Props) => {
   const scroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
       const { clientWidth } = scrollRef.current;
-      // Ajustamos la distancia de scroll para que coincida con tarjetas más grandes
       const moveDistance = direction === 'left' ? -clientWidth / 1.2 : clientWidth / 1.2;
       scrollRef.current.scrollBy({ left: moveDistance, behavior: 'smooth' });
     }
@@ -58,6 +59,13 @@ export const ProjectCarousel = ({ items = [] }: Props) => {
       const maxScrollLeft = scrollWidth - clientWidth;
       const targetScroll = (index / (items.length - 1)) * maxScrollLeft;
       scrollRef.current.scrollTo({ left: targetScroll, behavior: 'smooth' });
+    }
+  };
+
+  const handleCardClick = (e: MouseEvent<HTMLAnchorElement>, item: ProjectItem) => {
+    if (onItemClick && (item.pdfUrl || item.link === '#' || !item.link)) {
+      e.preventDefault();
+      onItemClick(item);
     }
   };
 
@@ -87,73 +95,89 @@ export const ProjectCarousel = ({ items = [] }: Props) => {
         <ChevronRight className="w-6 h-6 text-cyan-600" />
       </button>
 
-      {/* CONTENEDOR DEL CARRUSEL - Aumentamos el GAP */}
+      {/* CONTENEDOR DEL CARRUSEL */}
       <div
         ref={scrollRef}
         className="flex gap-8 overflow-x-auto snap-x snap-mandatory pb-10 scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
-        {items.map((item) => (
-          /* CAMBIO: md:w-[450px] para dar más ancho y shrink-0 para evitar que colapsen */
-          <div key={item.id} className="shrink-0 w-[85vw] sm:w-[50vw] md:w-[450px] snap-center group/card">
-            <a 
-              href={item.link} 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              /* CAMBIO: aspect-[3/4] es más ancho que el 4/5 original */
-              className="block relative aspect-[3/4] overflow-hidden rounded-[2.5rem] bg-zinc-100 shadow-md transition-all duration-500 md:hover:shadow-2xl md:hover:shadow-cyan-900/20"
-            >
-              {/* TAG / CATEGORÍA */}
-              <div className="absolute top-6 left-6 z-20">
-                <span className={`${item.tagColor || 'bg-cyan-600/90'} backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-widest px-4 py-2 rounded-full border border-white/20 shadow-sm`}>
-                  {item.category}
-                </span>
-              </div>
+        {items.map((item) => {
+          const isPdf = Boolean(item.pdfUrl);
 
-              {/* IMAGEN DE FONDO */}
-              <img
-                src={item.img}
-                alt={item.title}
-                loading="lazy"
-                className="absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-out md:group-hover/card:scale-110 md:group-hover/card:blur-[2px]"
-              />
-              
-              {/* DEGRADADO */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent transition-opacity duration-500" />
-
-              {/* CONTENIDO DE TEXTO */}
-              <div className="absolute inset-0 p-8 md:p-10 flex flex-col justify-end text-white">
-                <div className="transition-transform duration-500 ease-out md:group-hover/card:-translate-y-4">
-                  <div className="flex items-center gap-2 mb-3 text-cyan-400">
-                    <MapPin className="w-4 h-4" />
-                    <span className="text-[11px] md:text-[12px] font-bold uppercase tracking-[2px]">
-                      {item.location}
-                    </span>
-                  </div>
-                  <h3 className="text-2xl md:text-3xl font-bold leading-tight tracking-tight">
-                    {item.title}
-                  </h3>
+          return (
+            <div key={item.id} className="shrink-0 w-[85vw] sm:w-[50vw] md:w-[450px] snap-center group/card">
+              <a 
+                href={item.link || '#'} 
+                target={isPdf ? '_self' : '_blank'} 
+                rel="noopener noreferrer" 
+                onClick={(e) => handleCardClick(e, item)}
+                className="block relative aspect-[3/4] overflow-hidden rounded-[2.5rem] bg-zinc-100 shadow-md transition-all duration-500 md:hover:shadow-2xl md:hover:shadow-cyan-900/20 cursor-pointer"
+              >
+                {/* TAG / CATEGORÍA */}
+                <div className="absolute top-6 left-6 z-20">
+                  <span className={`${item.tagColor || 'bg-cyan-600/90'} backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-widest px-4 py-2 rounded-full border border-white/20 shadow-sm`}>
+                    {item.category}
+                  </span>
                 </div>
 
-                {/* SECCIÓN REVELABLE - Ajustada para mayor capacidad de texto */}
-                <div className="opacity-100 mt-4 max-h-[150px] md:max-h-0 md:group-hover/card:max-h-[300px] md:opacity-0 md:group-hover/card:opacity-100 md:mt-0 md:group-hover/card:mt-6 transition-all duration-700 ease-in-out border-t border-white/10 pt-4 md:pt-0 md:group-hover/card:pt-6">
-                  {/* CAMBIO: line-clamp-6 para que quepa más texto largo */}
-                  <p className="text-zinc-300 text-sm md:text-base leading-relaxed line-clamp-5 md:line-clamp-6 mb-6 font-medium">
-                    {item.text}
-                  </p>
-                  <div className="flex items-center justify-between group/link">
-                    <span className="text-[10px] md:text-[11px] font-black uppercase tracking-[2px] text-white/80">
-                      Ver en Facebook
-                    </span>
-                    <div className="bg-cyan-500 p-2 md:p-2.5 rounded-full transition-transform md:group-hover/link:translate-x-1">
-                      <ChevronRight className="w-5 h-5 text-white" />
+                {/* IMAGEN DE FONDO */}
+                <img
+                  src={item.img}
+                  alt={item.title}
+                  loading="lazy"
+                  className="absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-out md:group-hover/card:scale-110 md:group-hover/card:blur-[2px]"
+                />
+                
+                {/* DEGRADADO */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent transition-opacity duration-500" />
+
+                {/* CONTENIDO DE TEXTO */}
+                <div className="absolute inset-0 p-8 md:p-10 flex flex-col justify-end text-white">
+                  <div className="transition-transform duration-500 ease-out md:group-hover/card:-translate-y-4">
+                    
+                    {/* EXPOSITOR (Si existe) */}
+                    {item.speaker && (
+                      <div className="flex items-center gap-2 mb-1.5 text-cyan-300">
+                        <User className="w-4 h-4 shrink-0" />
+                        <span className="text-[12px] md:text-[13px] font-bold tracking-wide">
+                          {item.speaker}
+                        </span>
+                      </div>
+                    )}
+
+                    {/* UBICACIÓN */}
+                    <div className="flex items-center gap-2 mb-3 text-cyan-400">
+                      <MapPin className="w-4 h-4 shrink-0" />
+                      <span className="text-[11px] md:text-[12px] font-bold uppercase tracking-[2px]">
+                        {item.location}
+                      </span>
+                    </div>
+
+                    {/* TÍTULO */}
+                    <h3 className="text-2xl md:text-3xl font-bold leading-tight tracking-tight">
+                      {item.title}
+                    </h3>
+                  </div>
+
+                  {/* SECCIÓN REVELABLE */}
+                  <div className="opacity-100 mt-4 max-h-[150px] md:max-h-0 md:group-hover/card:max-h-[300px] md:opacity-0 md:group-hover/card:opacity-100 md:mt-0 md:group-hover/card:mt-6 transition-all duration-700 ease-in-out border-t border-white/10 pt-4 md:pt-0 md:group-hover/card:pt-6">
+                    <p className="text-zinc-300 text-sm md:text-base leading-relaxed line-clamp-5 md:line-clamp-6 mb-6 font-medium">
+                      {item.text}
+                    </p>
+                    <div className="flex items-center justify-between group/link">
+                      <span className="text-[10px] md:text-[11px] font-black uppercase tracking-[2px] text-white/80">
+                        {isPdf ? 'Ver Documento Completo' : 'Ver en Facebook'}
+                      </span>
+                      <div className="bg-cyan-500 p-2 md:p-2.5 rounded-full transition-transform md:group-hover/link:translate-x-1">
+                        <ChevronRight className="w-5 h-5 text-white" />
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </a>
-          </div>
-        ))}
+              </a>
+            </div>
+          );
+        })}
       </div>
 
       {/* INDICADORES (DOTS) */}

@@ -7,12 +7,14 @@
  */
 export interface ProjectItem {
   id: number;
-  title: string; // Nombre principal
-  location: string; // Dónde ocurrió
+  title: string; // Nombre principal / Titulo de la ponencia
+  speaker?: string; // Nombre del ponente / expositor
+  location: string; // Dónde ocurrió / Sede
   category: string; // Fecha
-  text: string; // Descripción detallada
+  text: string; // Resumen / Descripción
   img: string; // Ruta de la imagen
-  link: string; // Enlace a Facebook
+  link: string; // Enlace a Facebook (Acciones)
+  pdfUrl?: string; // Ruta al PDF de la ponencia (CIRES)
   tagColor?: string; // Color del tag
 }
 
@@ -236,20 +238,107 @@ export const ACCIONES_DATA: ProjectItem[] = [
 ];
 
 /**
- * CONSTANTE PROYECTOS_DATA
- * Destinada a almacenar iniciativas de largo plazo o proyectos de investigación
- * específicos del CEDES-UNACH.
+ * CONSTANTE CIRES_DATA
+ * Información y eventos referentes al Coloquio Internacional sobre Restauración Ecológica y Sustentabilidad (CIRES 2026).
  */
-export const PROYECTOS_DATA: ProjectItem[] = [
+export const CIRES_DATA: ProjectItem[] = [
   {
     id: 1,
-    title: "Recuperación de Microcuencas",
-    location: "Tuxtla Gutiérrez, Chiapas",
-    category: "2025 - Actual",
-    tagColor: "bg-blue-500",
-    text: "Propuestas e iniciativas para impulsar desde el enfoque 'eco-céntrico', la recuperación y resignificación territorial en microcuencas inundables...",
-    img: "/proyecto-microcuencas.jpg",
-    link: "https://www.facebook.com/share/v/17PoPAPbG1/"
+    title: "Panel temático de intercambio de saberes sobre la problemática ambiental y su incidencia en el territorio",
+    speaker: "Moisés Silva Cervantes, Carolina Farrera Gutiérrez",
+    location: "ZOOMAT, Tuxtla Gtz",
+    category: "27/08/26",
+    tagColor: "bg-cyan-600",
+    text: "Facilitar el intercambio de visiones entre académicos, autoridades y actores locales para consensuar estrategias de conservación territorial basadas en un enfoque ecocéntrico y de corresponsabilidad con la naturaleza.",
+    img: "/19-May-26.jpg",
+    link: "#",
+    pdfUrl: "/ponencia1.pdf"
   },
-  // Agregar aquí mas proyectos...
+  {
+    id: 4,
+    title: "Cartografía de combustibles forestales mediante tecnología láser y teledetección en la Península Ibérica",
+    speaker: "Francisco Mauro",
+    location: "ZOOMAT, Tuxtla Gtz",
+    category: "27/08/26",
+    tagColor: "bg-cyan-600",
+    text: "Mediante muestreo destructivo, láser y Landsat, el estudio corrige en un 45% la sobreestimación de combustible fino de copa en tres pinos ibéricos. Los modelos predictivos (Random Forest) alcanzaron una precisión ($R^2$) de hasta el 88% en Pinus pinaster.",
+    img: "/19-May-26.jpg",
+    link: "#",
+    pdfUrl: "/ponencia4.pdf"
+  },
+  {
+    id: 5,
+    title: "Restauración ecológica productiva mediante ganadería regenerativa: una experiencia participativa en el sur de México",
+    speaker: "Julio César Gómez Alfaro",
+    location: "ZOOMAT, Tuxtla Gtz",
+    category: "27/08/26",
+    tagColor: "bg-cyan-600",
+    text: "La ganadería regenerativa en 1,457 ha de Chiapas restauró suelo, biodiversidad y agua mediante pastoreo planificado y silvopastoreo. La intervención incrementó la producción lechera un 24 % promedio, validando la restauración ecológica con fines productivos.",
+    img: "/19-May-26.jpg",
+    link: "#",
+    pdfUrl: "/ponencia5.pdf"
+  },
+  {
+    id: 6,
+    title: "Compostaje comunitario en Huatecalco, Morelos: Estrategia de mitigación y adaptación ante el cambio climático local ",
+    speaker: "Rodolfo Humberto Ramírez León",
+    location: "ZOOMAT, Tuxtla Gtz",
+    category: "27/08/26",
+    tagColor: "bg-cyan-600",
+    text: "Compostaje comunitario en Huatecalco, Morelos, transformó residuos en sustrato orgánico estable en 12 semanas, reduciendo la quema de basura ante el alza térmica.",
+    img: "/19-May-26.jpg",
+    link: "#",
+    pdfUrl: "/ponencia6.pdf"
+  },
+  {
+    id: 7,
+    title: "Estrategias comunitarias para el uso de recursos hídricos y atención de riesgos en Huitiupán, Chiapas",
+    speaker: "César Aramis Martínez Leina",
+    location: "ZOOMAT, Tuxtla Gtz",
+    category: "27/08/26",
+    tagColor: "bg-cyan-600",
+    text: "Mediante investigación-acción participativa, el estudio identificó estrategias comunitarias para la gestión del agua municipal. Concluye que se requiere una Gestión Integrada de Recursos Hídricos para mitigar riesgos y preservar el bienestar territorial.",
+    img: "/19-May-26.jpg",
+    link: "#",
+    pdfUrl: "/ponencia7.pdf"
+  },
+  {
+    id: 8,
+    title: "Estrategias de resiliencia ambiental en ciudades medias de América Latina",
+    speaker: "Yliana Mérida Martínez",
+    location: "ZOOMAT, Tuxtla Gtz",
+    category: "27/08/26",
+    tagColor: "bg-cyan-600",
+    text: "Ciudades medias latinoamericanas evalúan su resiliencia climática con indicadores multidimensionales, pero su gestión sigue desarticulada. El estudio concluye que se debe pasar de una respuesta reactiva a una planificación urbana prospectiva y adaptativa.",
+    img: "/19-May-26.jpg",
+    link: "#",
+    pdfUrl: "/ponencia8.pdf"
+  },
+  {
+    id: 9,
+    title: "Infraestructuras verdes para la disminución de las islas de calor",
+    speaker: "Jorge Rodríguez Hermenegildo",
+    location: "ZOOMAT, Tuxtla Gtz",
+    category: "27/08/26",
+    tagColor: "bg-cyan-600",
+    text: "La investigación expone el impacto negativo de las islas de calor urbano y propone la infraestructura verde (como techos y áreas verdes) como solución efectiva. Destaca casos globales exitosos que logran mitigar las altas temperaturas y beneficiar a la población.",
+    img: "/19-May-26.jpg",
+    link: "#",
+    pdfUrl: "/ponencia9.pdf"
+  },
+  {
+    id: 10,
+    title: "Evaluación espacial y por uso de suelo de las concentraciones de plomo en el Río Grande, Chiapas, México",
+    speaker: "Erick De Jesús Ralda Molina",
+    location: "ZOOMAT, Tuxtla Gtz",
+    category: "27/08/26",
+    tagColor: "bg-cyan-600",
+    text: "Un Modelo Lineal Mixto analizó plomo (Pb) en sedimentos del Río Grande de Comitán, Chiapas, según profundidad y uso de suelo. La profundidad resultó ser el factor determinante en la variación de Pb, demostrando la eficacia del modelo para la inferencia estadística.",
+    img: "/19-May-26.jpg",
+    link: "#",
+    pdfUrl: "/ponencia10.pdf"
+  }
 ];
+
+// Alias para mantener compatibilidad si algún componente secundario importa PROYECTOS_DATA
+export const PROYECTOS_DATA = CIRES_DATA;

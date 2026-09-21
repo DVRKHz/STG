@@ -12,16 +12,16 @@ export const ProjectsSection = () => {
         {/* ENCABEZADO */}
         <header className="text-left">
           <p className="text-lime-600 text-xl font-semibold tracking-[2px] leading-5 font-plus_jakarta_sans uppercase">
-            Líneas de Acción y Proyectos
+            Acciones y CIRES 2026
           </p>
         </header>
 
         {/* DESCRIPCIÓN */}
         <div className="font-plus_jakarta_sans md:pr-[26%]">
           <p className="text-zinc-700 leading-relaxed">
-            En esta sección podrás conocer las líneas de acción y proyectos que en 
-            <strong> Sustentabilidad, Territorio y Gobernanza </strong> 
-            ha llevado a cabo a lo largo de su historia...
+            En esta sección podrás conocer las acciones territoriales e información sobre el 
+            <strong> Coloquio Internacional Restauración Ecológica y Sustentabilidad (CIRES 2026) </strong> 
+            que en <strong>Sustentabilidad, Territorio y Gobernanza</strong> se han impulsado y llevado a cabo...
           </p>
         </div>
 
