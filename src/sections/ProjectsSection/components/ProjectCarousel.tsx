@@ -1,17 +1,18 @@
 import { useRef, useState, useEffect, MouseEvent } from 'react';
-import { ChevronLeft, ChevronRight, MapPin, User } from "lucide-react";
+import { ChevronLeft, ChevronRight, MapPin, User, Hash } from "lucide-react";
 
 export interface ProjectItem {
-  id: number;
-  title: string;
+  id: number; // Identificador único del proyecto
+  title: string; // Título del proyecto
   speaker?: string; // Campo opcional para el expositor
-  location: string;
-  category: string;
-  text: string;
-  img: string;
-  link: string;
-  pdfUrl?: string;
-  tagColor?: string;
+  code?: string;    // Código específico de la ponencia
+  location: string; // Ubicación de la acción o ponencia
+  category: string; // Categoría del proyecto
+  text: string; // Descripción breve del proyecto
+  img: string; // URL de la imagen representativa del proyecto
+  link: string; // Enlace externo o '#' si no hay enlace
+  pdfUrl?: string; // URL del PDF asociado al proyecto (opcional)
+  tagColor?: string; // Color de fondo del tag/categoría (opcional)
 }
 
 interface Props {
@@ -103,6 +104,10 @@ export const ProjectCarousel = ({ items = [], onItemClick }: Props) => {
       >
         {items.map((item) => {
           const isPdf = Boolean(item.pdfUrl);
+          const displayCode = item.code || (item.speaker ? item.location : null);
+          
+          // Ocultar la categoría/fecha para las tarjetas que pertenecen a CIRES (por ponente o código)
+          const hideTag = Boolean(item.speaker || item.code || item.category.includes('/'));
 
           return (
             <div key={item.id} className="shrink-0 w-[85vw] sm:w-[50vw] md:w-[450px] snap-center group/card">
@@ -113,12 +118,14 @@ export const ProjectCarousel = ({ items = [], onItemClick }: Props) => {
                 onClick={(e) => handleCardClick(e, item)}
                 className="block relative aspect-[3/4] overflow-hidden rounded-[2.5rem] bg-zinc-100 shadow-md transition-all duration-500 md:hover:shadow-2xl md:hover:shadow-cyan-900/20 cursor-pointer"
               >
-                {/* TAG / CATEGORÍA */}
-                <div className="absolute top-6 left-6 z-20">
-                  <span className={`${item.tagColor || 'bg-cyan-600/90'} backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-widest px-4 py-2 rounded-full border border-white/20 shadow-sm`}>
-                    {item.category}
-                  </span>
-                </div>
+                {/* TAG / CATEGORÍA (Se muestra únicamente en Acciones u otros ítems generales) */}
+                {!hideTag && (
+                  <div className="absolute top-6 left-6 z-20">
+                    <span className={`${item.tagColor || 'bg-cyan-600/90'} backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-widest px-4 py-2 rounded-full border border-white/20 shadow-sm`}>
+                      {item.category}
+                    </span>
+                  </div>
+                )}
 
                 {/* IMAGEN DE FONDO */}
                 <img
@@ -131,11 +138,10 @@ export const ProjectCarousel = ({ items = [], onItemClick }: Props) => {
                 {/* DEGRADADO */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent transition-opacity duration-500" />
 
-                {/* CONTENIDO DE TEXTO */}
-                <div className="absolute inset-0 p-8 md:p-10 flex flex-col justify-end text-white">
-                  <div className="transition-transform duration-500 ease-out md:group-hover/card:-translate-y-4">
-                    
-                    {/* EXPOSITOR (Si existe) */}
+                {/* CONTENIDO PRINCIPAL */}
+                <div className="absolute inset-0 p-8 md:p-10 flex flex-col justify-end text-white z-10 md:group-hover/card:opacity-0 transition-opacity duration-300">
+                  <div>
+                    {/* EXPOSITOR */}
                     {item.speaker && (
                       <div className="flex items-center gap-2 mb-1.5 text-cyan-300">
                         <User className="w-4 h-4 shrink-0" />
@@ -145,35 +151,56 @@ export const ProjectCarousel = ({ items = [], onItemClick }: Props) => {
                       </div>
                     )}
 
-                    {/* UBICACIÓN */}
+                    {/* CÓDIGO O UBICACIÓN */}
                     <div className="flex items-center gap-2 mb-3 text-cyan-400">
-                      <MapPin className="w-4 h-4 shrink-0" />
-                      <span className="text-[11px] md:text-[12px] font-bold uppercase tracking-[2px]">
-                        {item.location}
-                      </span>
+                      {displayCode ? (
+                        <>
+                          <Hash className="w-4 h-4 shrink-0" />
+                          <span className="text-[11px] md:text-[12px] font-bold uppercase tracking-[2px]">
+                            {displayCode}
+                          </span>
+                        </>
+                      ) : (
+                        <>
+                          <MapPin className="w-4 h-4 shrink-0" />
+                          <span className="text-[11px] md:text-[12px] font-bold uppercase tracking-[2px]">
+                            {item.location}
+                          </span>
+                        </>
+                      )}
                     </div>
 
-                    {/* TÍTULO */}
-                    <h3 className="text-2xl md:text-3xl font-bold leading-tight tracking-tight">
+                    {/* TÍTULO COMPLETO (Sin recortes por line-clamp) */}
+                    <h3 className="text-xl sm:text-2xl font-bold leading-snug tracking-tight">
                       {item.title}
                     </h3>
                   </div>
+                </div>
 
-                  {/* SECCIÓN REVELABLE */}
-                  <div className="opacity-100 mt-4 max-h-[150px] md:max-h-0 md:group-hover/card:max-h-[300px] md:opacity-0 md:group-hover/card:opacity-100 md:mt-0 md:group-hover/card:mt-6 transition-all duration-700 ease-in-out border-t border-white/10 pt-4 md:pt-0 md:group-hover/card:pt-6">
-                    <p className="text-zinc-300 text-sm md:text-base leading-relaxed line-clamp-5 md:line-clamp-6 mb-6 font-medium">
+                {/* CAPA DE DESCRIPCIÓN (Solo visible al hacer Hover / Touch) */}
+                <div className="absolute inset-0 p-8 md:p-10 bg-zinc-950/90 backdrop-blur-sm flex flex-col justify-between text-white opacity-0 md:group-hover/card:opacity-100 transition-opacity duration-300 z-20">
+                  <div className="pt-6 overflow-y-auto no-scrollbar max-h-[75%]">
+                    <span className="text-cyan-400 text-xs font-bold uppercase tracking-widest block mb-2">
+                      {displayCode ? `Ponencia: ${displayCode}` : item.location}
+                    </span>
+                    <h4 className="text-base sm:text-lg font-bold leading-snug mb-3 text-white">
+                      {item.title}
+                    </h4>
+                    <p className="text-zinc-300 text-xs sm:text-sm leading-relaxed font-medium">
                       {item.text}
                     </p>
-                    <div className="flex items-center justify-between group/link">
-                      <span className="text-[10px] md:text-[11px] font-black uppercase tracking-[2px] text-white/80">
-                        {isPdf ? 'Ver Documento Completo' : 'Ver en Facebook'}
-                      </span>
-                      <div className="bg-cyan-500 p-2 md:p-2.5 rounded-full transition-transform md:group-hover/link:translate-x-1">
-                        <ChevronRight className="w-5 h-5 text-white" />
-                      </div>
+                  </div>
+
+                  <div className="flex items-center justify-between border-t border-white/10 pt-4 group/link shrink-0">
+                    <span className="text-[10px] md:text-[11px] font-black uppercase tracking-[2px] text-white/80">
+                      {isPdf ? 'Ver Documento Completo' : 'Ver en Facebook'}
+                    </span>
+                    <div className="bg-cyan-500 p-2 md:p-2.5 rounded-full transition-transform md:group-hover/link:translate-x-1">
+                      <ChevronRight className="w-5 h-5 text-white" />
                     </div>
                   </div>
                 </div>
+
               </a>
             </div>
           );
