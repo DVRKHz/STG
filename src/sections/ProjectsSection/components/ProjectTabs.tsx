@@ -55,10 +55,10 @@ export const ProjectTabs = () => {
               ? 'Nuestras Acciones' 
               : 'Coloquio Internacional Restauración Ecológica y Sustentabilidad'}
           </h2>
-          <p className="text-gray-500 mt-2">
+          <p className="text-gray-500 mt-2 whitespace-pre-line leading-relaxed">
             {activeTab === 'acciones' 
-              ? 'Iniciativas vecinales y compromiso ambiental.' 
-              : 'Información y ponencias del CIRES 2026. Haz clic en una tarjeta para consultar el documento.'}
+              ? 'En esta sección se pueden conocer algunas de las acciones relevantes que, sobre el territorio, realiza la Red Sustentabilidad, Territorio y Gobernanza (STG). Aquí sólo se presenta una foto alusiva a cada acción: al pulsar sobre una Acción, el sistema abre la ventana de Facebook donde se encuentra albergada la nota completa.' 
+              : 'A través de conferencias magistrales, ponencias organizadas en paneles, talleres y actividades culturales; el CIRES 2026 tuvo como propósito propiciar la reflexión, análisis e intercambio de experiencias entre investigadores, especialistas, estudiantes y actores comunitarios en torno a los procesos de restauración ecológica, sustentabilidad y construcción colectiva del conocimiento para la resignificación territorial.\n\nDurante los días 26, 27, 28 y 29 de agosto de 2026, en Instalaciones de Zoológico Miguel Álvarez del Toro (ZOOMAT) de Tuxtla Gutiérrez, Chiapas, se realizaron las actividades de Coloquio: organizadas en tres ejes temáticos se presentaron 3 conferencias magistrales, 8 ponencias magistrales de área, un total de 26 ponencias de mesa, se realizaron 2 talleres y en el último día se visitó una UMA en el municipio de Berriozábal, Chiapas.\n\nEn el carrusel de abajo puede consultar el contenido de las ponencias.'}
           </p>
         </div>
 
