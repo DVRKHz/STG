@@ -63,7 +63,7 @@ export const Contacto = () => {
     if (file) dataToSend.append("adjunto", file);
 
     try {
-      const response = await fetch("https://formspree.io/f/xqeypdbr", {
+      const response = await fetch("https://formspree.io/f/xoevrpvz", {
         method: "POST",
         body: dataToSend,
         headers: { "Accept": "application/json" }
