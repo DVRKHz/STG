@@ -17,6 +17,15 @@ export const InformacionRelevante = () => {
 
   const publicacionesRecientes = [
     {
+      title: "'El Niño' traerá más olas de calor y mala calidad del aire a CDMX en 2027, alerta la UNAM",
+      date: "17 de Septiembre de 2026",
+      desc: "El fenómeno de El Niño podría generar condiciones más secas en buena parte del centro de México durante la primavera de 2027, con menos lluvias, riesgo de sequía, incremento de los incendios y más días con mala calidad del aire, de acuerdo con especialistas de la Universidad Nacional Autónoma de México (UNAM).",
+      location: "México",
+      tag: "Noticia",
+      url: "https://www.elfinanciero.com.mx/cdmx/2026/09/17/el-nino-traera-mas-olas-de-calor-y-mala-calidad-del-aire-a-cdmx-en-2027-alerta-la-unam/",
+      imageUrl: "https://www.elfinanciero.com.mx/resizer/v2/PVYSBLKW7VATXGXYUEGXFKHAN4.jpeg?smart=true&auth=3f5f47d1ac3fb3961d44318a561a8ceb75c47c20467e322e7ccc30f91e68ca72&width=1200&height=675&quality=85"
+    },
+    {
       title: "Invertir hoy para obtener beneficios ambientales mañana",
       date: "30 de Julio de 2026",
       desc: "La Ley General de Economía Circular (LGEC) busca articular políticas integrales de alcance nacional. El decreto implica retos económicos, tecnológicos y sociales que deberán enfrentarse de manera gradual, consideró Karina Caballero Güendulain, coordinadora de la Especialización en Economía Ambiental y Ecológica de la Facultad de Economía (FE) de la UNAM.",
