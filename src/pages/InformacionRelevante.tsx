@@ -17,6 +17,15 @@ export const InformacionRelevante = () => {
 
   const publicacionesRecientes = [
     {
+      title: "Calentamiento en México se acelera: pasó de 3.4 a 5.5 grados por siglo, advierte la UNAM",
+      date: "15 de Octubre de 2026",
+      desc: "El aumento de la temperatura reduce el margen disponible para que el país haga frente a los impactos climáticos, advierte Francisco Estrada, coordinador del Programa de Investigación en Cambio Climático de la Universidad Nacional Autónoma de México.",
+      location: "México",
+      tag: "Opinión",
+      url: "https://www.cronica.com.mx/nacional/2026/10/15/calentamiento-en-mexico-se-acelera-paso-de-34-a-55-grados-por-siglo-advierte-la-unam/",
+      imageUrl: "https://ceiba.org.mx/storage/app/uploads/public/6ad/280/9d3/6ad2809d3f9e6945002533.jpg"
+    },
+    {
       title: "'El Niño' traerá más olas de calor y mala calidad del aire a CDMX en 2027, alerta la UNAM",
       date: "17 de Septiembre de 2026",
       desc: "El fenómeno de El Niño podría generar condiciones más secas en buena parte del centro de México durante la primavera de 2027, con menos lluvias, riesgo de sequía, incremento de los incendios y más días con mala calidad del aire, de acuerdo con especialistas de la Universidad Nacional Autónoma de México (UNAM).",
