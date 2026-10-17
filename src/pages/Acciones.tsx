@@ -4,17 +4,19 @@ import { FooterSection } from "@/sections/FooterSection";
 
 export const Acciones = () => {
   return (
-    // Contenedor principal con altura mínima de pantalla, fondo blanco y fuente personalizada
-    <div className="min-h-screen bg-white text-zinc-800 font-plus_jakarta_sans">
+    <div className="min-h-screen bg-white text-zinc-800 font-plus_jakarta_sans selection:bg-cyan-100 scroll-smooth">
       
-      {/* 1. Navegación superior */}
+      {/* 1. Navegación Superior */}
       <Navbar />
       
-      <section className="relative h-[50vh] md:h-[70vh] flex items-center justify-center overflow-hidden group">
-  
-        {/* Imagen de fondo con escala persistente al hacer hover en la sección */}
+      {/* 2. Hero Section Portada de Acciones */}
+      <section 
+        className="relative h-[45vh] md:h-[60vh] flex items-center justify-center overflow-hidden group"
+        aria-label="Portada de Acciones y Proyectos"
+      >
+        {/* Imagen de fondo con Zoom sutil en Hover */}
         <div 
-          className="absolute inset-0 bg-gray-900 transition-transform duration-[2000ms] ease-out group-hover:scale-110 blur-sm"
+          className="absolute inset-0 bg-gray-900 transition-transform duration-[2000ms] ease-out group-hover:scale-105 blur-[2px]"
           style={{
             backgroundImage: "url('/acciones-hero.png')",
             backgroundPosition: 'center',
@@ -22,33 +24,35 @@ export const Acciones = () => {
           }}
           aria-hidden="true"
         />
-  
-        {/* Overlay dinámico: Más oscuro abajo para fundirse con la siguiente sección */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60" aria-hidden="true" />
 
-        {/* Contenido con animaciones de entrada */}
+        {/* Overlay con gradiente para garantizar contraste WCAG AA del texto */}
+        <div 
+          className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/75" 
+          aria-hidden="true" 
+        />
+
+        {/* Contenido con jerarquía tipográfica optimizada */}
         <div className="relative z-10 container mx-auto px-6 text-center">
-    
-          {/* Adorno visual: Una línea sutil que refuerza la marca */}
-          <div className="w-16 h-1 bg-blue-500 mx-auto mb-6 rounded-full animate-pulse" />
+          {/* Indicador visual de acento de marca */}
+          <div className="w-12 h-1 bg-cyan-400 mx-auto mb-4 rounded-full" />
 
-          <h1 className="text-white text-5xl md:text-6xl font-extrabold mb-6 tracking-tight drop-shadow-2xl">
-            Acciones
+          <h1 className="text-white text-4xl md:text-6xl font-extrabold mb-4 tracking-tight drop-shadow-xl">
+            Acciones e Iniciativas
           </h1>
-    
-          <p className="text-white/80 text-lg md:text-2xl max-w-2xl mx-auto leading-relaxed font-light italic">
-            "Observa los cambios que hemos hecho"
+
+          <p className="text-zinc-200 text-base md:text-xl max-w-2xl mx-auto leading-relaxed font-light italic">
+            "Conoce las iniciativas, proyectos de investigación y proyectos de impacto socioambiental que lideramos"
           </p>
         </div>
       </section>
 
-      {/* 3. Main Content: Sección de Proyectos */}
-      {/* scroll-mt-20: Evita que al usar un enlace al ID #pro, el Navbar (si es fijo) tape el inicio de la sección */}
-      <main id="pro" className="scroll-mt-20">
+      {/* 3. Main Content: Sección de Proyectos e Impacto */}
+      {/* scroll-mt-24 garantiza que la Navbar fija no oculte el título al navegar a #pro */}
+      <main id="pro" className="scroll-mt-24 container mx-auto px-4 sm:px-6 py-12 md:py-16 max-w-7xl">
         <ProjectsSection />
       </main>
 
-      {/* 4. Sección del Footer */}
+      {/* 4. Footer */}
       <FooterSection />
       
     </div>

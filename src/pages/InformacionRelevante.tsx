@@ -1,19 +1,36 @@
-import { useCallback } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
-import Autoplay from 'embla-carousel-autoplay'; // 1. Importamos el plugin
+import Autoplay from 'embla-carousel-autoplay';
 import { Navbar } from "@/sections/Navbar";
 import { FooterSection } from "@/sections/FooterSection";
 
 export const InformacionRelevante = () => {
-  // 2. Configuramos el hook con el plugin de Autoplay
-  // delay: 4000 (4 segundos), stopOnInteraction: false permite que siga después de un click manual
+  // Estado para gestionar el punto activo del carrusel
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
+
+  // Configuración con pausa al hacer hover para no interrumpir la lectura del usuario
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { loop: true, align: 'start' }, 
-    [Autoplay({ delay: 4000, stopOnInteraction: false })]
+    [Autoplay({ delay: 5000, stopOnInteraction: false, stopOnMouseEnter: true })]
   );
 
   const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
+  const scrollTo = useCallback((index: number) => emblaApi && emblaApi.scrollTo(index), [emblaApi]);
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    onSelect();
+    setScrollSnaps(emblaApi.scrollSnapList());
+    emblaApi.on('select', onSelect);
+    emblaApi.on('reInit', onSelect);
+  }, [emblaApi, onSelect]);
 
   const publicacionesRecientes = [
     {
@@ -148,16 +165,16 @@ export const InformacionRelevante = () => {
     {
       title: "Por qué la economía circular depende de todos nosotros",
       date: "15 de Diciembre de 2025",
-      desc: "La Comisión Europea está redactando en estos momentos la Ley de Economía Circular, que prevé aprobar antes de que finalice 2026",
+      desc: "La Comisión Europea está redactando la Ley de Economía Circular...",
       location: "Europa",
       tag: "Opinión",
       url: "https://www.expansion.com/opinion/2025/12/15/69401a07468aeb88068b456e.html",
       imageUrl: "https://ceiba.org.mx/storage/app/uploads/public/694/08f/770/69408f770453e314462884.jpg"
     },
     {
-      title: "En 2024, el Producto Interno Neto Ecológico fue de 25.7 billones de pesos: representó 76.6% del PIB a precios de mercado",
+      title: "En 2024, el Producto Interno Neto Ecológico fue de 25.7 billones de pesos",
       date: "01 de Diciembre de 2025",
-      desc: "El Instituto Nacional de Estadística y Geografía (INEGI) presenta los resultados de las Cuentas Económicas y Ecológicas de México (CEEM) 2024",
+      desc: "El Instituto Nacional de Estadística y Geografía (INEGI) presenta los resultados...",
       location: "México",
       tag: "Noticia",
       url: "https://www.inegi.org.mx/app/saladeprensa/noticia/10432",
@@ -168,13 +185,11 @@ export const InformacionRelevante = () => {
   return (
     <div className="min-h-screen bg-white text-zinc-800 font-plus_jakarta_sans selection:bg-cyan-100">
       <Navbar />
-      
-      {/* SECCIÓN HERO: Información Relevante */}
-      <section className="relative h-[50vh] md:h-[70vh] flex items-center justify-center overflow-hidden group">
-  
-        {/* Imagen de fondo con escala cinematográfica controlada */}
+
+      {/* HERO SECTION */}
+      <section className="relative h-[45vh] md:h-[60vh] flex items-center justify-center overflow-hidden group">
         <div 
-          className="absolute inset-0 bg-gray-800 transition-transform duration-[2000ms] ease-out group-hover:scale-110 blur-sm"
+          className="absolute inset-0 bg-gray-800 transition-transform duration-[2000ms] ease-out group-hover:scale-105 blur-[2px]"
           style={{
             backgroundImage: "url('/informacionrelevante-hero.png')",
             backgroundPosition: 'center',
@@ -182,66 +197,85 @@ export const InformacionRelevante = () => {
           }}
           aria-hidden="true"
         />
-  
-        {/* Overlay dinámico */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60" aria-hidden="true" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/70" aria-hidden="true" />
 
-        {/* Contenido HERO */}
         <div className="relative z-10 container mx-auto px-6 text-center">
-          <div className="w-16 h-1 bg-blue-500 mx-auto mb-6 rounded-full animate-pulse" />
-          <h1 className="text-white text-5xl md:text-6xl font-extrabold mb-6 tracking-tight drop-shadow-2xl">
+          <div className="w-12 h-1 bg-cyan-400 mx-auto mb-4 rounded-full" />
+          <h1 className="text-white text-4xl md:text-6xl font-extrabold mb-4 tracking-tight drop-shadow-lg">
             Información Relevante
           </h1>
-          <p className="text-white/80 text-lg md:text-2xl max-w-2xl mx-auto leading-relaxed font-light italic">
+          <p className="text-zinc-200 text-lg md:text-xl max-w-xl mx-auto font-light italic">
             "Entérate de la información más precisa"
           </p>
         </div>
       </section>
 
-      <main className="container mx-auto px-6 py-12 md:py-20 max-w-5xl space-y-20">
+      <main className="container mx-auto px-4 sm:px-6 py-12 md:py-16 max-w-6xl space-y-16">
         
-        {/* SECCIÓN: CARRUSEL DE RECIENTES */}
-        <section className="container mx-auto px-6">
-          <div className="flex items-end justify-between mb-10">
-            <div className="space-y-2">
-              <span className="text-cyan-600 font-bold tracking-[3px] uppercase text-xs">Lo más nuevo</span>
-              <h2 className="text-3xl md:text-4xl font-bold text-zinc-900">Publicaciones Recientes</h2>
+        {/* CARRUSEL DE RECIENTES */}
+        <section className="space-y-6">
+          <div className="flex items-end justify-between border-b border-zinc-100 pb-4">
+            <div className="space-y-1">
+              <span className="text-cyan-600 font-bold tracking-widest uppercase text-xs">Lo más nuevo</span>
+              <h2 className="text-2xl md:text-3xl font-extrabold text-zinc-900">Publicaciones Recientes</h2>
             </div>
+
             {/* Controles del Carrusel */}
-            <div className="flex gap-2">
-              <button onClick={scrollPrev} className="p-3 rounded-full border border-zinc-200 hover:bg-zinc-50 hover:border-cyan-500 transition-all text-zinc-400 hover:text-cyan-600">
+            <div className="flex items-center gap-2">
+              <button 
+                onClick={scrollPrev} 
+                aria-label="Artículo anterior"
+                className="p-2.5 rounded-full border border-zinc-200 hover:bg-zinc-100 hover:border-zinc-300 transition-all text-zinc-600 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+              >
                 ←
               </button>
-              <button onClick={scrollNext} className="p-3 rounded-full border border-zinc-200 hover:bg-zinc-50 hover:border-cyan-500 transition-all text-zinc-400 hover:text-cyan-600">
+              <button 
+                onClick={scrollNext} 
+                aria-label="Siguiente artículo"
+                className="p-2.5 rounded-full border border-zinc-200 hover:bg-zinc-100 hover:border-zinc-300 transition-all text-zinc-600 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+              >
                 →
               </button>
             </div>
           </div>
 
-          <div className="overflow-hidden" ref={emblaRef}>
-            <div className="flex gap-8">
+          {/* Slider */}
+          <div className="overflow-hidden cursor-grab active:cursor-grabbing rounded-3xl" ref={emblaRef}>
+            <div className="flex -ml-4">
               {publicacionesRecientes.map((post, index) => (
-                <div key={index} className="flex-[0_0_100%] md:flex-[0_0_100%] min-w-0">
+                <div key={index} className="pl-4 flex-[0_0_100%] min-w-0">
                   <WideFeaturedCard {...post} />
                 </div>
               ))}
             </div>
           </div>
+
+          {/* Indicadores de Páginas (Dots) para feedback de UX */}
+          <div className="flex justify-center items-center gap-2 pt-2">
+            {scrollSnaps.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => scrollTo(idx)}
+                aria-label={`Ir al elemento ${idx + 1}`}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  idx === selectedIndex ? 'w-8 bg-cyan-600' : 'w-2 bg-zinc-300 hover:bg-zinc-400'
+                }`}
+              />
+            ))}
+          </div>
         </section>
 
-        {/* SECCIÓN: HISTÓRICO */}
-        <section className="bg-zinc-50 py-20 border-y border-zinc-100">
-          <div className="container mx-auto px-6">
-            <div className="flex items-center gap-4 mb-12">
-              <h2 className="text-lime-700 text-sm font-bold tracking-[3px] uppercase shrink-0">Archivo Histórico</h2>
-              <div className="h-[1px] w-full bg-lime-200"></div>
-            </div>
-            
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
-              {historico.map((post, index) => (
-                <HistoryCard key={index} {...post} />
-              ))}
-            </div>
+        {/* ARCHIVO HISTÓRICO */}
+        <section className="space-y-6 pt-6">
+          <div className="flex items-center gap-4">
+            <h2 className="text-zinc-900 text-xl font-bold tracking-tight shrink-0">Archivo Histórico</h2>
+            <div className="h-[1px] w-full bg-zinc-200"></div>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {historico.map((post, index) => (
+              <HistoryCard key={index} {...post} />
+            ))}
           </div>
         </section>
       </main>
@@ -256,53 +290,42 @@ const WideFeaturedCard = ({ title, date, desc, location, tag, url, imageUrl }: {
     href={url} 
     target="_blank" 
     rel="noopener noreferrer" 
-    className="group relative flex flex-col md:flex-row h-full min-h-[400px] lg:min-h-[450px] 
-               rounded-3xl overflow-hidden border border-zinc-100/50 
-               shadow-lg shadow-[inset_0_10px_30px_rgba(0,0,0,0.05)] 
-               hover:shadow-2xl hover:-translate-y-1.5 
-               transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] 
-               cursor-pointer isolate transform-gpu"
-    style={{ maskImage: "-webkit-radial-gradient(white, black)" }} 
+    className="group relative flex flex-col justify-end h-[420px] md:h-[480px] w-full rounded-3xl overflow-hidden border border-zinc-200/80 shadow-md hover:shadow-xl transition-all duration-500"
   >
-    <div className="absolute inset-0 z-0">
-      <img 
-        src={imageUrl} 
-        alt={title} 
-        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)]" 
-      />
-      <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black/20 via-black/70 to-black/95 z-10" />
-    </div>
+    {/* Imagen de fondo con Zoom al hacer Hover */}
+    <img 
+      src={imageUrl} 
+      alt={title} 
+      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" 
+    />
 
-    <div className="absolute top-6 left-6 z-30 bg-cyan-600/90 backdrop-blur-sm text-white px-4 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-widest shadow-lg">
+    {/* Sombra/Gradiente para garantizar contraste del texto */}
+    <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/10" />
+
+    {/* Etiqueta / Tag Superior */}
+    <div className="absolute top-6 left-6 z-10 bg-cyan-600 text-white px-3.5 py-1 rounded-full text-xs font-semibold tracking-wider shadow">
       {tag}
     </div>
 
-    <div className="relative z-20 p-8 md:p-14 lg:p-16 flex flex-col justify-end h-full w-full md:w-3/5 lg:w-2/3 ml-auto text-white">
-      <div className="space-y-4 lg:space-y-6">
-        <div className="flex items-center gap-3">
-          <span className="h-[1px] w-8 bg-cyan-400"></span>
-          <span className="text-xs text-zinc-300 font-bold uppercase tracking-wider">{date}</span>
-        </div>
-        
-        <h3 className="text-2xl md:text-3xl lg:text-4xl font-extrabold group-hover:text-cyan-300 transition-colors leading-[1.1] tracking-tight">
-          {title}
-        </h3>
-        
-        <p className="text-zinc-100 text-base lg:text-lg leading-relaxed line-clamp-4 md:line-clamp-5">
-          {desc}
-        </p>
+    {/* Contenido Texto */}
+    <div className="relative z-10 p-6 md:p-10 flex flex-col justify-end space-y-3 text-white">
+      <div className="flex items-center gap-2 text-xs text-cyan-300 font-medium">
+        <span>{date}</span>
+        <span>•</span>
+        <span>📍 {location}</span>
       </div>
+
+      <h3 className="text-xl md:text-3xl font-bold leading-snug group-hover:text-cyan-200 transition-colors line-clamp-2">
+        {title}
+      </h3>
       
-      <div className="pt-6 mt-8 lg:mt-10 border-t border-white/10 flex justify-between items-center gap-4">
-        <div className="flex gap-4">
-          <span className="text-sm font-medium text-zinc-300 flex items-center gap-2">
-            <span className="text-base">📍</span> {location}
-          </span>
-        </div>
-        <div className="flex items-center gap-2 text-cyan-300 font-bold group-hover:gap-4 transition-all shrink-0">
-          <span className="hidden md:inline">Leer artículo completo</span>
-          <span className="text-2xl">→</span>
-        </div>
+      <p className="text-zinc-300 text-sm md:text-base leading-relaxed line-clamp-2 font-normal">
+        {desc}
+      </p>
+
+      <div className="pt-2 flex items-center gap-2 text-cyan-300 font-semibold text-sm group-hover:translate-x-1 transition-transform">
+        <span>Leer artículo completo</span>
+        <span>→</span>
       </div>
     </div>
   </a>
@@ -313,46 +336,37 @@ const HistoryCard = ({ title, date, location, url, imageUrl, tag }: { title: str
     href={url} 
     target="_blank" 
     rel="noopener noreferrer"
-    className="group relative flex gap-5 p-5 bg-white/50 backdrop-blur-sm border border-zinc-100 rounded-2xl 
-               hover:bg-white hover:border-cyan-200 hover:shadow-xl hover:-translate-y-1 
-               transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] 
-               overflow-hidden isolate transform-gpu"
-    style={{ maskImage: "-webkit-radial-gradient(white, black)" }}
+    className="group flex gap-4 p-4 bg-white border border-zinc-200/80 rounded-2xl hover:border-cyan-300 hover:shadow-lg transition-all duration-300"
   >
-    <div className="relative w-24 h-24 md:w-32 md:h-32 shrink-0 overflow-hidden rounded-xl bg-zinc-100 self-start">
+    <div className="relative w-28 h-28 shrink-0 overflow-hidden rounded-xl bg-zinc-100">
       <img 
         src={imageUrl} 
-        alt="" 
-        className="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)]" 
+        alt={title} 
+        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
       />
       {tag && (
-        <div className="absolute top-2 left-2 bg-black/60 backdrop-blur-md text-[8px] text-white px-2 py-0.5 rounded uppercase font-bold tracking-tighter">
+        <span className="absolute top-1.5 left-1.5 bg-black/70 text-[9px] text-white px-1.5 py-0.5 rounded uppercase font-bold tracking-wider backdrop-blur-xs">
           {tag}
-        </div>
+        </span>
       )}
     </div>
 
-    <div className="flex flex-col flex-grow min-w-0">
-      <div className="flex items-center gap-2 mb-2">
-        <span className="text-[10px] font-bold text-cyan-600 bg-cyan-50 px-2 py-0.5 rounded-md uppercase tracking-wider">
+    <div className="flex flex-col justify-between flex-grow min-w-0">
+      <div className="space-y-1">
+        <span className="text-[11px] font-semibold text-cyan-700 uppercase tracking-wide">
           {date}
         </span>
+        <h4 className="font-bold text-zinc-800 group-hover:text-cyan-600 transition-colors text-sm line-clamp-2 leading-snug">
+          {title}
+        </h4>
       </div>
-      
-      <h4 className="font-bold text-zinc-800 group-hover:text-cyan-600 transition-colors text-sm md:text-base leading-snug mb-4">
-        {title}
-      </h4>
 
-      <div className="flex items-center justify-between mt-auto pt-2">
-        <span className="text-[10px] text-zinc-400 font-medium flex items-center gap-1">
-          📍 {location}
-        </span>
-        <span className="text-cyan-500 opacity-0 group-hover:opacity-100 group-hover:translate-x-2 transition-all duration-500 text-xs font-bold flex items-center gap-1">
-          Leer <span className="text-lg">→</span>
+      <div className="flex items-center justify-between mt-2 pt-1 border-t border-zinc-100 text-xs text-zinc-500">
+        <span>📍 {location}</span>
+        <span className="text-cyan-600 font-bold group-hover:translate-x-1 transition-transform">
+          Leer →
         </span>
       </div>
     </div>
-
-    <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-cyan-500 group-hover:w-full transition-all duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)]" />
   </a>
 );
