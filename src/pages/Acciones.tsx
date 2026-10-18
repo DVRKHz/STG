@@ -4,7 +4,7 @@ import { FooterSection } from "@/sections/FooterSection";
 
 export const Acciones = () => {
   return (
-    <div className="min-h-screen bg-white text-zinc-800 font-plus_jakarta_sans selection:bg-cyan-100 scroll-smooth">
+    <div className="min-h-screen bg-background text-foreground font-plus_jakarta_sans selection:bg-cyan-100 scroll-smooth">
       
       {/* 1. Navegación Superior */}
       <Navbar />

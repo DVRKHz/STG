@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export const FooterSection = () => {
   return (
@@ -122,18 +123,23 @@ interface LinkProps {
   children: React.ReactNode;
 }
 
-const FooterLink = ({ href, external, children }: LinkProps) => (
-  <li>
-    <a 
-      href={href} 
-      target={external ? "_blank" : "_self"}
-      rel={external ? "noopener noreferrer" : undefined}
-      className="text-zinc-400 text-xs font-normal hover:text-cyan-300 hover:translate-x-1 inline-flex items-center transition-all duration-200 focus:outline-none focus:text-cyan-300"
-    >
-      {children}
-    </a>
-  </li>
-);
+const FooterLink = ({ href, external, children }: LinkProps) => {
+  const className = "text-zinc-400 text-xs font-normal hover:text-cyan-300 hover:translate-x-1 inline-flex items-center transition-all duration-200 focus:outline-none focus:text-cyan-300";
+
+  return (
+    <li>
+      {external ? (
+        <a href={href} target="_blank" rel="noopener noreferrer" className={className}>
+          {children}
+        </a>
+      ) : (
+        <Link to={href} className={className}>
+          {children}
+        </Link>
+      )}
+    </li>
+  );
+};
 
 const SocialIcon = ({ href, src, label }: { href: string; src: string; label: string }) => (
   <a 

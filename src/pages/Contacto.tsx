@@ -122,7 +122,7 @@ export const Contacto = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white text-zinc-800 font-plus_jakarta_sans selection:bg-cyan-100">
+    <div className="min-h-screen bg-background text-foreground font-plus_jakarta_sans selection:bg-cyan-100">
       <Navbar />
       
       {/* Hero Section */}

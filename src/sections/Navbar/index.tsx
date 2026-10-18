@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { NavbarLogo } from "@/sections/Navbar/components/NavbarLogo";
 import { DesktopMenu } from "@/sections/Navbar/components/DesktopMenu";
 import { MobileMenu } from "@/sections/Navbar/components/MobileMenu";
+import { ThemeToggle } from "@/sections/Navbar/components/ThemeToggle";
 
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -41,9 +42,12 @@ export const Navbar = () => {
         </div>
 
         {/* Menú de Navegación Desktop / Mobile */}
-        <div className="flex items-center">
+        <div className="flex shrink-0 items-center gap-1 lg:gap-2">
           <DesktopMenu isScrolled={isScrolled} />
-          
+          <div className="border-l border-neutral-200/80 pl-1 md:ml-1 md:pl-2">
+            <ThemeToggle />
+          </div>
+
           <div className="md:hidden ml-3">
             <MobileMenu />
           </div>

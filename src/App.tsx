@@ -1,4 +1,5 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import { QuienesSomos } from "@/pages/QuienesSomos";
 import { Acciones } from "@/pages/Acciones";
 import { InformacionRelevante } from "@/pages/InformacionRelevante";
@@ -8,6 +9,7 @@ export const App = () => {
   return (
     // Router (BrowserRouter): El componente padre que habilita la navegación por URL.
     <Router>
+      <ScrollToHash />
       {/* Routes: Contenedor que analiza la URL actual y renderiza solo la coincidencia más cercana. */}
       <Routes>
         
@@ -42,4 +44,23 @@ export const App = () => {
       </Routes>
     </Router>
   );
+};
+
+const ScrollToHash = () => {
+  const { pathname, hash } = useLocation();
+
+  useEffect(() => {
+    if (!hash) return;
+
+    const frame = window.requestAnimationFrame(() => {
+      document.getElementById(decodeURIComponent(hash.slice(1)))?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    });
+
+    return () => window.cancelAnimationFrame(frame);
+  }, [pathname, hash]);
+
+  return null;
 };

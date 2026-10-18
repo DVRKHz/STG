@@ -19,11 +19,11 @@ export const DesktopMenu = ({ isScrolled }: { isScrolled: boolean }) => {
           // Estilo especial para el botón de Contacto (CTA)
           if (link.isCta) {
             return (
-              <li key={link.name} className="ml-2">
+              <li key={link.name} className="ml-1 lg:ml-2">
                 <Link
                   to={link.href}
                   className={`inline-flex items-center justify-center font-bold transition-all rounded-full whitespace-nowrap shadow-xs active:scale-95 ${
-                    isScrolled ? 'px-4 py-1.5 text-xs' : 'px-5 py-2 text-sm'
+                    isScrolled ? 'px-3 lg:px-4 py-1.5 text-xs' : 'px-3 lg:px-5 py-2 text-xs lg:text-sm'
                   } ${
                     isActive 
                       ? 'bg-cyan-700 text-white ring-2 ring-cyan-500/50' 
@@ -40,8 +40,8 @@ export const DesktopMenu = ({ isScrolled }: { isScrolled: boolean }) => {
             <li key={link.name}>
               <Link
                 to={link.href}
-                className={`relative px-4 py-2 font-semibold transition-all duration-200 rounded-full whitespace-nowrap inline-flex items-center gap-1.5 ${
-                  isScrolled ? 'text-xs' : 'text-sm'
+                className={`relative px-2 lg:px-4 py-2 font-semibold transition-all duration-200 rounded-full whitespace-nowrap inline-flex items-center gap-1.5 ${
+                  isScrolled ? 'text-xs' : 'text-xs lg:text-sm'
                 } ${
                   isActive 
                     ? 'text-cyan-700 font-bold bg-cyan-50/80' 

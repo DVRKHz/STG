@@ -108,7 +108,7 @@ const colaboradores: Person[] = [
 
 export const QuienesSomos = () => {
   return (
-    <div className="min-h-screen bg-white text-zinc-800 font-plus_jakarta_sans selection:bg-cyan-100">
+    <div className="min-h-screen bg-background text-foreground font-plus_jakarta_sans selection:bg-cyan-100">
       <Navbar />
 
       {/* SECCIÓN HERO (PORTADA) */}
@@ -173,7 +173,7 @@ export const QuienesSomos = () => {
         </section>
 
         {/* SECCIÓN EQUIPO DE TRABAJO */}
-        <section id="equipo" className="space-y-12">
+        <section id="equipo" className="scroll-mt-24 space-y-12">
           <div className="space-y-2 border-b border-zinc-100 pb-4">
             <h2 className="text-cyan-600 text-xs md:text-sm font-bold tracking-[3px] uppercase">
               Nuestro Equipo
@@ -332,12 +332,12 @@ const TeamMember = ({
 }) => {
   const styles = accentColor === "cyan" ? {
     borderHover: "hover:border-cyan-300 hover:shadow-md",
-    badge: "bg-cyan-50 text-cyan-800 border-cyan-200",
+    badge: "team-role-cyan bg-cyan-50 text-cyan-800 border-cyan-200",
     avatar: "bg-cyan-50 text-cyan-700 border-cyan-200",
     topLine: "group-hover:bg-cyan-500",
   } : {
     borderHover: "hover:border-lime-300 hover:shadow-md",
-    badge: "bg-lime-50 text-lime-900 border-lime-200",
+    badge: "team-role-lime bg-lime-50 text-lime-900 border-lime-200",
     avatar: "bg-lime-50 text-lime-800 border-lime-200",
     topLine: "group-hover:bg-lime-500",
   };

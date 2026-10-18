@@ -133,7 +133,7 @@ export const MobileMenu = () => {
               {PARTNER_LOGOS.map((logo, i) => (
                 <div 
                   key={i} 
-                  className="h-12 bg-white border border-neutral-200/80 rounded-xl flex items-center justify-center p-2 shadow-2xs"
+                  className="logo-surface h-12 border border-neutral-200/80 rounded-xl flex items-center justify-center p-2 shadow-2xs"
                 >
                   <img 
                     src={logo.src} 

@@ -1,34 +1,30 @@
 import { Link } from "react-router-dom";
 
 const PARTNER_LOGOS = [
-  { src: "/logo-cedes-stretched.png", alt: "CEDES UNACH", size: "h-10" },
-  { src: "/fing.png", alt: "Facultad de Ingeniería UNACH", size: "h-8" },
-  { src: "/farq.png", alt: "Facultad de Arquitectura UNACH", size: "h-7" },
-  { src: "/ceco.jpg", alt: "CECOSICE", size: "h-8" },
-  { src: "/ligalab.png", alt: "LigaLab", size: "h-7" },
-  { src: "/iei.jpg", alt: "Instituto de Estudios Indígenas", size: "h-8" },
+  { src: "/logo-cedes-stretched.png", alt: "CEDES UNACH", size: "h-8", width: "w-14" },
+  { src: "/fing.png", alt: "Facultad de Ingeniería UNACH", size: "h-7" },
+  { src: "/farq.png", alt: "Facultad de Arquitectura UNACH", size: "h-6" },
+  { src: "/ceco.jpg", alt: "CECOSICE", size: "h-7" },
+  { src: "/ligalab.png", alt: "LigaLab", size: "h-6" },
+  { src: "/iei.jpg", alt: "Instituto de Estudios Indígenas", size: "h-7", width: "w-14" },
 ];
 
 export const NavbarLogo = ({ isScrolled }: { isScrolled: boolean }) => {
   return (
     <div className="flex items-center gap-2 md:gap-4 flex-1 min-w-0">
       
-      {/* LOGOS EXTRA: Aliados Institucionales (Se ocultan suavemente al hacer scroll) */}
+      {/* LOGOS EXTRA: Aliados Institucionales */}
       <div 
-        className={`hidden xl:flex items-center gap-3 border-r border-neutral-200/80 transition-all duration-500 ease-in-out overflow-hidden transform-gpu ${
-          isScrolled 
-            ? 'max-w-0 opacity-0 pr-0 border-r-0 pointer-events-none' 
-            : 'max-w-[450px] opacity-100 pr-4'
-        }`}
-        aria-hidden={isScrolled}
+        className="hidden xl:flex shrink-0 items-center gap-2 border-r border-neutral-200/80 pr-3"
       >
         {PARTNER_LOGOS.map((logo, i) => (
-          <img 
-            key={i} 
-            src={logo.src} 
-            alt={logo.alt} 
-            className={`${logo.size || 'h-8'} w-auto filter grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 object-contain shrink-0`} 
-          />
+          <span key={i} className={`logo-surface flex h-10 ${logo.width || "w-10"} shrink-0 items-center justify-center overflow-hidden rounded-lg p-1`}>
+            <img
+              src={logo.src}
+              alt={logo.alt}
+              className={`${logo.size || 'h-8'} max-h-full max-w-full w-auto filter grayscale opacity-75 hover:grayscale-0 hover:opacity-100 transition-all duration-300 object-contain`}
+            />
+          </span>
         ))}
       </div>
 
@@ -39,7 +35,7 @@ export const NavbarLogo = ({ isScrolled }: { isScrolled: boolean }) => {
         aria-label="Inicio - Sustentabilidad, Territorio y Gobernanza UNACH"
       >
         {/* Logo de la UNACH */}
-        <div className="flex items-center shrink-0">
+        <div className="logo-surface flex shrink-0 items-center justify-center rounded-lg p-1">
           <img 
             src="/unach-logo2.png" 
             alt="Universidad Autónoma de Chiapas"
