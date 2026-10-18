@@ -5,7 +5,7 @@ import { Menu, X } from "lucide-react";
 const MENU_LINKS = [
   { name: 'Quiénes somos', href: '/quienessomos' },
   { name: 'Información Relevante', href: '/informacion-relevante' },
-  { name: 'Acciones', href: '/acciones' },
+  { name: 'Acciones e Iniciativas', href: '/acciones' },
   { name: 'Contacto', href: '/contacto' },
 ];
 
