@@ -1,24 +1,26 @@
 # STG
 
-STG es una aplicación web desarrollada con React, Vite y TypeScript para la difusión de información institucional, contenido relevante y canales de contacto.
+![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react) ![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?style=for-the-badge&logo=typescript) ![Vite](https://img.shields.io/badge/Vite-6.x-646CFF?style=for-the-badge&logo=vite) ![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.x-06B6D4?style=for-the-badge&logo=tailwindcss) ![Vercel](https://img.shields.io/badge/Deploy-Vercel-000000?style=for-the-badge&logo=vercel) ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
 
-El sistema está desplegado en producción en:
+STG is a modern web application built with React, Vite, and TypeScript to present institutional information, relevant content, and contact channels in a structured and accessible format.
+
+Live demo:
 - https://stg-unach.vercel.app
 
-## Descripción
+## Overview
 
-STG está pensado como una plataforma de presentación web orientada a comunicar información clara, estructurada y accesible para usuarios, colaboradores y público en general. El proyecto combina navegación por secciones, contenido institucional y diseño moderno con una interfaz adaptable a distintos dispositivos.
+STG is designed as a digital information platform for communicating institutional content in a clear and professional way. The project combines responsive layout, structured navigation, and modular frontend organization to deliver a maintainable solution for public-facing information.
 
-## Principales características
+## Key features
 
-- Navegación por rutas con React Router
-- Diseño responsivo y moderno
-- Presentación de contenido institucional
-- Sección dedicada a información relevante
-- Área de contacto
-- Arquitectura modular para facilitar mantenimiento y escalabilidad
+- Route-based navigation with React Router
+- Responsive and modern interface
+- Institutional content presentation
+- Relevant information section
+- Contact area
+- Modular architecture for easier maintenance and scalability
 
-## Stack tecnológico
+## Tech stack
 
 - React 18
 - TypeScript
@@ -28,7 +30,7 @@ STG está pensado como una plataforma de presentación web orientada a comunicar
 - Radix UI
 - Lucide React
 
-## Estructura del repositorio
+## Repository structure
 
 ```bash
 STG/
@@ -53,28 +55,30 @@ STG/
 ├── vercel.json
 ├── .gitignore
 ├── package-lock.json
+├── LICENSE
 ├── README.md
+├── llms.txt
+├── docs/
+│   └── overview.md
 └── ...
 ```
 
-## Rutas principales
+## Main routes
 
-| Ruta | Vista |
-|------|------|
-| `/` | Inicio / Quiénes Somos |
-| `/quienessomos` | Información institucional |
-| `/acciones` | Líneas de acción |
-| `/informacion-relevante` | Datos destacados |
-| `/contacto` | Contacto |
+- `/` — Home / Quiénes Somos
+- `/quienessomos` — Institutional information
+- `/acciones` — Action lines
+- `/informacion-relevante` — Relevant information
+- `/contacto` — Contact page
 
-## Requisitos previos
+## Prerequisites
 
-Para ejecutar el proyecto localmente, necesitas:
+Before running the project, ensure you have:
 
 - Node.js 18+
 - npm
 
-## Instalación
+## Installation
 
 ```bash
 git clone https://github.com/DVRKHz/STG.git
@@ -82,50 +86,53 @@ cd STG
 npm install
 ```
 
-## Desarrollo local
+## Local development
 
 ```bash
 npm run dev
 ```
 
-La aplicación estará disponible en:
-
+The application will be available at:
 - http://localhost:5173
 
-## Compilación de producción
+## Production build
 
 ```bash
 npm run build
 ```
 
-Este comando genera la versión optimizada para despliegue en la carpeta `dist/`.
+This generates the optimized build in the `dist/` directory.
 
-## Despliegue
+## Deployment
 
-El repositorio incluye la configuración necesaria para desplegar la aplicación en Vercel:
+The repository includes Vercel deployment support:
 
 - `vercel.json`
 
-Esto permite una integración sencilla con despliegues automáticos en producción.
+## Documentation
 
-## Contribución
+- `README.md`
+- `docs/overview.md`
+- `llms.txt`
 
-Si deseas contribuir al proyecto:
+## Contributing
+
+Contributions are welcome. To contribute:
 
 ```bash
-git checkout -b feature/nueva-funcionalidad
+git checkout -b feature/new-feature
 git add .
-git commit -m "Agrega nueva funcionalidad"
-git push origin feature/nueva-funcionalidad
+git commit -m "Add new feature"
+git push origin feature/new-feature
 ```
 
-Posteriormente, puedes abrir un Pull Request para revisión.
+Then open a Pull Request for review.
 
-## Licencia
+## License
 
-Actualmente el proyecto no declara una licencia específica. Si la intención es compartirlo públicamente o permitir uso externo, se recomienda definir una licencia explícita.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-## Enlaces relevantes
+## Relevant links
 
 - GitHub: https://github.com/DVRKHz/STG
-- Producción: https://stg-unach.vercel.app
+- Production: https://stg-unach.vercel.app
