@@ -1,0 +1,45 @@
+# STG
+
+STG is a web application for presenting institutional information in a structured and accessible way. It is designed for organizations, institutions, or public-facing initiatives that need a clean digital presence with key information, action areas, and contact details.
+
+## Project overview
+
+This project includes the following sections:
+- Quiénes Somos
+- Acciones
+- Información Relevante
+- Contacto
+
+## Tech stack
+
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- React Router
+
+## Repository structure
+
+- `src/App.tsx` — route configuration
+- `src/pages/` — page components
+- `tailwind.config.js` — styling configuration
+- `vercel.json` — deployment settings
+- `README.md` — project overview
+- `docs/overview.md` — additional product documentation
+
+## Purpose
+
+The application is intended to provide a clear, responsive, and maintainable informational website for general audiences. It is suitable for public information portals, organizational pages, and institutional communication projects.
+
+## Deployment
+
+The project is configured for deployment via Vercel.
+
+## Documentation
+
+- `docs/overview.md`
+- `README.md`
+
+## License
+
+MIT
