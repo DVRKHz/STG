@@ -19,37 +19,37 @@ const investigadores: Person[] = [
   {
     name: "Dr. Moisés Silva Cervantes",
     role: "Investigador",
-    desc: "Especialista en ecología tropical y gestión ambiental del territorio.",
+    desc: "Especialista en diagnóstico, planificación y gestión sustentable del territorio.",
     gender: "male",
   },
   {
     name: "Dra. Elisa Cruz Ruedas",
     role: "Investigadora",
-    desc: "Enfocada en conservación de biodiversidad y desarrollo comunitario.",
+    desc: "Experta en equidad de género y derechos humanos para la sustentabilidad.",
     gender: "female",
   },
   {
-    name: "Dr. Franco Escamirosa Montalvo",
+    name: "Dr. Lorenzo Franco Escamirosa Montalvo",
     role: "Investigador",
-    desc: "Líder en modelos de resiliencia hídrica y cambio climático.",
+    desc: "Especialista en estudios del hábitat y modelos de vivienda para la autoconstrucción.",
     gender: "male",
   },
   {
-    name: "Mtra. Carolina Farrera Gutiérrez",
+    name: "Mtra. Carolina del Rocío Farrera Gutiérrez",
     role: "Investigadora",
-    desc: "Especialista en análisis de datos socioambientales y GIS.",
+    desc: "Especialista en estrategias de comunicación para el desarrollo sustentable.",
     gender: "female",
   },
   {
-    name: "Mtra. Joseliny Díaz Torres",
-    role: "Investigadora",
-    desc: "Investigadora en políticas públicas y gobernanza ambiental.",
-    gender: "female",
+    name: "Mtro. Joselliny Díaz Torres",
+    role: "Investigador",
+    desc: "Experto en derechos humanos, sustentabilidad y participación comunitaria.",
+    gender: "male",
   },
   {
     name: "Mtro. Francisco Tavernier Montes",
     role: "Investigador",
-    desc: "Experto en economía ecológica y proyectos sostenibles.",
+    desc: "Experto en derechos humanos, sustentabilidad y participación comunitaria.",
     gender: "male",
   },
 ];
@@ -130,7 +130,7 @@ export const QuienesSomos = () => {
             Quiénes Somos
           </h1>
           <p className="text-zinc-200 text-base md:text-xl max-w-2xl mx-auto leading-relaxed font-light italic">
-            "Conoce más sobre nuestro equipo y nuestra misión"
+            "Investigación-acción para la sustentabilidad y la resiliencia territorial"
           </p>
         </div>
       </section>
@@ -138,38 +138,16 @@ export const QuienesSomos = () => {
       {/* CONTENIDO PRINCIPAL */}
       <main className="container mx-auto px-6 py-12 md:py-20 max-w-5xl space-y-20 md:space-y-28">
         
-        {/* SECCIÓN MISIÓN Y VISIÓN */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
-          <article className="space-y-3 border-l-4 border-cyan-500 pl-6 py-1">
-            <h2 className="text-cyan-600 text-xs md:text-sm font-bold tracking-[3px] uppercase">
-              Nuestra Misión
-            </h2>
-            <p className="text-base md:text-lg leading-relaxed text-zinc-700">
-              Promover la sostenibilidad y resiliencia en el Sureste de México a través de la investigación aplicada, el fortalecimiento de capacidades comunitarias y la articulación de políticas ambientales efectivas.
-            </p>
-          </article>
-
-          <article className="space-y-3 border-l-4 border-lime-600 pl-6 py-1">
-            <h2 className="text-lime-700 text-xs md:text-sm font-bold tracking-[3px] uppercase">
-              Nuestra Visión
-            </h2>
-            <p className="text-base md:text-lg leading-relaxed text-zinc-700">
-              Ser una organización líder reconocida por su capacidad de articular esfuerzos científicos, comunitarios e institucionales para afrontar los desafíos climáticos del siglo XXI.
-            </p>
-          </article>
-        </div>
-
-        {/* SECCIÓN NUESTROS VALORES */}
-        <section className="space-y-8">
-          <h2 className="text-zinc-900 text-xs md:text-sm font-bold tracking-[3px] uppercase text-center md:text-left">
-            Nuestros Valores
+        <section aria-labelledby="about-heading" className="space-y-6 border-l-4 border-cyan-500 pl-6 py-1">
+          <h2 id="about-heading" className="text-cyan-600 text-xs md:text-sm font-bold tracking-[3px] uppercase">
+            Sustentabilidad, Territorio y Gobernanza
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-8">
-            <ValueItem color="text-cyan-500" title="Colaboración" desc="Trabajamos en alianza con diversos actores sociales y académicos." />
-            <ValueItem color="text-lime-600" title="Sostenibilidad" desc="Promovemos prácticas que aseguren el equilibrio ecológico a largo plazo." />
-            <ValueItem color="text-emerald-600" title="Transparencia" desc="Operamos con honestidad, rigor técnico y rendición de cuentas." />
-            <ValueItem color="text-cyan-700" title="Innovación" desc="Buscamos soluciones creativas y adaptadas al contexto regional." />
-          </div>
+          <p className="text-base md:text-lg leading-relaxed text-zinc-700">
+            Somos un equipo de investigación-acción que trabaja temas de diagnóstico y prospectiva territorial participativa, aplicación de infraestructuras verdes y soluciones basadas en la naturaleza, como medidas de adaptación al cambio climático para disminuir los riesgos de origen hidrometeorológico.
+          </p>
+          <p className="text-base md:text-lg leading-relaxed text-zinc-700">
+            Bajo los postulados del desarrollo sustentable trabajamos de la mano con comunidades rurales y periurbanas de la Zona Metropolitana de Tuxtla Gutiérrez, a fin de lograr la conservación, recuperación y resignificación territorial, con estricto apego al respeto de los derechos humanos, la justicia ambiental y el desarrollo social equitativo.
+          </p>
         </section>
 
         {/* SECCIÓN EQUIPO DE TRABAJO */}
@@ -205,16 +183,6 @@ export const QuienesSomos = () => {
 };
 
 // SUBCOMPONENTES REUTILIZABLES
-
-const ValueItem = ({ color, title, desc }: { color: string; title: string; desc: string }) => (
-  <div className="flex gap-4 items-start group">
-    <span className={`${color} text-xl transition-transform group-hover:scale-125 select-none`}>●</span>
-    <div>
-      <h3 className="text-base font-bold mb-1 text-zinc-900">{title}</h3>
-      <p className="text-zinc-600 leading-relaxed text-sm">{desc}</p>
-    </div>
-  </div>
-);
 
 /** Componente de carrusel interactivo con estados de scroll deshabilitados */
 const TeamSectionCarousel = ({ 

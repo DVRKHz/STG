@@ -244,19 +244,6 @@ export const ACCIONES_DATA: ProjectItem[] = [
  */
 export const CIRES_DATA: ProjectItem[] = [
   {
-    id: 1,
-    title: "Panel temático de intercambio de saberes sobre la problemática ambiental y su incidencia en el territorio",
-    speaker: "Moisés Silva Cervantes",
-    code: "CIU-2026-SIMP-0001",
-    location: "ZOOMAT, Tuxtla Gtz",
-    tagColor: "bg-cyan-600",
-    category: "27/08/2026",
-    text: "Facilitar el intercambio de visiones entre académicos, autoridades y actores locales para consensuar estrategias de conservación territorial basadas en un enfoque ecocéntrico y de corresponsabilidad con la naturaleza.",
-    img: "/19-May-26.jpg",
-    link: "#",
-    pdfUrl: "/ponencia1.pdf"
-  },
-  {
     id: 4,
     title: "Cartografía de combustibles forestales mediante tecnología láser y teledetección en la Península Ibérica",
     speaker: "Francisco Mauro",
