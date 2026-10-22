@@ -59,7 +59,7 @@ const colaboradores: Person[] = [
   {
     name: "César Emilio Gómez Morales",
     role: "Colaborador",
-    desc: "Apoyo técnico en monitoreo de campo y sistematización.",
+    desc: "Soporte en análisis de datos cartográficos y geográficos.",
     gender: "male",
   },
   {
@@ -83,7 +83,7 @@ const colaboradores: Person[] = [
   {
     name: "Mario Alberto Vargas Gómez",
     role: "Colaborador",
-    desc: "Soporte en análisis de datos cartográficos y geográficos.",
+    desc: "Apoyo técnico en monitoreo de campo y sistematización.",
     gender: "male",
   },
   {
@@ -100,8 +100,8 @@ const colaboradores: Person[] = [
   },
   {
     name: "André Rodrigo Martínez Martínez",
-    role: "Colaborador",
-    desc: "Desarrollador Front-end. Diseño e implementación de la interfaz web, componentes interactivos y experiencia de usuario.",
+    role: "Desarrollador web",
+    desc: "Desarrollo y mantenimiento de la plataforma web.",
     gender: "male",
   },
 ];
