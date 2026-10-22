@@ -24,6 +24,7 @@ export const Contacto = () => {
     mensaje: "",
   });
 
+  const [privacyNoticeAccepted, setPrivacyNoticeAccepted] = useState(false);
   const [file, setFile] = useState<File | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [status, setStatus] = useState<StatusState>({ 
@@ -86,6 +87,7 @@ export const Contacto = () => {
 
   const resetForm = () => {
     setFormData({ nombre: "", email: "", asunto: "", mensaje: "" });
+    setPrivacyNoticeAccepted(false);
     setFile(null);
     if (fileInputRef.current) fileInputRef.current.value = "";
   };
@@ -98,6 +100,7 @@ export const Contacto = () => {
     Object.keys(formData).forEach((key) => 
       dataToSend.append(key, formData[key as keyof FormDataState])
     );
+    dataToSend.append("acepta_aviso_privacidad", privacyNoticeAccepted ? "Sí" : "No");
     
     if (file) dataToSend.append("adjunto", file);
 
@@ -291,6 +294,31 @@ export const Contacto = () => {
                     placeholder="Escribe los detalles de tu consulta..."
                   />
                 </div>
+
+                <label htmlFor="acepta-aviso-privacidad" className="flex items-start gap-3 text-sm text-zinc-700 cursor-pointer">
+                  <input
+                    id="acepta-aviso-privacidad"
+                    name="acepta_aviso_privacidad"
+                    type="checkbox"
+                    value="Sí"
+                    checked={privacyNoticeAccepted}
+                    onChange={(e) => setPrivacyNoticeAccepted(e.target.checked)}
+                    required
+                    className="mt-0.5 h-4 w-4 shrink-0 accent-cyan-600"
+                  />
+                  <span>
+                    Confirmo que leí y acepto el{" "}
+                    <a
+                      href="https://www.unach.mx/avisos-de-privacidad"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-semibold text-cyan-700 underline hover:text-cyan-800"
+                    >
+                      Aviso de Privacidad
+                    </a>
+                    .
+                  </span>
+                </label>
 
                 <button
                   type="submit"
