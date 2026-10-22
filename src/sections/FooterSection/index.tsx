@@ -88,14 +88,22 @@ export const FooterSection = () => {
 
         </div>
 
-        {/* LÍNEA SEPARADORA Y COPYRIGHT */}
-        <div className="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-zinc-500 text-xs">
-          <p className="text-center sm:text-left">
-            © 2026 Universidad Autónoma de Chiapas. Todos los derechos reservados.
-          </p>
-          <p className="text-center sm:text-right text-zinc-500">
-            Sustentabilidad, Territorio y Gobernanza
-          </p>
+        {/* COPYRIGHT Y CRÉDITOS */}
+        <div className="mt-12 pt-8 border-t border-white/10 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <div className="space-y-2 text-center text-xs text-zinc-500 md:text-left">
+            <p>© 2026 Universidad Autónoma de Chiapas. Todos los derechos reservados.</p>
+            <p className="text-zinc-400">Sustentabilidad, Territorio y Gobernanza</p>
+          </div>
+          <div className="grid grid-cols-1 gap-3 text-center sm:grid-cols-2 sm:gap-x-8 md:text-right">
+            <p className="text-[10px] leading-relaxed">
+              <span className="block uppercase tracking-wider text-zinc-500">Diseño e idea conceptual</span>
+              <span className="text-xs text-zinc-300">Moisés Silva Cervantes</span>
+            </p>
+            <p className="text-[10px] leading-relaxed">
+              <span className="block uppercase tracking-wider text-zinc-500">Desarrollo y mantenimiento</span>
+              <span className="text-xs text-zinc-300">André Rodrigo Martínez Martinez</span>
+            </p>
+          </div>
         </div>
 
       </div>
